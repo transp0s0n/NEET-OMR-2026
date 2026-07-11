@@ -68,7 +68,7 @@
             background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
-            padding: 60px 20px;
+            padding: 110px 20px 40px 20px; /* Increased top padding so content is fully cleared of floating buttons */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -144,6 +144,13 @@
             .share-widget { top: 20px; right: 16px; }
         }
 
+        /* CRITICAL: Totally hide top UI via JS class assignment on leaderboard */
+        body.hide-top-ui .theme-toggle,
+        body.hide-top-ui .hamburger,
+        body.hide-top-ui .share-widget {
+            display: none !important;
+        }
+
         .sidebar {
             position: fixed; top: 0; left: -300px; width: 300px; height: 100%;
             background: rgba(224, 224, 229, 0.8); backdrop-filter: blur(52px) saturate(120%); -webkit-backdrop-filter: blur(52px) saturate(120%);
@@ -195,7 +202,7 @@
 
         #resultsSection, #leaderboardSection, #instructionsSection { display: none; }
 
-        .score-hero { text-align: center; margin-top: 50px; } /* Pushed downwards to avoid top button overlap */
+        .score-hero { text-align: center; } 
         .booklet-badge {
             display: inline-block; background: rgba(0,113,227,0.1); color: var(--accent);
             font-size: 13px; font-weight: 700; letter-spacing: 0.03em; padding: 6px 16px;
@@ -305,8 +312,13 @@
         .unlock-panel.active { display: block; }
         .report-preview-box { padding: 40px 20px; text-align: center; color: var(--text-muted); }
 
-        .footer-links { text-align: center; margin-top: 30px; margin-bottom: 20px; font-size: 12px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
+        /* FOOTER FIXES */
+        .footer-links {
+            text-align: center; margin-top: 30px; margin-bottom: 20px; font-size: 12px;
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;
+        }
+        .footer-links a { color: var(--text-muted); text-decoration: none; white-space: nowrap; }
+        .footer-separator { color: var(--text-muted); opacity: 0.5; }
 
         .report-options { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; text-align: left; }
         .report-option-row { display: flex; align-items: center; gap: 10px; background: rgba(222,222,228,0.55); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 16px; cursor: pointer; }
@@ -413,7 +425,6 @@
 </div>
 
 <div class="container" id="mainContainer">
-    <!-- TITLES MODIFIED BY SHOWSECTION HENCEFORTH CONTAINER TARGETED -->
     <div id="pageHeaderGroup">
         <h1>Re-NEET 2026 OMR Score Calculator</h1>
         <p class="subtitle">Calculate your Re-NEET 2026 marks and review your correct and incorrect responses.</p>
@@ -459,7 +470,7 @@
 
     <!-- RESULTS SECTION -->
     <div id="resultsSection">
-        <div class="card score-hero" style="margin-top: 50px;">
+        <div class="card score-hero">
             <div class="booklet-badge" id="setMetric">Booklet Set: —</div>
             <h2>Calculated Final Score</h2>
             <div class="massive-score" id="grandTotal">0<span>/720</span></div>
@@ -575,9 +586,9 @@
     </div>
 
     <div class="footer-links">
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="refund.html">Refund Policy</a> |
+        <a href="terms.html">Terms & Conditions</a> <span class="footer-separator">|</span>
+        <a href="privacy.html">Privacy Policy</a> <span class="footer-separator">|</span>
+        <a href="refund.html">Refund Policy</a> <span class="footer-separator">|</span>
         <a href="contact.html">Contact Us</a>
     </div>
 </div>
