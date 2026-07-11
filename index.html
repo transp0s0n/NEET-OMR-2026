@@ -193,15 +193,16 @@
         .report-option-row input { width: 16px; height: 16px; accent-color: var(--accent); }
         .report-option-row label { font-size: 14px; cursor: pointer; flex: 1; }
 
+        /* CHANGED: Repositioned banner to top of page with downward sliding physics */
         .scroll-support-banner {
-            position: fixed; bottom: -240px; left: 50%; transform: translateX(-50%);
+            position: fixed; top: -300px; left: 50%; transform: translateX(-50%);
             width: min(420px, 92vw); background: rgba(255,255,255,0.72);
             backdrop-filter: blur(36px) saturate(180%); -webkit-backdrop-filter: blur(36px) saturate(180%);
-            border: 1px solid var(--glass-border); border-radius: 24px; box-shadow: 0 -10px 40px rgba(0,0,0,0.22);
-            padding: 26px 26px 22px 26px; z-index: 1200; transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--glass-border); border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.22);
+            padding: 26px 26px 22px 26px; z-index: 1200; transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             text-align: center;
         }
-        .scroll-support-banner.visible { bottom: 24px; }
+        .scroll-support-banner.visible { top: 24px; }
         .scroll-support-banner .close-banner {
             position: absolute; top: 10px; right: 14px; background: none; border: none;
             font-size: 18px; color: var(--text-muted); cursor: pointer;
@@ -371,11 +372,11 @@
 
 <div id="comprehensiveReport"></div>
 
-<!-- UPDATED Scroll-triggered support banner -->
+<!-- Scroll-triggered support banner (Configured to pop from top) -->
 <div class="scroll-support-banner" id="scrollSupportBanner">
     <button class="close-banner" onclick="dismissSupportBanner()">✕</button>
     <h3>Support the Project! 🙏</h3>
-    <p>If this calculator helped ease your post-exam stress today, please consider supporting my work with a small donation. Your contribution keeps the servers running and instantly unlocks your <strong>Comprehensive Score Report</strong> and the <strong>Global Leaderboard</strong>!</p>
+    <p>If this calculator made calculating your marks easy, please consider supporting my work with a small donation. Your one time contribution keeps the servers running and instantly unlocks forever - your <strong>Comprehensive Score Report</strong> and the <strong>Global Leaderboard</strong>!</p>
     <div class="tier-grid">
         <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹10</a>
         <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹20</a>
@@ -384,24 +385,16 @@
     </div>
 </div>
 
-<!-- ========================================== -->
-<!-- PAYMENT VERIFICATION ENGINE -->
-<!-- ========================================== -->
 <script>
     window.addEventListener('load', function() {
-        // 1. Check the URL for the secret Razorpay success tag
         const urlParams = new URLSearchParams(window.location.search);
         
         if (urlParams.get('status') === 'paid') {
-            // 2. Save the unlock token permanently in the browser
             localStorage.setItem('premiumUnlocked', 'true');
-            
-            // 3. Clean up the URL so it looks normal again
             window.history.replaceState({}, document.title, window.location.pathname);
             alert("Payment successful! Thank you so much for your support. All premium features are now unlocked.");
         }
 
-        // 4. If the browser remembers they paid, hide the paywalls immediately
         if (localStorage.getItem('premiumUnlocked') === 'true') {
             document.getElementById('reportPaywall')?.classList.add('hidden');
             document.getElementById('reportPreview')?.classList.add('unlocked');
