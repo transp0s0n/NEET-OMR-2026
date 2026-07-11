@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Re-NEET 2026 OMR Score Calculator</title>
+    
+    <!-- Anti-Snoop Script (Blocks Right Click & F12) -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) return false; // F12
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false; // Ctrl+Shift+I/J
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+        }
+    </script>
+
     <style>
         :root {
             --bg-color: #cfd2da;
@@ -193,7 +204,6 @@
         .report-option-row input { width: 16px; height: 16px; accent-color: var(--accent); }
         .report-option-row label { font-size: 14px; cursor: pointer; flex: 1; }
 
-        /* CHANGED: Repositioned banner to top of page with downward sliding physics */
         .scroll-support-banner {
             position: fixed; top: -300px; left: 50%; transform: translateX(-50%);
             width: min(420px, 92vw); background: rgba(255,255,255,0.72);
@@ -233,10 +243,10 @@
 </head>
 <body>
 
-<button class="hamburger" onclick="toggleSidebar()">☰</button>
+<button class="hamburger" onclick="window.toggleSidebar()">☰</button>
 <div class="sidebar" id="sidebar">
-    <button class="menu-btn" onclick="showSection('resultsSection')">📊 My Results</button>
-    <button class="menu-btn" onclick="showSection('leaderboardSection')">🏆 Global Leaderboard</button>
+    <button class="menu-btn" onclick="window.showSection('resultsSection')">📊 My Results</button>
+    <button class="menu-btn" onclick="window.showSection('leaderboardSection')">🏆 Global Leaderboard</button>
     <button class="menu-btn" onclick="window.print()">📥 Download Report Card</button>
 </div>
 
@@ -251,7 +261,7 @@
             <input type="file" id="csvFile" accept=".csv" style="display: none;">
         </div>
 
-        <button id="calcBtn" class="action-btn" disabled onclick="executeCalculation()">Calculate Your Marks</button>
+        <button id="calcBtn" class="action-btn" disabled onclick="window.executeCalculation()">Calculate Your Marks</button>
     </div>
 
     <div id="resultsSection">
@@ -270,7 +280,7 @@
 
             <div class="filter-bar">
                 <label for="reviewFilter" style="font-weight: 600; color: var(--text-muted); font-size: 14px;">Filter:</label>
-                <select id="reviewFilter" onchange="applyReviewFilter()">
+                <select id="reviewFilter" onchange="window.applyReviewFilter()">
                     <option value="all">All Questions</option>
                     <option value="correct">Only Correct</option>
                     <option value="incorrect">Only Incorrect</option>
@@ -279,9 +289,9 @@
             </div>
 
             <div class="q-tabs">
-                <button class="tab-btn active" onclick="switchTab('tab-phy')">⚛️ Physics</button>
-                <button class="tab-btn" onclick="switchTab('tab-chem')">🧪 Chemistry</button>
-                <button class="tab-btn" onclick="switchTab('tab-bio')">🧬 Biology</button>
+                <button class="tab-btn active" onclick="window.switchTab('tab-phy')">⚛️ Physics</button>
+                <button class="tab-btn" onclick="window.switchTab('tab-chem')">🧪 Chemistry</button>
+                <button class="tab-btn" onclick="window.switchTab('tab-bio')">🧬 Biology</button>
             </div>
             <div id="tab-phy" class="q-list active"></div>
             <div id="tab-chem" class="q-list"></div>
@@ -313,11 +323,10 @@
         </div>
     </div>
 
-    <!-- Premium Unlock Tabs -->
     <div class="card unlock-tabs-card">
         <div class="q-tabs">
-            <button class="tab-btn active" id="unlockTabBtn-report" onclick="switchUnlockTab('report')">📄 Download Comprehensive Report</button>
-            <button class="tab-btn" id="unlockTabBtn-leaderboard" onclick="switchUnlockTab('leaderboard')">🏆 See Leaderboard</button>
+            <button class="tab-btn active" id="unlockTabBtn-report" onclick="window.switchUnlockTab('report')">📄 Download Comprehensive Report</button>
+            <button class="tab-btn" id="unlockTabBtn-leaderboard" onclick="window.switchUnlockTab('leaderboard')">🏆 See Leaderboard</button>
         </div>
 
         <div id="unlockPanel-report" class="unlock-panel active">
@@ -353,7 +362,7 @@
                         <label for="optAll">All questions, with your answer & correct answer</label>
                     </div>
                 </div>
-                <button id="downloadReportBtn" class="action-btn" style="margin-top:6px; background:linear-gradient(135deg,#1d1d1f,#3a3a3c); color:#fff;" onclick="generateComprehensiveReport()">Generate & Download Report</button>
+                <button id="downloadReportBtn" class="action-btn" style="margin-top:6px; background:linear-gradient(135deg,#1d1d1f,#3a3a3c); color:#fff;" onclick="window.generateComprehensiveReport()">Generate & Download Report</button>
             </div>
         </div>
 
@@ -372,9 +381,8 @@
 
 <div id="comprehensiveReport"></div>
 
-<!-- Scroll-triggered support banner (Configured to pop from top) -->
 <div class="scroll-support-banner" id="scrollSupportBanner">
-    <button class="close-banner" onclick="dismissSupportBanner()">✕</button>
+    <button class="close-banner" onclick="window.dismissSupportBanner()">✕</button>
     <h3>Support the Project! 🙏</h3>
     <p>If this calculator made calculating your marks easy, please consider supporting my work with a small donation. Your one time contribution keeps the servers running and instantly unlocks forever - your <strong>Comprehensive Score Report</strong> and the <strong>Global Leaderboard</strong>!</p>
     <div class="tier-grid">
@@ -385,374 +393,8 @@
     </div>
 </div>
 
-<script>
-    window.addEventListener('load', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        if (urlParams.get('status') === 'paid') {
-            localStorage.setItem('premiumUnlocked', 'true');
-            window.history.replaceState({}, document.title, window.location.pathname);
-            alert("Payment successful! Thank you so much for your support. All premium features are now unlocked.");
-        }
+<!-- This links to your new external, hidden JS file -->
+<script type="module" src="main.js"></script>
 
-        if (localStorage.getItem('premiumUnlocked') === 'true') {
-            document.getElementById('reportPaywall')?.classList.add('hidden');
-            document.getElementById('reportPreview')?.classList.add('unlocked');
-            document.getElementById('reportOptions').style.display = 'block';
-            
-            document.getElementById('leaderboardPaywall')?.classList.add('hidden');
-            document.getElementById('leaderboardContainer')?.classList.add('unlocked');
-        }
-    });
-</script>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, collection, doc, setDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDa5BLDx7qpepLpUkieA2Fg6M_QBiL_c9o",
-      authDomain: "neet-2026-omr.firebaseapp.com",
-      projectId: "neet-2026-omr",
-      storageBucket: "neet-2026-omr.firebasestorage.app",
-      messagingSenderId: "720446130844",
-      appId: "1:720446130844:web:c0a0048354ab506ee2bb59"
-    };
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    const officialKeysMaster = { "50": {}, "60": {}, "70": {}, "80": {} };
-    const rawKeys = {
-        "50": "4|4|4|3|1|3|1|1|4|4|1|1|3|2|2|2|3|1|3|3|4|2|3|3|4|Bonus|2|2|2|1|3|2|2|3|3|1|1|2,3|3|4|1|3|3|3|1|3|3|1|1|3|3|4|3|3|3|2|1|1|4|2|1|1|1|3|4|1|4|4|1|1|1|4|1|1|2|4|1|1|2|2|2|1|1|1|1|4|3|3|4|4|3|1|1|4|4|1|2|2|2|2|1|2|1|3|1|2|3|1|4|1|1|4|1|2|2|4|4|4|1|4|4|2|2|2|3|4|2|3|1|3|3|3|3|1|3|1|1|2|2|1|2|3|4|2|3|3|1|2|2|1|1|1|1|2|4|3|4|4|3|4|3|3|1|2|2|4|2|1|4|1|3|1|3|4|1|1|3|2|4|1",
-        "60": "3|2|2|4|1|1|2|3|1|3|3|4|4|3|1|3|4|1|3|4|1|2|1|2|1|4|2|2|3|2|3|1|1|4|1|1,4|1|1|1|3|3|1|Bonus|4|4|2|4|2|3|3|4|1|3|4|1|3|3|3|3|3|3|3|1|2|1|1|2|3|3|2|3|3|1|2|2|4|3|3|3|2|1|4|4|1|2|1|3|2|3|1|1|1|3|4|4|3|3|3|3|4|4|2|3|2|2|2|2|4|1|1|3|4|2|1|2|4|2|3|1|4|1|4|3|2|3|4|4|3|2|1|1|1|3|4|3|3|3|1|3|1|3|2|2|3|3|4|2|1|4|3|4|4|3|2|1|1|3|1|3|4|1|4|3|2|2|3|4|3|1|3|3|4|4|1|2|1|1|3|4|4",
-        "70": "4|1|4|2|4|2|2|3|2|4|2|1|1|3|4|4|4|2|1|2|4|3,4|1|3|4|2|4|4|3|3|1|1|1|4|2|4|3|2|2|Bonus|3|4|4|3|3|1|1|1|4|2|1|1|1|4|4|4|2|3|1|2|2|4|2|4|2|4|3|2|2|2|1|2|4|2|2|2|3|1|3|2|4|2|2|2|2|2|1|3|3|4|4|1|3|2|1|2|2|2|2|2|3|3|1|4|2|4|3|2|4|3|1|3|3|3|1|2|3|3|4|2|4|1|3|1|1|4|1|2|1|2|3|2|4|4|4|2|4|3|2|3|2|1|1|4|1|2|4|2|1|4|3|4|2|4|3|3|2|2|2|2|4|2|2|1|1|4|1|2|1|1|4|3|2|2|3|3|3|3|4|3",
-        "80": "4|Bonus|2|1|1,2|2|2|1|4|2|1|4|2|4|2|3|2|2|4|2|1|4|4|4|3|1|1|1|1|3|1|4|2|3|3|4|4|2|2|2|3|3|2|3|2|1|2|4|1|4|4|4|4|2|2|2|3|4|4|3|3|3|4|4|4|2|1|4|2|1|4|4|2|4|4|3|1|3|3|2|1|4|3|3|2|3|4|4|2|4|2|1|2|1|1|4|1|4|3|4|2|4|1|2|3|2|2|4|2|1|3|1|4|3|1|1|1|3|4|1|4|3|4|3|4|3|4|2|1|3|4|3|2|2|4|1|4|4|4|3|4|4|2|3|3|4|1|4|4|3|1|3|2|4|1|1|1|2|3|3|2|4|4|3|4|1|2|4|2|1|2|2|1|2|4|3|2|1|4|1"
-    };
-
-    Object.keys(rawKeys).forEach(set => {
-        const arr = rawKeys[set].split("|");
-        arr.forEach((ans, idx) => {
-            let qNum = String(idx + 1).padStart(3, '0');
-            officialKeysMaster[set][qNum] = ans;
-        });
-    });
-
-    let globalCSVText = "";
-    let extractedAppNumber = "";
-    let extractedFullName = "";
-    let extractedSetCode = "";
-
-    function maskName(name) {
-        if (!name) return "Student-****";
-        return name.split(' ').map(w => w.length <= 1 ? w.toUpperCase() : w[0].toUpperCase() + '****').join(' ');
-    }
-
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('csvFile');
-    const calcBtn = document.getElementById('calcBtn');
-    const uploadText = document.getElementById('uploadText');
-
-    ['dragenter', 'dragover'].forEach(n => dropZone.addEventListener(n, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }));
-    ['dragleave', 'drop'].forEach(n => dropZone.addEventListener(n, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
-
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        if(e.dataTransfer.files.length) handleFileLoad(e.dataTransfer.files[0]);
-    });
-    fileInput.addEventListener('change', (e) => {
-        if(e.target.files.length) handleFileLoad(e.target.files[0]);
-    });
-
-    function handleFileLoad(file) {
-        if (!file.name.toLowerCase().endsWith('.csv')) return alert('Upload a valid CSV file.');
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            globalCSVText = e.target.result;
-            calcBtn.disabled = false;
-            calcBtn.classList.add('active');
-            dropZone.classList.add('uploaded');
-            uploadText.innerText = "CSV Ready! Click Calculate below.";
-            uploadText.style.color = "var(--success)";
-        };
-        reader.readAsText(file);
-    }
-
-    window.executeCalculation = function() {
-        if (!globalCSVText) return;
-        dropZone.style.display = 'none';
-        calcBtn.style.display = 'none';
-        document.getElementById('resultsSection').style.display = 'block';
-        processMetrics(globalCSVText);
-    };
-
-    function processMetrics(csvText) {
-        const structuralMap = {
-            "Physics":   { correct: 0, incorrect: 0, skipped: 0, net: 0, elements: [], reviewRows: [], id: "tab-phy" },
-            "Chemistry": { correct: 0, incorrect: 0, skipped: 0, net: 0, elements: [], reviewRows: [], id: "tab-chem" },
-            "Biology":   { correct: 0, incorrect: 0, skipped: 0, net: 0, elements: [], reviewRows: [], id: "tab-bio" }
-        };
-
-        let grandTotal = 0;
-        let totalCorrect = 0, totalIncorrect = 0, totalSkipped = 0;
-        const rows = csvText.split('\n');
-
-        for (let i = 0; i < Math.min(15, rows.length); i++) {
-            const rowUpper = rows[i].toUpperCase();
-            if (rowUpper.includes("APPLICATION") || rowUpper.includes("ROLL")) extractedAppNumber = rows[i].split(',')[1]?.trim();
-            if (rowUpper.includes("NAME")) extractedFullName = rows[i].split(',')[1]?.trim();
-            if (rowUpper.includes("SET") || rowUpper.includes("BOOKLET") || rowUpper.includes("PAPERCODE")) {
-                extractedSetCode = rows[i].split(',')[1]?.trim().toUpperCase();
-            }
-        }
-
-        if (!extractedAppNumber) extractedAppNumber = "GUEST" + Math.floor(Math.random() * 99999);
-        if (!extractedFullName) extractedFullName = "Anonymous Student";
-        if (!extractedSetCode) extractedSetCode = "50";
-
-        const targetAnswerKey = officialKeysMaster[extractedSetCode];
-        if (!targetAnswerKey) {
-            alert(`Error: Booklet code "${extractedSetCode}" is not registered in our database.`);
-            return;
-        }
-
-        const responseMap = {};
-        for (let i = 0; i < rows.length; i++) {
-            if (!rows[i].trim()) continue;
-            const fragments = rows[i].split(',');
-            if (fragments.length < 2) continue;
-            const num = parseInt(fragments[0].trim(), 10);
-            if (isNaN(num) || num < 1 || num > 180) continue;
-            responseMap[String(num).padStart(3, '0')] = fragments[1] ? fragments[1].trim() : "";
-        }
-
-        for (let num = 1; num <= 180; num++) {
-            const targetQ = String(num).padStart(3, '0');
-            const key = targetAnswerKey[targetQ];
-            if (!key) continue;
-
-            const sector = (num <= 45) ? "Physics" : (num <= 90) ? "Chemistry" : "Biology";
-            const ans = responseMap.hasOwnProperty(targetQ) ? responseMap[targetQ] : "";
-
-            if (key === "Bonus") {
-                structuralMap[sector].correct++; structuralMap[sector].net += 4; grandTotal += 4; totalCorrect++;
-                structuralMap[sector].elements.push(`<div class="q-item correct-item"><span>Q${targetQ}</span><span class="bonus-text">Bonus (+4) | Dropped by NTA</span></div>`);
-                structuralMap[sector].reviewRows.push({ q: targetQ, status: 'bonus', marked: ans, key: 'Bonus' });
-                continue;
-            }
-
-            if (ans === "") {
-                structuralMap[sector].skipped++; totalSkipped++;
-                structuralMap[sector].elements.push(`<div class="q-item skipped-item"><span>Q${targetQ}</span><span style="color:var(--text-muted)">Skipped (Key: ${key})</span></div>`);
-                structuralMap[sector].reviewRows.push({ q: targetQ, status: 'skipped', marked: '', key: key });
-            } else {
-                const validOptions = key.includes(",") ? key.split(",") : [key];
-
-                if (validOptions.includes(ans)) {
-                    structuralMap[sector].correct++; structuralMap[sector].net += 4; grandTotal += 4; totalCorrect++;
-                    structuralMap[sector].elements.push(`<div class="q-item correct-item"><span>Q${targetQ}</span><span class="correct-text">Correct (+4)</span></div>`);
-                    structuralMap[sector].reviewRows.push({ q: targetQ, status: 'correct', marked: ans, key: key });
-                } else {
-                    structuralMap[sector].incorrect++; structuralMap[sector].net -= 1; grandTotal -= 1; totalIncorrect++;
-                    structuralMap[sector].elements.push(`<div class="q-item incorrect-item"><span>Q${targetQ}</span><span class="wrong-text">Incorrect (-1) | Marked: ${ans}</span></div>`);
-                    structuralMap[sector].reviewRows.push({ q: targetQ, status: 'incorrect', marked: ans, key: key });
-                }
-            }
-        }
-
-        const totalAttempted = totalCorrect + totalIncorrect;
-        renderDashboard(structuralMap, grandTotal, totalCorrect, totalIncorrect, totalSkipped, totalAttempted);
-    }
-
-    function renderDashboard(map, total, totalCorrect, totalIncorrect, totalSkipped, totalAttempted) {
-        document.getElementById('grandTotal').innerHTML = `${total}<span>/720</span>`;
-
-        const accuracyPct = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
-        document.getElementById('accuracyMetric').innerText = `Accuracy: ${accuracyPct}% (${totalCorrect}/${totalAttempted} attempted, out of 180 total)`;
-        document.getElementById('setMetric').innerText = `Booklet Set: ${extractedSetCode}`;
-
-        const positiveMarks = totalCorrect * 4;
-        const negativeMarks = totalIncorrect * 1;
-
-        document.getElementById('overallStatsGrid').innerHTML = `
-            <div class="stat-chip correct-chip"><span class="stat-value">${totalCorrect}</span><span class="stat-label">Total Correct</span></div>
-            <div class="stat-chip incorrect-chip"><span class="stat-value">${totalIncorrect}</span><span class="stat-label">Total Incorrect</span></div>
-            <div class="stat-chip skipped-chip"><span class="stat-value">${totalSkipped}</span><span class="stat-label">Total Skipped</span></div>
-            <div class="stat-chip positive-chip"><span class="stat-value">+${positiveMarks}</span><span class="stat-label">Positive Marks</span></div>
-            <div class="stat-chip negative-chip"><span class="stat-value">-${negativeMarks}</span><span class="stat-label">Negative Penalty</span></div>
-        `;
-
-        const grid = document.getElementById('subjectGrid');
-        grid.innerHTML = "";
-        const subjectClass = { Physics: 'phy', Chemistry: 'chem', Biology: 'bio' };
-        const subjectEmoji = { Physics: '⚛️', Chemistry: '🧪', Biology: '🧬' };
-
-        Object.keys(map).forEach(k => {
-            const d = map[k];
-            const maxScore = (k === "Biology") ? 360 : 180;
-            grid.innerHTML += `
-                <div class="subject-card ${subjectClass[k]}">
-                    <h3><span>${subjectEmoji[k]}</span> ${k}</h3>
-                    <div class="stat-row"><span>Correct</span><span class="correct-text">${d.correct}</span></div>
-                    <div class="stat-row"><span>Incorrect</span><span class="wrong-text">${d.incorrect}</span></div>
-                    <div class="stat-row"><span>Skipped</span><span>${d.skipped}</span></div>
-                    <div class="stat-row" style="font-weight:700; margin-top:10px; padding-top:10px; border-top:1px solid rgba(0,0,0,0.08)"><span>Subtotal</span><span>${d.net} / ${maxScore}</span></div>
-                </div>
-            `;
-            document.getElementById(d.id).innerHTML = d.elements.length ? d.elements.join('') : '<p>No data</p>';
-        });
-
-        window._lastReportData = { total, map };
-        executeCloudSync(total, map);
-    }
-
-    async function executeCloudSync(score, map) {
-        const safeName = maskName(extractedFullName);
-
-        try {
-            await setDoc(doc(db, "leaderboard", extractedAppNumber), {
-                name: safeName,
-                score: score,
-                phy: map["Physics"].net, chem: map["Chemistry"].net, bio: map["Biology"].net,
-                set: extractedSetCode,
-                timestamp: serverTimestamp()
-            });
-        } catch(e) { console.error(e); }
-
-        try {
-            const q = query(collection(db, "leaderboard"), orderBy("score", "desc"));
-            const snaps = await getDocs(q);
-            let rank = 1; let found = false; let htmlStr = "";
-
-            snaps.forEach((docRef) => {
-                if (docRef.id === extractedAppNumber) found = true;
-                if (!found) rank++;
-
-                const data = docRef.data();
-                htmlStr += `
-                    <div class="leaderboard-row">
-                        <div class="lb-top-row"><span>${data.name}</span><span style="color:var(--accent)">${data.score} / 720</span></div>
-                        <div class="lb-sub-row">
-                            <span>Phy: ${data.phy||0}</span><span>Chem: ${data.chem||0}</span><span>Bio: ${data.bio||0}</span>
-                            <span>Code: ${data.set||'N/A'}</span>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('userRankDisplay').innerText = `Your Rank: #${rank} in Global Pool`;
-            document.getElementById('leaderboardContainer').innerHTML = htmlStr;
-        } catch (err) {}
-    }
-
-    window.generateComprehensiveReport = function() {
-        if (!window._lastReportData) { alert('Please calculate your score first.'); return; }
-        const { total, map } = window._lastReportData;
-        const reportDiv = document.getElementById('comprehensiveReport');
-        const mode = (document.querySelector('input[name="reportMode"]:checked') || {}).value || 'incorrect';
-        const modeLabel = { incorrect: 'Incorrect Questions Only', skipped: 'Skipped Questions Only', all: 'All Questions' }[mode];
-
-        let html = `
-          <div class="report-header">
-            <h1>Re-NEET 2026 — Comprehensive Score Report</h1>
-            <p><strong>Candidate:</strong> ${extractedFullName} &nbsp;|&nbsp; <strong>Application No:</strong> ${extractedAppNumber} &nbsp;|&nbsp; <strong>Booklet Set:</strong> ${extractedSetCode}</p>
-            <p><strong>Report Type:</strong> ${modeLabel}</p>
-            <h2>Total Marks: ${total} / 720</h2>
-          </div>`;
-
-        Object.keys(map).forEach(subject => {
-            const d = map[subject];
-            const maxScore = (subject === "Biology") ? 360 : 180;
-            html += `<div class="report-subject">
-                <h3>${subject} — Score: ${d.net} / ${maxScore}</h3>
-                <p>Correct: ${d.correct} &nbsp; Incorrect: ${d.incorrect} &nbsp; Skipped: ${d.skipped}</p>`;
-
-            let rows;
-            if (mode === 'incorrect') rows = d.reviewRows.filter(r => r.status === 'incorrect');
-            else if (mode === 'skipped') rows = d.reviewRows.filter(r => r.status === 'skipped');
-            else rows = d.reviewRows;
-
-            if (rows.length) {
-                html += `<table class="report-table"><thead><tr><th>Question</th><th>Status</th><th>Your Answer</th><th>Correct Answer</th></tr></thead><tbody>`;
-                rows.forEach(r => {
-                    html += `<tr><td>Q${r.q}</td><td style="text-transform:capitalize">${r.status}</td><td>${r.marked || '—'}</td><td>${r.key}</td></tr>`;
-                });
-                html += `</tbody></table>`;
-            } else {
-                html += `<p>No questions match this report type in this section. 🎉</p>`;
-            }
-            html += `</div>`;
-        });
-
-        reportDiv.innerHTML = html;
-        document.body.classList.add('printing-report');
-        window.print();
-        setTimeout(() => document.body.classList.remove('printing-report'), 500);
-    };
-</script>
-
-<script>
-    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
-    function showSection(sectionId) {
-        document.getElementById('resultsSection').style.display = 'none';
-        document.getElementById('leaderboardSection').style.display = 'none';
-
-        const target = document.getElementById(sectionId);
-        if(target) target.style.display = 'block';
-        toggleSidebar();
-    }
-
-    window.switchTab = function(id) {
-        document.querySelectorAll('.q-list').forEach(l => l.classList.remove('active'));
-        document.querySelectorAll('.q-tabs .tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        event.target.classList.add('active');
-        applyReviewFilter();
-    }
-
-    window.applyReviewFilter = function() {
-        const filterVal = document.getElementById('reviewFilter').value;
-        const items = document.querySelectorAll('.q-item');
-
-        items.forEach(item => {
-            if (filterVal === 'all') {
-                item.style.display = 'flex';
-            } else if (item.classList.contains(filterVal + '-item')) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-
-    window.switchUnlockTab = function(which) {
-        document.getElementById('unlockTabBtn-report').classList.toggle('active', which === 'report');
-        document.getElementById('unlockTabBtn-leaderboard').classList.toggle('active', which === 'leaderboard');
-        document.getElementById('unlockPanel-report').classList.toggle('active', which === 'report');
-        document.getElementById('unlockPanel-leaderboard').classList.toggle('active', which === 'leaderboard');
-
-        if (which === 'leaderboard') {
-            showSection('leaderboardSection');
-            window.scrollTo({ top: document.getElementById('leaderboardSection').offsetTop - 20, behavior: 'smooth' });
-        }
-    }
-
-    let supportBannerShown = false;
-    let supportBannerDismissed = false;
-
-    window.dismissSupportBanner = function() {
-        supportBannerDismissed = true;
-        document.getElementById('scrollSupportBanner').classList.remove('visible');
-    };
-
-    window.addEventListener('scroll', () => {
-        if (supportBannerShown || supportBannerDismissed) return;
-        const scrollPos = window.scrollY;
-        const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-        if (pageHeight <= 0) return;
-        if (scrollPos / pageHeight >= 0.5) {
-            supportBannerShown = true;
-            document.getElementById('scrollSupportBanner').classList.add('visible');
-        }
-    }, { passive: true });
-</script>
 </body>
 </html>
