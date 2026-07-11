@@ -61,7 +61,6 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* Premium Apple-like gradient background, toned down and grayed out */
             background: radial-gradient(circle at 15% 50%, rgba(200, 205, 215, 0.45), transparent 55%),
                         radial-gradient(circle at 85% 30%, rgba(215, 205, 210, 0.4), transparent 55%),
                         radial-gradient(circle at 50% 80%, rgba(205, 212, 208, 0.4), transparent 55%),
@@ -84,25 +83,18 @@
                         var(--bg-color);
         }
 
-        /* DARK MODE TOGGLE */
-        .theme-toggle {
-            position: fixed; top: 20px; left: 78px; font-size: 20px; background: rgba(226,226,231,0.75);
+        /* FLOATING TOP BUTTONS */
+        .theme-toggle, .hamburger {
+            position: fixed; top: 20px; font-size: 20px; background: rgba(226,226,231,0.75);
             backdrop-filter: blur(26px) saturate(130%); -webkit-backdrop-filter: blur(26px) saturate(130%);
             border: 1px solid var(--glass-border); border-radius: 12px; width: 48px; height: 48px;
             color: var(--text-main); cursor: pointer; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            display: flex; align-items: center; justify-content: center; transition: background 0.3s, transform 0.2s;
+            display: flex; align-items: center; justify-content: center; transition: background 0.3s, transform 0.2s, opacity 0.2s;
         }
-        body.dark-mode .theme-toggle { background: rgba(50,50,54,0.7); }
-        .theme-toggle:hover { transform: scale(1.06); }
-
-        .hamburger {
-            position: fixed; top: 20px; left: 20px; font-size: 28px; background: rgba(226,226,231,0.75);
-            backdrop-filter: blur(26px) saturate(130%); -webkit-backdrop-filter: blur(26px) saturate(130%);
-            border: 1px solid var(--glass-border); border-radius: 12px; width: 48px; height: 48px;
-            color: var(--text-main); cursor: pointer; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: background 0.3s;
-        }
-        body.dark-mode .hamburger { background: rgba(50,50,54,0.7); }
+        .theme-toggle { left: 78px; }
+        .hamburger { left: 20px; font-size: 28px; }
+        body.dark-mode .theme-toggle, body.dark-mode .hamburger { background: rgba(50,50,54,0.7); }
+        .theme-toggle:hover, .hamburger:hover { transform: scale(1.06); }
 
         /* REFACTORED FLOATING SHARE WIDGET */
         .share-widget {
@@ -112,16 +104,15 @@
         }
         .share-fab {
             width: 48px; height: 48px; border-radius: 12px;
-            background: rgba(226,226,231,0.75);
-            backdrop-filter: blur(26px) saturate(130%); -webkit-backdrop-filter: blur(26px) saturate(130%);
-            border: 1px solid var(--glass-border);
+            background: var(--accent); /* Now Blue */
+            border: none;
             display: flex; align-items: center; justify-content: center;
-            font-size: 20px; color: var(--text-main); cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: background 0.3s, transform 0.2s;
+            font-size: 20px; color: #fff; cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0, 102, 204, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        body.dark-mode .share-fab { background: rgba(50,50,54,0.7); }
-        .share-fab:hover, .share-widget.open .share-fab { transform: scale(1.06); }
+        body.dark-mode .share-fab { background: var(--accent); color: #fff; }
+        .share-fab:hover, .share-widget.open .share-fab { transform: scale(1.06); box-shadow: 0 8px 22px rgba(0, 102, 204, 0.45); }
         
         .share-caption {
             margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--text-main);
@@ -204,7 +195,7 @@
 
         #resultsSection, #leaderboardSection, #instructionsSection { display: none; }
 
-        .score-hero { text-align: center; }
+        .score-hero { text-align: center; margin-top: 50px; } /* Pushed downwards to avoid top button overlap */
         .booklet-badge {
             display: inline-block; background: rgba(0,113,227,0.1); color: var(--accent);
             font-size: 13px; font-weight: 700; letter-spacing: 0.03em; padding: 6px 16px;
@@ -239,7 +230,6 @@
         .subject-card h3 { margin: 0 0 16px 0; font-size: 19px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         .stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
 
-        /* Subject color coding: Physics = light blue, Chemistry = light red, Biology = light green */
         .subject-card.phy, .subject-card[data-subject="physics"], .subject-grid .subject-card:nth-child(1) {
             border-top-color: var(--phy); background: linear-gradient(180deg, var(--phy-soft), rgba(255,255,255,0.35) 40%);
         }
@@ -411,8 +401,9 @@
     <div class="share-caption" id="shareCaption">Share</div>
 </div>
 
-<button class="hamburger" onclick="window.toggleSidebar()">☰</button>
+<button class="hamburger" id="hamburgerBtn" onclick="window.toggleSidebar()">☰</button>
 <button class="theme-toggle" id="themeToggle" onclick="window.toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
+
 <div class="sidebar" id="sidebar">
     <button class="menu-btn" onclick="window.showSection('uploadCard', true)">🏠 Home / Upload</button>
     <button class="menu-btn" onclick="window.showSection('instructionsSection', true)">📖 How to Extract OMR</button>
@@ -468,7 +459,7 @@
 
     <!-- RESULTS SECTION -->
     <div id="resultsSection">
-        <div class="card score-hero">
+        <div class="card score-hero" style="margin-top: 50px;">
             <div class="booklet-badge" id="setMetric">Booklet Set: —</div>
             <h2>Calculated Final Score</h2>
             <div class="massive-score" id="grandTotal">0<span>/720</span></div>
@@ -509,8 +500,11 @@
     <div id="leaderboardSection">
         <button class="back-results-btn" onclick="window.showSection('resultsSection', false)">⬅ Go back to my results</button>
         <div class="card">
-            <h3 style="margin-top: 0; font-size: 22px;">Global Data Pool</h3>
-            <div class="rank-highlight" id="userRankDisplay">Your Rank: Calculating...</div>
+            <h3 style="margin-top: 0; font-size: 22px;">See your rank</h3>
+            
+            <p id="dynamicDataReminder" style="display: none; text-align: center; color: var(--accent); font-size: 13px; margin-bottom: 15px; font-weight: 600;">Check back later for more entries as the data is dynamic and the rank picture will become clearer as more people check their marks.</p>
+            
+            <div class="rank-highlight" id="userRankDisplay">Your rank: Calculating...</div>
 
             <div class="leaderboard-wrapper">
                 <div class="leaderboard-list" id="leaderboardContainer">
@@ -632,7 +626,7 @@
             try { localStorage.setItem('reneet-theme', isDark ? 'dark' : 'light'); } catch (e) {}
         };
 
-        // ----- Share widget refactored behavior (Dynamic caption content changes) -----
+        // ----- Share widget dynamic caption -----
         var shareWidget = document.getElementById('shareWidget');
         var shareCaption = document.getElementById('shareCaption');
 
