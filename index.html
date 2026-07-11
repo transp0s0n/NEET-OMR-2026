@@ -518,6 +518,18 @@
             <div class="rank-highlight" id="userRankDisplay">Your rank: Calculating...</div>
 
             <div class="leaderboard-wrapper">
+                
+                <div class="filter-bar" style="justify-content: center; margin-bottom: 12px; margin-top: 8px;">
+                    <label for="leaderboardSort" style="font-weight: 600; color: var(--text-muted); font-size: 13px;">Sort By:</label>
+                    <select id="leaderboardSort" onchange="window.renderLeaderboard()">
+                        <option value="score_desc">Total Marks (High to Low)</option>
+                        <option value="score_asc">Total Marks (Low to High)</option>
+                        <option value="phy_desc">Physics (High to Low)</option>
+                        <option value="chem_desc">Chemistry (High to Low)</option>
+                        <option value="bio_desc">Biology (High to Low)</option>
+                    </select>
+                </div>
+
                 <div class="leaderboard-list" id="leaderboardContainer">
                     <p style="text-align: center; color: var(--text-muted); padding: 40px 20px;">Fetching global leaderboard data...</p>
                 </div>
