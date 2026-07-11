@@ -101,6 +101,12 @@
         #calcBtn.active { background: linear-gradient(135deg, #1d1d1f, #3a3a3c); color: #fff; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
         #calcBtn.active:hover { transform: scale(1.02); }
 
+        /* New button style for "How to get OMR" */
+        #howToBtn {
+            background: rgba(0, 113, 227, 0.1); color: var(--accent); box-shadow: none; border: 1px solid rgba(0, 113, 227, 0.2); font-size: 16px;
+        }
+        #howToBtn:hover { background: rgba(0, 113, 227, 0.15); transform: translateY(-1px); }
+
         #resultsSection, #leaderboardSection, #instructionsSection { display: none; }
 
         .score-hero { text-align: center; }
@@ -274,7 +280,9 @@
             <small style="color: var(--text-muted); display:inline-block; margin-top:8px;">App No., Name, and Booklet Set Code extracted automatically</small>
             <input type="file" id="csvFile" accept=".csv" style="display: none;">
         </div>
+        
         <button id="calcBtn" class="action-btn" disabled onclick="window.executeCalculation()">Calculate Your Marks</button>
+        <button id="howToBtn" class="action-btn" onclick="window.showSection('instructionsSection')">❓ How to get OMR CSV?</button>
     </div>
 
     <!-- RESULTS SECTION -->
