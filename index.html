@@ -251,18 +251,18 @@
             <p>1. Drag the blue button below into your browser's Bookmarks Bar (Press <code>Ctrl+Shift+B</code> to show the bar).</p>
             
             <div style="text-align: center; margin: 20px 0;">
-                <a href="javascript:(function(){alert('Scraping OMR Data... Please wait.');let pageText=document.body.innerText;let appNo='Unknown';let appMatch=pageText.match(/(?:Application|Roll)\s*(?:No|Number)[\s\:\-]+([0-9]{8,15})/i);if(appMatch)appNo=appMatch[1];else appNo=prompt('Could not detect Application No. Please enter it manually:','123456789')||'Unknown';let name=prompt('Enter your Name:','Student')||'Student';let setCode='50';let setMatch=pageText.match(/(?:Test Booklet|Set|Paper)\s*(?:Code)?[\s\:\-]+([0-9]{2}|[A-Z][0-9])/i);if(setMatch)setCode=setMatch[1];else setCode=prompt('Could not detect Booklet Set Code. Please enter it:','50')||'50';let csv=`Application No, ${appNo}\nName, ${name}\nSet, ${setCode}\n`;let rows=document.querySelectorAll('tr');let qCount=0;rows.forEach(tr=>{let cells=tr.querySelectorAll('td');if(cells.length>=2){let qNum=parseInt(cells[0].innerText.replace(/[^0-9]/g,''));let recordedAns=cells[1].innerText.replace(/[^1-4\-]/g,'');if(!isNaN(qNum)&&qNum>0&&qNum<=200){if(recordedAns==='-'||recordedAns==='')recordedAns='';else recordedAns=recordedAns.charAt(0);csv+=`${qNum},${recordedAns}\n`;qCount++;}}});if(qCount===0){alert('Error: Could not find any questions.');return;}let blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});let link=document.createElement('a');let url=URL.createObjectURL(blob);link.setAttribute('href',url);link.setAttribute('download',`ReNEET_OMR_${appNo}.csv`);link.style.visibility='hidden';document.body.appendChild(link);link.click();document.body.removeChild(link);alert(`Success! Downloaded CSV. Upload it to the Calculator.`);})();" 
+                <a href="javascript:(function(){alert('Scraping OMR Data... Please wait.');let pageText=document.body.innerText;let appNo='Unknown';let appMatch=pageText.match(/(?:Application|Roll)\s*(?:No|Number)[\s\:\-]+([0-9]{8,15})/i);if(appMatch)appNo=appMatch[1];else appNo=prompt('Could not detect Application No. Please enter it manually:','123456789')||'Unknown';let name=prompt('Enter your Name:','Student')||'Student';let setCode='50';let setMatch=pageText.match(/(?:Test Booklet|Set|Paper)\s*(?:Code)?[\s\:\-]+([0-9]{2}|[A-Z][0-9])/i);if(setMatch)setCode=setMatch[1];else setCode=prompt('Could not detect Booklet Set Code. Please enter it:','50')||'50';let csv=`Application No, ${appNo}\nName, ${name}\nSet, ${setCode}\n`;let rows=document.querySelectorAll('tr');let qCount=0;rows.forEach(tr=>{let cells=tr.querySelectorAll('td');if(cells.length>=2){let qNum=parseInt(cells[0].innerText.replace(/[^0-9]/g,''));let recordedAns=cells[1].innerText.replace(/[^1-4\-]/g,'');if(!isNaN(qNum)&&qNum>0&&qNum<=200){if(recordedAns==='-'||recordedAns==='')recordedAns='';else recordedAns=recordedAns.charAt(0);csv+=`${qNum},${recordedAns}\n`;qCount++;}}});if(qCount===0){alert('Error: Could not find any questions.');return;}let blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});let link=document.createElement('a');let url=URL.createObjectURL(blob);link.setAttribute('href',url);link.setAttribute('download',`ReNEET_OMR_${appNo}.csv`);link.style.display='none';document.body.appendChild(link);link.click();document.body.removeChild(link);if(confirm('Success! OMR CSV Downloaded.\n\nClick OK to open the Re-NEET Score Calculator to upload your file.')){window.location.href='https://bit.ly/reNEET2026OMR';}})();" 
                    style="display: inline-block; background: var(--accent); color: white; padding: 12px 24px; border-radius: 99px; text-decoration: none; font-weight: bold; cursor: grab; box-shadow: 0 4px 12px rgba(0,88,176,0.3);">
                    📥 Drag to Bookmarks
                 </a>
             </div>
             
-            <p>2. Go to the Official NTA "View Recorded Responses" webpage.<br>3. Click the bookmark you just saved. It will ask for your name and download your CSV!</p>
+            <p>2. Go to the Official NTA "View Recorded Responses" webpage.<br>3. Click the bookmark you just saved. It will ask for your name, download your CSV, and bring you right back here!</p>
 
             <h3 style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; margin-top: 30px;">Method 2: Console Script (Mobile / Fallback)</h3>
             <p>If you are on a phone, copy the code below. Go to the NTA OMR webpage, type <code>javascript:</code> in the URL bar, paste the code right after it, and hit enter/go.</p>
             
-            <div class="code-box" id="consoleCode">javascript:(function(){alert('Scraping OMR Data...');let p=document.body.innerText;let a=p.match(/(?:Application|Roll)\s*(?:No|Number)[\s\:\-]+([0-9]{8,15})/i);a=a?a[1]:prompt('App No:','123456')||'Unknown';let n=prompt('Name:','Student')||'Student';let s=p.match(/(?:Test Booklet|Set|Paper)\s*(?:Code)?[\s\:\-]+([0-9]{2}|[A-Z][0-9])/i);s=s?s[1]:prompt('Set Code:','50')||'50';let c=`Application No, ${a}\nName, ${n}\nSet, ${s}\n`;let r=document.querySelectorAll('tr'),q=0;r.forEach(t=>{let l=t.querySelectorAll('td');if(l.length>=2){let x=parseInt(l[0].innerText.replace(/[^0-9]/g,'')),y=l[1].innerText.replace(/[^1-4\-]/g,'');if(!isNaN(x)&&x>0&&x<=200){y=(y==='-'||y==='')?'':y.charAt(0);c+=`${x},${y}\n`;q++;}}});if(q===0)return alert('No data found.');let b=new Blob([c],{type:'text/csv;charset=utf-8;'}),k=document.createElement('a');k.href=URL.createObjectURL(b);k.download=`ReNEET_${a}.csv`;k.style.display='none';document.body.appendChild(k);k.click();k.remove();alert('Success! Upload to Calculator.');})();</div>
+            <div class="code-box" id="consoleCode">javascript:(function(){alert('Scraping OMR Data...');let p=document.body.innerText;let a=p.match(/(?:Application|Roll)\s*(?:No|Number)[\s\:\-]+([0-9]{8,15})/i);a=a?a[1]:prompt('App No:','123456')||'Unknown';let n=prompt('Name:','Student')||'Student';let s=p.match(/(?:Test Booklet|Set|Paper)\s*(?:Code)?[\s\:\-]+([0-9]{2}|[A-Z][0-9])/i);s=s?s[1]:prompt('Set Code:','50')||'50';let c=`Application No, ${a}\nName, ${n}\nSet, ${s}\n`;let r=document.querySelectorAll('tr'),q=0;r.forEach(t=>{let l=t.querySelectorAll('td');if(l.length>=2){let x=parseInt(l[0].innerText.replace(/[^0-9]/g,'')),y=l[1].innerText.replace(/[^1-4\-]/g,'');if(!isNaN(x)&&x>0&&x<=200){y=(y==='-'||y==='')?'':y.charAt(0);c+=`${x},${y}\n`;q++;}}});if(q===0)return alert('No data found.');let b=new Blob([c],{type:'text/csv;charset=utf-8;'}),k=document.createElement('a');k.href=URL.createObjectURL(b);k.download=`ReNEET_${a}.csv`;k.style.display='none';document.body.appendChild(k);k.click();k.remove();if(confirm('Success! CSV Downloaded.\n\nClick OK to open the Re-NEET Score Calculator.')){window.location.href='https://bit.ly/reNEET2026OMR';}})();</div>
             <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('consoleCode').innerText); alert('Code Copied!');">📋 Copy Code</button>
         </div>
     </div>
@@ -338,7 +338,7 @@
         </div>
     </div>
 
-    <!-- PREMIUM UNLOCK TABS (Only visible when results are shown) -->
+    <!-- PREMIUM UNLOCK TABS -->
     <div class="card unlock-tabs-card" id="premiumTabsCard" style="display: none;">
         <div class="q-tabs">
             <button class="tab-btn active" id="unlockTabBtn-report" onclick="window.switchUnlockTab('report')">📄 Download Comprehensive Report</button>
@@ -346,71 +346,3 @@
         </div>
 
         <div id="unlockPanel-report" class="unlock-panel active">
-            <div class="leaderboard-wrapper">
-                <div class="leaderboard-list" id="reportPreview">
-                    <div class="report-preview-box">
-                        📄 Your comprehensive report includes your total marks, subject-wise breakdown, and every question you got incorrect or left skipped — with the correct answer from the official key.
-                    </div>
-                </div>
-                <div class="paywall-overlay" id="reportPaywall">
-                    <h3>🔒 Unlock Comprehensive Report</h3>
-                    <p>Support the project to generate and download your detailed, question-by-question report.</p>
-                    <div class="tier-grid">
-                        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹10</a>
-                        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹20</a>
-                        <a href="YOUR_RAZORPAY_LINK_50" class="pay-tier-btn" target="_blank">₹50</a>
-                        <a href="YOUR_RAZORPAY_LINK_100" class="pay-tier-btn" target="_blank">₹100</a>
-                    </div>
-                </div>
-            </div>
-            <div id="reportOptions" style="display:none;">
-                <div class="report-options">
-                    <div class="report-option-row" onclick="document.getElementById('optIncorrect').click()">
-                        <input type="radio" name="reportMode" id="optIncorrect" value="incorrect" checked>
-                        <label for="optIncorrect">Incorrect questions only, with correct answer</label>
-                    </div>
-                    <div class="report-option-row" onclick="document.getElementById('optSkipped').click()">
-                        <input type="radio" name="reportMode" id="optSkipped" value="skipped">
-                        <label for="optSkipped">Skipped questions only, with correct answer</label>
-                    </div>
-                    <div class="report-option-row" onclick="document.getElementById('optAll').click()">
-                        <input type="radio" name="reportMode" id="optAll" value="all">
-                        <label for="optAll">All questions, with your answer & correct answer</label>
-                    </div>
-                </div>
-                <button id="downloadReportBtn" class="action-btn" style="margin-top:6px; background:linear-gradient(135deg,#1d1d1f,#3a3a3c); color:#fff;" onclick="window.generateComprehensiveReport()">Generate & Download Report</button>
-            </div>
-        </div>
-
-        <div id="unlockPanel-leaderboard" class="unlock-panel">
-            <p style="text-align:center; color:var(--text-muted); font-size:14px;">Opening the Global Leaderboard…</p>
-        </div>
-    </div>
-
-    <div class="footer-links">
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="refund.html">Refund Policy</a> |
-        <a href="contact.html">Contact Us</a>
-    </div>
-</div>
-
-<div id="comprehensiveReport"></div>
-
-<div class="scroll-support-banner" id="scrollSupportBanner">
-    <button class="close-banner" onclick="window.dismissSupportBanner()">✕</button>
-    <h3>Support the Project! 🙏</h3>
-    <p>If this calculator made calculating your marks easy, please consider supporting my work with a small donation <3. Your one time contribution keeps the servers running and instantly unlocks forever - your <strong>Comprehensive Score Report</strong> and the <strong>Global Leaderboard</strong>!</p>
-    <div class="tier-grid">
-        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹20</a>
-        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹30</a>
-        <a href="YOUR_RAZORPAY_LINK_50" class="pay-tier-btn" target="_blank">₹50</a>
-        <a href="YOUR_RAZORPAY_LINK_100" class="pay-tier-btn" target="_blank">₹100</a>
-    </div>
-</div>
-
-<!-- This links to your external, hidden JS file -->
-<script type="module" src="main.js"></script>
-
-</body>
-</html>
