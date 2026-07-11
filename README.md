@@ -1,0 +1,2 @@
+# NEET-OMR-2026
+NEET 2026 OMR Marks Calculator
