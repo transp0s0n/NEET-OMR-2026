@@ -16,26 +16,31 @@
     </script>
 
     <style>
+        /* APPLE FROSTED GLASS THEME */
         :root {
-            --bg-color: #cfd2da;
-            --glass-bg: rgba(255, 255, 255, 0.42);
-            --glass-border: rgba(255, 255, 255, 0.45);
+            --bg-color: #f5f5f7;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.8);
             --text-main: #1d1d1f;
-            --text-muted: #6e6e73;
-            --accent: #0058b0;
-            --success: #1f9e4c;
-            --danger: #d92c22;
-            --phy: #0058b0;
-            --chem: #d92c22;
-            --bio: #1f9e4c;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+            --text-muted: #86868b;
+            --accent: #0071e3;
+            --success: #34c759;
+            --danger: #ff3b30;
+            --phy: #0071e3;
+            --chem: #ff3b30;
+            --bio: #34c759;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         * { box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #c7ccd6 0%, #e2e4ea 55%, #cdd0dc 100%);
+            /* Premium Apple-like gradient background */
+            background: radial-gradient(circle at 15% 50%, rgba(220, 235, 255, 1), transparent 50%),
+                        radial-gradient(circle at 85% 30%, rgba(255, 230, 240, 1), transparent 50%),
+                        radial-gradient(circle at 50% 80%, rgba(230, 255, 240, 1), transparent 50%),
+                        #f5f5f7;
             background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
@@ -47,15 +52,30 @@
         }
 
         .hamburger {
-            position: fixed; top: 20px; left: 20px; font-size: 28px; background: rgba(255,255,255,0.5);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: fixed; top: 20px; left: 20px; font-size: 28px; background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid var(--glass-border); border-radius: 12px; width: 48px; height: 48px;
-            color: var(--text-main); cursor: pointer; z-index: 1001; box-shadow: var(--shadow);
+            color: var(--text-main); cursor: pointer; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
+
+        /* HOVER TO EXPAND SHARE WIDGET */
+        .share-widget {
+            position: fixed; top: 20px; right: 20px; height: 48px; width: 48px;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border); border-radius: 24px; display: flex; align-items: center;
+            padding: 0 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); cursor: pointer; overflow: hidden;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s; z-index: 1002;
+        }
+        .share-widget:hover { width: 200px; background: rgba(255, 255, 255, 0.95); }
+        .share-icon { font-size: 20px; min-width: 24px; text-align: center; }
+        .share-links { display: flex; gap: 12px; margin-left: 12px; opacity: 0; transition: opacity 0.3s; white-space: nowrap; }
+        .share-widget:hover .share-links { opacity: 1; transition-delay: 0.1s; }
+        .share-links a { color: var(--text-main); text-decoration: none; font-size: 20px; transition: transform 0.2s; }
+        .share-links a:hover { transform: scale(1.2); }
 
         .sidebar {
             position: fixed; top: 0; left: -300px; width: 300px; height: 100%;
-            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%);
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%);
             border-right: 1px solid var(--glass-border); box-shadow: var(--shadow);
             transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1000;
             padding: 80px 20px 20px 20px; display: flex; flex-direction: column; gap: 15px;
@@ -63,7 +83,7 @@
         .sidebar.open { left: 0; }
 
         .menu-btn {
-            background: rgba(255, 255, 255, 0.5); border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.6); border: 1px solid var(--glass-border);
             padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 600; color: var(--text-main);
             cursor: pointer; text-align: left; transition: all 0.2s;
         }
@@ -75,21 +95,17 @@
         p.subtitle { text-align: center; color: var(--text-muted); font-size: 17px; margin-bottom: 40px; }
 
         .card {
-            background: var(--glass-bg); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border-radius: 28px; padding: 36px; box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.7);
+            background: var(--glass-bg); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border-radius: 28px; padding: 36px; box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,1);
             border: 1px solid var(--glass-border); margin-bottom: 24px; position: relative; overflow: hidden;
-        }
-        .card::before {
-            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
         }
 
         .upload-area {
             border: 2px dashed rgba(0,0,0,0.15); border-radius: 18px; padding: 40px 20px;
             text-align: center; cursor: pointer; transition: all 0.2s ease; background: rgba(255,255,255,0.4); margin-bottom: 20px;
         }
-        .upload-area:hover { background: rgba(255,255,255,0.6); border-color: rgba(0,113,227,0.35); }
-        .upload-area.uploaded { border-color: var(--success); background: rgba(52, 199, 89, 0.06); }
+        .upload-area:hover { background: rgba(255,255,255,0.7); border-color: rgba(0,113,227,0.4); }
+        .upload-area.uploaded { border-color: var(--success); background: rgba(52, 199, 89, 0.08); }
         .upload-area span { color: var(--accent); font-weight: 600; font-size: 17px; }
 
         .action-btn {
@@ -97,14 +113,11 @@
             cursor: pointer; transition: all 0.2s; margin-bottom: 12px;
         }
 
-        #calcBtn { background: #d2d2d7; color: #86868b; cursor: not-allowed; }
-        #calcBtn.active { background: linear-gradient(135deg, #1d1d1f, #3a3a3c); color: #fff; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+        #calcBtn { background: rgba(0,0,0,0.05); color: var(--text-muted); cursor: not-allowed; }
+        #calcBtn.active { background: var(--text-main); color: #fff; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
         #calcBtn.active:hover { transform: scale(1.02); }
 
-        /* New button style for "How to get OMR" */
-        #howToBtn {
-            background: rgba(0, 113, 227, 0.1); color: var(--accent); box-shadow: none; border: 1px solid rgba(0, 113, 227, 0.2); font-size: 16px;
-        }
+        #howToBtn { background: rgba(0, 113, 227, 0.1); color: var(--accent); box-shadow: none; border: 1px solid rgba(0, 113, 227, 0.2); font-size: 16px; }
         #howToBtn:hover { background: rgba(0, 113, 227, 0.15); transform: translateY(-1px); }
 
         #resultsSection, #leaderboardSection, #instructionsSection { display: none; }
@@ -122,8 +135,8 @@
 
         .overall-stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px; }
         .stat-chip {
-            background: rgba(255,255,255,0.55); border: 1px solid var(--glass-border); border-radius: 16px;
-            padding: 14px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+            background: rgba(255,255,255,0.7); border: 1px solid var(--glass-border); border-radius: 16px;
+            padding: 14px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         .stat-chip .stat-value { font-size: 20px; font-weight: 700; }
         .stat-chip .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; text-align: center; }
@@ -134,10 +147,7 @@
         .negative-chip .stat-value { color: var(--danger); }
 
         .subject-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; align-items: stretch; }
-        .subject-card { border-radius: 20px; padding: 26px; border: 1px solid var(--glass-border); backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%); }
-        .subject-card.phy { background: linear-gradient(160deg, rgba(0,88,176,0.22), rgba(255,255,255,0.4)); border-color: rgba(0,88,176,0.3); }
-        .subject-card.chem { background: linear-gradient(160deg, rgba(217,44,34,0.18), rgba(255,255,255,0.4)); border-color: rgba(217,44,34,0.28); }
-        .subject-card.bio { background: linear-gradient(160deg, rgba(31,158,76,0.20), rgba(255,255,255,0.4)); border-color: rgba(31,158,76,0.28); }
+        .subject-card { border-radius: 20px; padding: 26px; border: 1px solid var(--glass-border); backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%); background: rgba(255,255,255,0.5); box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
         .subject-card h3 { margin: 0 0 16px 0; font-size: 19px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         .stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
 
@@ -150,9 +160,10 @@
         .filter-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
         .filter-bar select { padding: 6px 12px; border-radius: 10px; border: 1px solid var(--glass-border); outline: none; background: rgba(255,255,255,0.8); font-size: 14px; }
 
-        .q-list { max-height: 300px; overflow-y: auto; background: rgba(255,255,255,0.5); border-radius: 14px; padding: 12px; display: none; }
+        .q-list { max-height: 350px; overflow-y: auto; background: rgba(255,255,255,0.6); border-radius: 14px; padding: 12px; display: none; border: 1px solid var(--glass-border); }
         .q-list.active { display: block; }
-        .q-item { display: flex; justify-content: space-between; padding: 8px 4px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; }
+        .q-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 6px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; }
+        .q-item-details { text-align: right; line-height: 1.4; }
 
         .wrong-text { color: var(--danger); font-weight: 500; }
         .correct-text { color: var(--success); font-weight: 500; }
@@ -194,12 +205,12 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
 
         .report-options { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; text-align: left; }
-        .report-option-row { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 16px; cursor: pointer; }
+        .report-option-row { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.6); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 16px; cursor: pointer; }
         .report-option-row input { width: 16px; height: 16px; accent-color: var(--accent); }
         .report-option-row label { font-size: 14px; cursor: pointer; flex: 1; }
 
         .scroll-support-banner {
-            position: fixed; top: -300px; left: 50%; transform: translateX(-50%); width: min(420px, 92vw); background: rgba(255,255,255,0.72);
+            position: fixed; top: -300px; left: 50%; transform: translateX(-50%); width: min(420px, 92vw); background: rgba(255,255,255,0.85);
             backdrop-filter: blur(36px) saturate(180%); -webkit-backdrop-filter: blur(36px) saturate(180%); border: 1px solid var(--glass-border); border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.22);
             padding: 26px 26px 22px 26px; z-index: 1200; transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
         }
@@ -221,7 +232,7 @@
 
         @media print {
             body { background: white; padding: 0; }
-            .hamburger, .sidebar, #uploadCard, .q-tabs, .filter-bar, .paywall-overlay, .tier-grid, .action-btn, .footer-links, .unlock-tabs-card, .scroll-support-banner, #instructionsSection { display: none !important; }
+            .hamburger, .sidebar, #uploadCard, .q-tabs, .filter-bar, .paywall-overlay, .tier-grid, .action-btn, .footer-links, .unlock-tabs-card, .scroll-support-banner, #instructionsSection, .share-widget { display: none !important; }
             .card { box-shadow: none; border: 1px solid #ddd; backdrop-filter: none; background: white; break-inside: avoid; }
             .q-list { max-height: none; display: block !important; }
             h1 { font-size: 24px; }
@@ -233,6 +244,17 @@
     </style>
 </head>
 <body>
+
+<!-- FLOATING SHARE WIDGET -->
+<div class="share-widget">
+    <div class="share-icon">🔗</div>
+    <div class="share-links">
+        <a href="https://api.whatsapp.com/send?text=Calculate%20your%20Re-NEET%202026%20Score%20instantly!%20https://bit.ly/reNEET2026OMR" target="_blank" title="Share on WhatsApp">📱</a>
+        <a href="https://twitter.com/intent/tweet?url=https://bit.ly/reNEET2026OMR&text=Calculate%20your%20Re-NEET%202026%20Score%20instantly!" target="_blank" title="Share on X">𝕏</a>
+        <a href="https://t.me/share/url?url=https://bit.ly/reNEET2026OMR&text=Calculate%20your%20Re-NEET%202026%20Score!" target="_blank" title="Share on Telegram">✈️</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://bit.ly/reNEET2026OMR" target="_blank" title="Share on Facebook">📘</a>
+    </div>
+</div>
 
 <button class="hamburger" onclick="window.toggleSidebar()">☰</button>
 <div class="sidebar" id="sidebar">
@@ -291,14 +313,17 @@
             <div class="booklet-badge" id="setMetric">Booklet Set: —</div>
             <h2>Calculated Final Score</h2>
             <div class="massive-score" id="grandTotal">0<span>/720</span></div>
-            <div class="metadata-bar" id="accuracyMetric">Accuracy: 0% (0/0 attempted)</div>
+            <div class="metadata-bar" id="accuracyMetric">Accuracy: 0% (0 attempted out of 180, 0 correct)</div>
             <div class="overall-stats-grid" id="overallStatsGrid"></div>
         </div>
 
         <div class="subject-grid" id="subjectGrid"></div>
 
         <div class="card analysis-box">
-            <h3>Subject Review Sheets</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 12px;">
+                <h3 style="margin: 0; border: none; padding: 0;">Subject Review Sheets</h3>
+                <button class="tab-btn" style="background: rgba(0,113,227,0.1); color: var(--accent); font-weight: bold;" onclick="window.scrollToLeaderboardUnlock()">🏆 View Leaderboard</button>
+            </div>
 
             <div class="filter-bar">
                 <label for="reviewFilter" style="font-weight: 600; color: var(--text-muted); font-size: 14px;">Filter:</label>
@@ -364,8 +389,8 @@
                     <h3>🔒 Unlock Comprehensive Report</h3>
                     <p>Support the project to generate and download your detailed, question-by-question report.</p>
                     <div class="tier-grid">
-                        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹20</a>
-                        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹30</a>
+                        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹10</a>
+                        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹20</a>
                         <a href="YOUR_RAZORPAY_LINK_50" class="pay-tier-btn" target="_blank">₹50</a>
                         <a href="YOUR_RAZORPAY_LINK_100" class="pay-tier-btn" target="_blank">₹100</a>
                     </div>
