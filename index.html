@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Re-NEET 2026 OMR Score Calculator</title>
     
-    <!-- Anti-Snoop Script (Blocks Right Click & F12) -->
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
-            if (e.keyCode == 123) return false; // F12
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false; // Ctrl+Shift+I/J
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+            if (e.keyCode == 123) return false; 
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false; 
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
         }
     </script>
 
     <style>
-        /* APPLE FROSTED GLASS THEME */
         :root {
             --bg-color: #dcdce0;
             --glass-bg: rgba(228, 228, 232, 0.55);
@@ -26,7 +24,6 @@
             --accent: #0066cc;
             --success: #2fa84f;
             --danger: #e0352b;
-            /* subject colors: light blue / light red / light green */
             --phy: #5AC8FA;
             --chem: #FF7A70;
             --bio: #6FCF97;
@@ -34,11 +31,9 @@
             --chem-soft: rgba(255, 122, 112, 0.14);
             --bio-soft: rgba(111, 207, 151, 0.14);
             --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            --toggle-icon: "🌙";
             transition: background 0.4s ease;
         }
 
-        /* DARK MODE OVERRIDES */
         body.dark-mode {
             --bg-color: #1c1c1e;
             --glass-bg: rgba(40, 40, 44, 0.55);
@@ -68,7 +63,7 @@
             background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
-            padding: 110px 20px 40px 20px; /* Increased top padding so content is fully cleared of floating buttons */
+            padding: 110px 20px 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -83,7 +78,6 @@
                         var(--bg-color);
         }
 
-        /* FLOATING TOP BUTTONS */
         .theme-toggle, .hamburger {
             position: fixed; top: 20px; font-size: 20px; background: rgba(226,226,231,0.75);
             backdrop-filter: blur(26px) saturate(130%); -webkit-backdrop-filter: blur(26px) saturate(130%);
@@ -96,7 +90,6 @@
         body.dark-mode .theme-toggle, body.dark-mode .hamburger { background: rgba(50,50,54,0.7); }
         .theme-toggle:hover, .hamburger:hover { transform: scale(1.06); }
 
-        /* REFACTORED FLOATING SHARE WIDGET */
         .share-widget {
             position: fixed; top: 20px; right: 24px; z-index: 1002;
             display: flex; flex-direction: column; align-items: center;
@@ -104,7 +97,7 @@
         }
         .share-fab {
             width: 48px; height: 48px; border-radius: 12px;
-            background: var(--accent); /* Now Blue */
+            background: var(--accent);
             border: none;
             display: flex; align-items: center; justify-content: center;
             font-size: 20px; color: #fff; cursor: pointer;
@@ -121,9 +114,7 @@
             white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.06);
             transition: all 0.2s ease;
         }
-        .share-widget:hover .share-caption, .share-widget.open .share-caption {
-            content: "Share with your friends";
-        }
+        .share-widget:hover .share-caption, .share-widget.open .share-caption { content: "Share with your friends"; }
         
         .share-links {
             position: absolute; top: 82px; right: 0; display: flex; flex-direction: column; gap: 10px;
@@ -140,16 +131,11 @@
         }
         .share-links a:hover { transform: scale(1.14); }
         .share-links a img { width: 22px; height: 22px; display: block; }
-        @media (max-width: 700px) {
-            .share-widget { top: 20px; right: 16px; }
-        }
+        @media (max-width: 700px) { .share-widget { top: 20px; right: 16px; } }
 
-        /* CRITICAL: Totally hide top UI via JS class assignment on leaderboard */
         body.hide-top-ui .theme-toggle,
         body.hide-top-ui .hamburger,
-        body.hide-top-ui .share-widget {
-            display: none !important;
-        }
+        body.hide-top-ui .share-widget { display: none !important; }
 
         .sidebar {
             position: fixed; top: 0; left: -300px; width: 300px; height: 100%;
@@ -237,32 +223,9 @@
         .subject-card h3 { margin: 0 0 16px 0; font-size: 19px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         .stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
 
-        .subject-card.phy, .subject-card[data-subject="physics"], .subject-grid .subject-card:nth-child(1) {
-            border-top-color: var(--phy); background: linear-gradient(180deg, var(--phy-soft), rgba(255,255,255,0.35) 40%);
-        }
-        .subject-card.chem, .subject-card[data-subject="chemistry"], .subject-grid .subject-card:nth-child(2) {
-            border-top-color: var(--chem); background: linear-gradient(180deg, var(--chem-soft), rgba(255,255,255,0.35) 40%);
-        }
-        .subject-card.bio, .subject-card[data-subject="biology"], .subject-grid .subject-card:nth-child(3) {
-            border-top-color: var(--bio); background: linear-gradient(180deg, var(--bio-soft), rgba(255,255,255,0.35) 40%);
-        }
-        body.dark-mode .subject-card.phy, body.dark-mode .subject-card[data-subject="physics"], body.dark-mode .subject-grid .subject-card:nth-child(1) {
-            background: linear-gradient(180deg, var(--phy-soft), rgba(255,255,255,0.03) 40%);
-        }
-        body.dark-mode .subject-card.chem, body.dark-mode .subject-card[data-subject="chemistry"], body.dark-mode .subject-grid .subject-card:nth-child(2) {
-            background: linear-gradient(180deg, var(--chem-soft), rgba(255,255,255,0.03) 40%);
-        }
-        body.dark-mode .subject-card.bio, body.dark-mode .subject-card[data-subject="biology"], body.dark-mode .subject-grid .subject-card:nth-child(3) {
-            background: linear-gradient(180deg, var(--bio-soft), rgba(255,255,255,0.03) 40%);
-        }
-        .subject-card.phy h3, .subject-card[data-subject="physics"] h3, .subject-grid .subject-card:nth-child(1) h3 { color: #0d84c9; }
-        .subject-card.chem h3, .subject-card[data-subject="chemistry"] h3, .subject-grid .subject-card:nth-child(2) h3 { color: #d9483d; }
-        .subject-card.bio h3, .subject-card[data-subject="biology"] h3, .subject-grid .subject-card:nth-child(3) h3 { color: #2f9e5f; }
-        body.dark-mode .subject-card.phy h3, body.dark-mode .subject-card[data-subject="physics"] h3, body.dark-mode .subject-grid .subject-card:nth-child(1) h3 { color: var(--phy); }
-        body.dark-mode .subject-card.chem h3, body.dark-mode .subject-card[data-subject="chemistry"] h3, body.dark-mode .subject-grid .subject-card:nth-child(2) h3 { color: var(--chem); }
-        body.dark-mode .subject-card.bio h3, body.dark-mode .subject-card[data-subject="biology"] h3, body.dark-mode .subject-grid .subject-card:nth-child(3) h3 { color: var(--bio); }
-
-        @media (max-width: 700px) { .subject-grid { grid-template-columns: 1fr; } .overall-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        .subject-card.phy, .subject-card[data-subject="physics"], .subject-grid .subject-card:nth-child(1) { border-top-color: var(--phy); background: linear-gradient(180deg, var(--phy-soft), rgba(255,255,255,0.35) 40%); }
+        .subject-card.chem, .subject-card[data-subject="chemistry"], .subject-grid .subject-card:nth-child(2) { border-top-color: var(--chem); background: linear-gradient(180deg, var(--chem-soft), rgba(255,255,255,0.35) 40%); }
+        .subject-card.bio, .subject-card[data-subject="biology"], .subject-grid .subject-card:nth-child(3) { border-top-color: var(--bio); background: linear-gradient(180deg, var(--bio-soft), rgba(255,255,255,0.35) 40%); }
 
         .q-tabs { display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; overflow-x: auto; }
         .tab-btn { background: none; border: none; padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 10px; white-space: nowrap; transition: all 0.2s; }
@@ -274,8 +237,7 @@
         .q-list { max-height: 350px; overflow-y: auto; background: rgba(220,220,226,0.5); border-radius: 14px; padding: 12px; display: none; border: 1px solid var(--glass-border); }
         .q-list.active { display: block; }
         .q-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 6px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; }
-        .q-item-details { text-align: right; line-height: 1.4; }
-
+        
         .wrong-text { color: var(--danger); font-weight: 500; }
         .correct-text { color: var(--success); font-weight: 500; }
         .bonus-text { color: #8a2be2; font-weight: 500; }
@@ -288,31 +250,60 @@
         .leaderboard-row { display: flex; flex-direction: column; padding: 12px 4px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .lb-top-row { display: flex; justify-content: space-between; font-weight: 600; font-size: 16px; margin-bottom: 6px;}
         .lb-sub-row { display: flex; gap: 12px; font-size: 12px; color: var(--text-muted); }
-        .lb-sub-row span { background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 4px; }
 
         .paywall-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(222,222,228,0.6); backdrop-filter: blur(2px);
             display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; text-align: center; padding: 20px;
-            transition: opacity 0.3s;
         }
         .paywall-overlay.hidden { display: none; }
-        .paywall-overlay h3 { margin: 0 0 10px 0; font-size: 20px; }
-        .paywall-overlay p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; max-width: 380px; }
-
+        
         .tier-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .pay-tier-btn {
             background: #1d1d1f; color: #fff; text-decoration: none; padding: 10px 20px;
             border-radius: 10px; font-weight: 600; font-size: 15px; transition: transform 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: none; cursor: pointer;
         }
         .pay-tier-btn:hover { transform: scale(1.05); }
 
-        .unlock-panel { display: none; }
-        .unlock-panel.active { display: block; }
-        .report-preview-box { padding: 40px 20px; text-align: center; color: var(--text-muted); }
+        /* Custom Slider Elements */
+        .apple-slider {
+            -webkit-appearance: none; width: 100%; height: 6px;
+            background: rgba(0,0,0,0.1); border-radius: 5px; outline: none; margin: 10px 0;
+        }
+        body.dark-mode .apple-slider { background: rgba(255,255,255,0.1); }
+        .apple-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--accent); cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: transform 0.1s;
+        }
+        .apple-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        .apple-slider::-moz-range-thumb {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--accent); cursor: pointer; border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
 
-        /* FOOTER FIXES */
+        .modal-backcloth {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .modal-backcloth.visible { opacity: 1; pointer-events: auto; }
+        .apple-modal {
+            background: var(--glass-bg); backdrop-filter: blur(40px); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 28px; width: min(400px, 90vw); text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); transform: scale(0.9); transition: transform 0.3s ease;
+        }
+        .modal-backcloth.visible .apple-modal { transform: scale(1); }
+        .modal-title { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+        .modal-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5; }
+        .modal-btn-stack { display: flex; flex-direction: column; gap: 10px; }
+        .modal-primary-btn { background: var(--accent); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 15px; }
+        .modal-secondary-btn { background: transparent; color: var(--text-main); border: 1px solid var(--glass-border); padding: 11px; border-radius: 10px; font-weight: 500; cursor: pointer; font-size: 14px; }
+
         .footer-links {
             text-align: center; margin-top: 30px; margin-bottom: 20px; font-size: 12px;
             display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;
@@ -320,33 +311,6 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; white-space: nowrap; }
         .footer-separator { color: var(--text-muted); opacity: 0.5; }
 
-        .report-options { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; text-align: left; }
-        .report-option-row { display: flex; align-items: center; gap: 10px; background: rgba(222,222,228,0.55); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 16px; cursor: pointer; }
-        .report-option-row input { width: 16px; height: 16px; accent-color: var(--accent); }
-        .report-option-row label { font-size: 14px; cursor: pointer; flex: 1; }
-
-        .scroll-support-banner {
-            position: fixed; top: -300px; left: 50%; transform: translateX(-50%); width: min(420px, 92vw); background: rgba(226,226,232,0.88);
-            backdrop-filter: blur(46px) saturate(130%); -webkit-backdrop-filter: blur(46px) saturate(130%); border: 1px solid var(--glass-border); border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.22);
-            padding: 26px 26px 22px 26px; z-index: 1200; transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
-        }
-        .scroll-support-banner.visible { top: 24px; }
-        .scroll-support-banner .close-banner { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 18px; color: var(--text-muted); cursor: pointer; }
-        .scroll-support-banner h3 { margin: 0 0 8px 0; font-size: 18px; }
-        .scroll-support-banner p { color: var(--text-muted); font-size: 13.5px; margin-bottom: 16px; line-height: 1.5; }
-
-        #comprehensiveReport { display: none; }
-        .report-header { text-align: center; margin-bottom: 28px; }
-        .report-header h1 { margin-bottom: 6px; }
-        .report-subject { margin-bottom: 22px; }
-        .report-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-        .report-table th, .report-table td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; font-size: 13px; }
-        .report-table th { background: #f2f2f2; }
-
-        .code-box { background: rgba(0,0,0,0.05); padding: 16px; border-radius: 12px; font-family: monospace; font-size: 13px; color: #d92c22; word-break: break-all; margin-bottom: 10px; border: 1px solid rgba(0,0,0,0.1); }
-        .copy-btn { background: var(--text-main); color: #fff; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%; }
-
-        /* BACK TO RESULTS BUTTON STYLE */
         .back-results-btn {
             background: rgba(0, 113, 227, 0.1); color: var(--accent); border: 1px solid rgba(0, 113, 227, 0.2);
             padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer;
@@ -354,38 +318,9 @@
         }
         .back-results-btn:hover { background: rgba(0, 113, 227, 0.15); transform: translateY(-1px); }
 
-        /* Consolidated dark-mode overrides for remaining glass components */
         body.dark-mode .card { background: var(--glass-bg); box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06); }
         body.dark-mode .upload-area { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.15); }
-        body.dark-mode .upload-area:hover { background: rgba(255,255,255,0.06); }
-        body.dark-mode #calcBtn { background: rgba(255,255,255,0.07); color: var(--text-muted); }
-        body.dark-mode #calcBtn.active { background: var(--text-main); color: #1c1c1e; }
-        body.dark-mode .stat-chip { background: rgba(255,255,255,0.04); }
-        body.dark-mode .q-list { background: rgba(255,255,255,0.04); }
-        body.dark-mode .q-item { border-bottom-color: rgba(255,255,255,0.06); }
-        body.dark-mode .filter-bar select { background: rgba(255,255,255,0.06); color: var(--text-main); }
-        body.dark-mode .tab-btn.active { background: rgba(255,255,255,0.1); }
-        body.dark-mode .leaderboard-list { background: rgba(255,255,255,0.03); }
-        body.dark-mode .paywall-overlay { background: rgba(28,28,30,0.6); }
-        body.dark-mode .lb-sub-row span { background: rgba(255,255,255,0.06); }
-        body.dark-mode .booklet-badge { background: rgba(77,163,255,0.15); }
-        body.dark-mode .scroll-support-banner { background: rgba(40,40,44,0.9); }
-        body.dark-mode .report-option-row { background: rgba(255,255,255,0.05); }
-        body.dark-mode .code-box { background: rgba(255,255,255,0.06); color: #ff8a80; border-color: rgba(255,255,255,0.08); }
-        body.dark-mode .report-table th { background: #2c2c2e; color: #f2f2f4; }
-        body.dark-mode .report-table th, body.dark-mode .report-table td { border-color: #48484a; }
-
-        @media print {
-            body { background: white; padding: 0; }
-            .hamburger, .theme-toggle, .sidebar, #uploadCard, .q-tabs, .filter-bar, .paywall-overlay, .tier-grid, .action-btn, .footer-links, .unlock-tabs-card, .scroll-support-banner, #instructionsSection, .share-widget { display: none !important; }
-            .card { box-shadow: none; border: 1px solid #ddd; backdrop-filter: none; background: white; break-inside: avoid; }
-            .q-list { max-height: none; display: block !important; }
-            h1 { font-size: 24px; }
-            .leaderboard-list { filter: none; }
-
-            body.printing-report #mainContainer > *:not(#comprehensiveReport) { display: none !important; }
-            body.printing-report #comprehensiveReport { display: block !important; }
-        }
+        body.dark-mode .apple-modal { background: rgba(30,30,34,0.9); }
     </style>
 </head>
 <body>
@@ -393,28 +328,19 @@
 <!-- FLOATING SHARE WIDGET -->
 <div class="share-widget" id="shareWidget">
     <div class="share-links">
-        <a href="https://api.whatsapp.com/send?text=Calculate%20your%20Re-NEET%202026%20Score%20instantly!%20https://transp0s0n.github.io/NEET-OMR-2026/" target="_blank" title="Share on WhatsApp">
+        <a href="https://api.whatsapp.com/send?text=Calculate%20your%20Re-NEET%202026%20Score%20instantly!%20https://transp0s0n.github.io/NEET-OMR-2026/" target="_blank">
             <img src="https://raw.githubusercontent.com/transp0s0n/NEET-OMR-2026/main/WhatsApp.svg" alt="WhatsApp">
         </a>
-        <a href="https://twitter.com/intent/tweet?url=https://transp0s0n.github.io/NEET-OMR-2026/&text=Calculate%20your%20Re-NEET%202026%20Score%20instantly!" target="_blank" title="Share on X">
+        <a href="https://twitter.com/intent/tweet?url=https://transp0s0n.github.io/NEET-OMR-2026/&text=Calculate%20your%20Re-NEET%202026%20Score%20instantly!" target="_blank">
             <img src="https://raw.githubusercontent.com/transp0s0n/NEET-OMR-2026/main/X.svg" alt="X">
         </a>
-        <a href="https://t.me/share/url?url=https://transp0s0n.github.io/NEET-OMR-2026/&text=Calculate%20your%20Re-NEET%202026%20Score!" target="_blank" title="Share on Telegram">
-            <img src="https://raw.githubusercontent.com/transp0s0n/NEET-OMR-2026/main/Telegram.svg" alt="Telegram">
-        </a>
-        <a href="https://www.reddit.com/submit?url=https://transp0s0n.github.io/NEET-OMR-2026/&title=Calculate%20your%20Re-NEET%202026%20Score%20instantly!" target="_blank" title="Share on Reddit">
-            <img src="https://raw.githubusercontent.com/transp0s0n/NEET-OMR-2026/main/Reddit.svg" alt="Reddit">
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" title="Share on Instagram" onclick="navigator.clipboard && navigator.clipboard.writeText('https://transp0s0n.github.io/NEET-OMR-2026/'); alert('Link copied! Paste it into your Instagram story or bio.');">
-            <img src="https://raw.githubusercontent.com/transp0s0n/NEET-OMR-2026/main/Instagram.svg" alt="Instagram">
-        </a>
     </div>
-    <button class="share-fab" id="shareFab" onclick="window.toggleShareWidget()" aria-label="Share">🔗</button>
+    <button class="share-fab" id="shareFab" onclick="window.toggleShareWidget()">🔗</button>
     <div class="share-caption" id="shareCaption">Share</div>
 </div>
 
 <button class="hamburger" id="hamburgerBtn" onclick="window.toggleSidebar()">☰</button>
-<button class="theme-toggle" id="themeToggle" onclick="window.toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
+<button class="theme-toggle" id="themeToggle" onclick="window.toggleDarkMode()">🌙</button>
 
 <div class="sidebar" id="sidebar">
     <button class="menu-btn" onclick="window.showSection('uploadCard', true)">🏠 Home / Upload</button>
@@ -430,125 +356,56 @@
         <p class="subtitle">Calculate your Re-NEET 2026 marks and review your correct and incorrect responses.</p>
     </div>
 
-    <!-- INSTRUCTIONS SECTION -->
-    <div id="instructionsSection">
-        <div class="card">
-            <h2 style="margin-top:0;">How to Extract Your OMR Data</h2>
-            <p style="color: var(--text-muted); margin-bottom: 24px;">Follow these steps to automatically download your OMR responses as a CSV file, ready to be uploaded here.</p>
-            
-            <h3 style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px;">Method 1: The Bookmarklet (PC / Laptop)</h3>
-            <p>1. Drag the blue button below into your browser's Bookmarks Bar (Press <code>Ctrl+Shift+B</code> to show the bar).</p>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="javascript:(function(){alert('Scraping OMR Data... Please wait.');let pageText=document.body.innerText;let appNo='Unknown';let appMatch=pageText.match(/(?:Application|Roll)\s*(?:No|Number)[\s\:\-]+([0-9]{8,15})/i);if(appMatch)appNo=appMatch[1];else appNo=prompt('Could not detect Application No. Please enter it manually:','123456789')||'Unknown';let name=prompt('Enter your Name:','Student')||'Student';let setCode='50';let setMatch=pageText.match(/(?:Test Booklet|Set|Paper)\s*(?:Code)?[\s\:\-]+([0-9]{2}|[A-Z][0-9])/i);if(setMatch)setCode=setMatch[1];else setCode=prompt('Could not detect Booklet Set Code. Please enter it:','50')||'50';let csv=`Application No, ${appNo}\nName, ${name}\nSet, ${setCode}\n`;let rows=document.querySelectorAll('tr');let qCount=0;rows.forEach(tr=>{let cells=tr.querySelectorAll('td');if(cells.length>=2){let qNum=parseInt(cells[0].innerText.replace(/[^0-9]/g,''));let recordedAns=cells[1].innerText.replace(/[^1-4\-]/g,'');if(!isNaN(qNum)&&qNum>0&&qNum<=200){if(recordedAns==='-'||recordedAns==='')recordedAns='';else recordedAns=recordedAns.charAt(0);csv+=`${qNum},${recordedAns}\n`;qCount++;}}});if(qCount===0){alert('Error: Could not find any questions.');return;}let blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});let link=document.createElement('a');let url=URL.createObjectURL(blob);link.setAttribute('href',url);link.setAttribute('download',`ReNEET_OMR_${appNo}.csv`);link.style.visibility='hidden';document.body.appendChild(link);link.click();document.body.removeChild(link);if(confirm('Success! OMR CSV Downloaded.\n\nClick OK to open the Re-NEET Score Calculator to upload your file.')){window.location.href='https://transp0s0n.github.io/NEET-OMR-2026/';}})();" 
-                   style="display: inline-block; background: var(--accent); color: white; padding: 12px 24px; border-radius: 99px; text-decoration: none; font-weight: bold; cursor: grab; box-shadow: 0 4px 12px rgba(0,88,176,0.3);">
-                   📥 Drag to Bookmarks
-                </a>
-            </div>
-            
-            <p>2. Go to the Official NTA "View Recorded Responses" webpage.<br>3. Click the bookmark you just saved. It will ask for your name and download your CSV!</p>
-
-            <h3 style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; margin-top: 30px;">Method 2: Console Script (Mobile / Fallback)</h3>
-            <p>If you are on a phone, copy the code below. Go to the NTA OMR webpage, type <code>javascript:</code> in the URL bar, paste the code right after it, and hit enter/go.</p>
-            
-            <div class="code-box" id="consoleCode">javascript:(function(){alert('Scraping OMR Data...');let p=document.body.innerText;let a=p.match(/(?:Application|Roll)\s*(?:No|Number)[\s\:\-]+([0-9]{8,15})/i);a=a?a[1]:prompt('App No:','123456')||'Unknown';let n=prompt('Name:','Student')||'Student';let s=p.match(/(?:Test Booklet|Set|Paper)\s*(?:Code)?[\s\:\-]+([0-9]{2}|[A-Z][0-9])/i);s=s?s[1]:prompt('Set Code:','50')||'50';let c=`Application No, ${a}\nName, ${n}\nSet, ${s}\n`;let r=document.querySelectorAll('tr'),q=0;r.forEach(t=>{let l=t.querySelectorAll('td');if(l.length>=2){let x=parseInt(l[0].innerText.replace(/[^0-9]/g,'')),y=l[1].innerText.replace(/[^1-4\-]/g,'');if(!isNaN(x)&&x>0&&x<=200){y=(y==='-'||y==='')?'':y.charAt(0);c+=`${x},${y}\n`;q++;}}});if(q===0)return alert('No data found.');let b=new Blob([c],{type:'text/csv;charset=utf-8;'}),k=document.createElement('a');k.href=URL.createObjectURL(b);k.download=`ReNEET_${a}.csv`;k.style.display='none';document.body.appendChild(k);k.click();k.remove();if(confirm('Success! CSV Downloaded.\n\nClick OK to open the Re-NEET Score Calculator.')){window.location.href='https://transp0s0n.github.io/NEET-OMR-2026/';}})();</div>
-            <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('consoleCode').innerText); alert('Code Copied!');">📋 Copy Code</button>
-        </div>
-    </div>
-
     <!-- MAIN UPLOAD CARD -->
     <div class="card" id="uploadCard">
         <div class="upload-area" id="dropZone" onclick="document.getElementById('csvFile').click()">
             <span id="uploadText">Choose Response CSV File</span><br>
-            <small style="color: var(--text-muted); display:inline-block; margin-top:8px;">App No., Name, and Booklet Set Code extracted automatically</small>
             <input type="file" id="csvFile" accept=".csv" style="display: none;">
         </div>
-        
         <button id="calcBtn" class="action-btn" disabled onclick="window.executeCalculation()">Calculate Your Marks</button>
-        <button id="howToBtn" class="action-btn" onclick="window.showSection('instructionsSection')">❓ How to get OMR CSV?</button>
     </div>
 
     <!-- RESULTS SECTION -->
     <div id="resultsSection">
         <div class="card score-hero">
             <div class="booklet-badge" id="setMetric">Booklet Set: —</div>
-            <h2>Calculated Final Score</h2>
             <div class="massive-score" id="grandTotal">0<span>/720</span></div>
-            <div class="metadata-bar" id="accuracyMetric">Accuracy: 0% (0 attempted out of 180, 0 correct)</div>
+            <div class="metadata-bar" id="accuracyMetric">Accuracy: 0%</div>
             <div class="overall-stats-grid" id="overallStatsGrid"></div>
         </div>
-
         <div class="subject-grid" id="subjectGrid"></div>
-
-        <div class="card analysis-box">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 12px;">
-                <h3 style="margin: 0; border: none; padding: 0;">Subject Review Sheets</h3>
-                <button class="tab-btn" style="background: rgba(0,113,227,0.1); color: var(--accent); font-weight: bold;" onclick="window.scrollToLeaderboardUnlock()">🏆 View Leaderboard</button>
-            </div>
-
-            <div class="filter-bar">
-                <label for="reviewFilter" style="font-weight: 600; color: var(--text-muted); font-size: 14px;">Filter:</label>
-                <select id="reviewFilter" onchange="window.applyReviewFilter()">
-                    <option value="all">All Questions</option>
-                    <option value="correct">Only Correct</option>
-                    <option value="incorrect">Only Incorrect</option>
-                    <option value="skipped">Only Skipped</option>
-                </select>
-            </div>
-
-            <div class="q-tabs">
-                <button class="tab-btn active" onclick="window.switchTab('tab-phy')">⚛️ Physics</button>
-                <button class="tab-btn" onclick="window.switchTab('tab-chem')">🧪 Chemistry</button>
-                <button class="tab-btn" onclick="window.switchTab('tab-bio')">🧬 Biology</button>
-            </div>
-            <div id="tab-phy" class="q-list active"></div>
-            <div id="tab-chem" class="q-list"></div>
-            <div id="tab-bio" class="q-list"></div>
-        </div>
     </div>
 
     <!-- LEADERBOARD SECTION -->
     <div id="leaderboardSection">
         <button class="back-results-btn" onclick="window.showSection('resultsSection', false)">⬅ Go back to my results</button>
         <div class="card">
-            <h3 style="margin-top: 0; font-size: 22px;">See your rank</h3>
-            
-            <p id="dynamicDataReminder" style="display: none; text-align: center; color: var(--accent); font-size: 13px; margin-bottom: 15px; font-weight: 600;">Check back later for more entries as the data is dynamic and the rank picture will become clearer as more people check their marks.</p>
-            
+            <h3>See your rank</h3>
+            <p id="dynamicDataReminder" style="display: none; color: var(--accent); font-size: 13px;">Check back later for more entries as the data is dynamic...</p>
             <div class="rank-highlight" id="userRankDisplay">Your rank: Calculating...</div>
 
             <div class="leaderboard-wrapper">
-                
-                <div class="filter-bar" style="justify-content: center; margin-bottom: 12px; margin-top: 8px;">
-                    <label for="leaderboardSort" style="font-weight: 600; color: var(--text-muted); font-size: 13px;">Sort By:</label>
-                    <select id="leaderboardSort" onchange="window.renderLeaderboard()">
-                        <option value="score_desc">Total Marks (High to Low)</option>
-                        <option value="score_asc">Total Marks (Low to High)</option>
-                        <option value="phy_desc">Physics (High to Low)</option>
-                        <option value="chem_desc">Chemistry (High to Low)</option>
-                        <option value="bio_desc">Biology (High to Low)</option>
-                    </select>
-                </div>
-
-                <div class="leaderboard-list" id="leaderboardContainer">
-                    <p style="text-align: center; color: var(--text-muted); padding: 40px 20px;">Fetching global leaderboard data...</p>
-                </div>
-
+                <div class="leaderboard-list" id="leaderboardContainer"></div>
                 <div class="paywall-overlay" id="leaderboardPaywall">
                     <h3>🔒 Unlock Full Leaderboard</h3>
-                    <p>Support the project development to view all scores and percentiles.</p>
                     <div class="tier-grid">
-                        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹20</a>
-                        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹30</a>
-                        <a href="YOUR_RAZORPAY_LINK_50" class="pay-tier-btn" target="_blank">₹50</a>
-                        <a href="YOUR_RAZORPAY_LINK_100" class="pay-tier-btn" target="_blank">₹100</a>
+                        <button class="pay-tier-btn" onclick="window.promptDonation(20, 'YOUR_LINK_20')">₹20</button>
+                        <button class="pay-tier-btn" onclick="window.promptDonation(30, 'YOUR_LINK_30')">₹30</button>
+                        <button class="pay-tier-btn" onclick="window.promptDonation(50, 'YOUR_LINK_50')">₹50</button>
+                        <button class="pay-tier-btn" onclick="window.toggleCustomSlider(this)">Custom</button>
+                    </div>
+                    <!-- Custom Slider Block -->
+                    <div class="custom-slider-wrapper" style="display: none; margin-top: 15px; width: 100%; max-width: 280px; text-align: center;">
+                        <input type="range" min="20" max="200" value="50" class="apple-slider" oninput="window.handleSliderChange(this)">
+                        <div class="slider-cheer-text" style="margin: 8px 0; font-size: 14px; color: var(--accent); font-weight: 600;">Awesome! 🍕</div>
+                        <button class="pay-tier-btn final-custom-btn" onclick="window.promptDonation(50, 'YOUR_PAYU_DYNAMIC_LINK?amount=50')" style="width: 100%; margin-top: 5px;">Donate ₹50</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PREMIUM UNLOCK TABS (Only visible when results are shown) -->
+    <!-- PREMIUM UNLOCK TABS -->
     <div class="card unlock-tabs-card" id="premiumTabsCard" style="display: none;">
         <div class="q-tabs">
             <button class="tab-btn active" id="unlockTabBtn-report" onclick="window.switchUnlockTab('report')">📄 Download Comprehensive Report</button>
@@ -558,37 +415,26 @@
         <div id="unlockPanel-report" class="unlock-panel active">
             <div class="leaderboard-wrapper">
                 <div class="leaderboard-list" id="reportPreview">
-                    <div class="report-preview-box">
-                        📄 Your comprehensive report includes your total marks, subject-wise breakdown, and every question you got incorrect or left skipped — with the correct answer from the official key.
-                    </div>
+                    <div class="report-preview-box">📄 Your comprehensive report overview...</div>
                 </div>
                 <div class="paywall-overlay" id="reportPaywall">
                     <h3>🔒 Unlock Comprehensive Report</h3>
-                    <p>Support the project to generate and download your detailed, question-by-question report.</p>
                     <div class="tier-grid">
-                        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹20</a>
-                        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹30</a>
-                        <a href="YOUR_RAZORPAY_LINK_50" class="pay-tier-btn" target="_blank">₹50</a>
-                        <a href="YOUR_RAZORPAY_LINK_100" class="pay-tier-btn" target="_blank">₹100</a>
+                        <button class="pay-tier-btn" onclick="window.promptDonation(20, 'YOUR_LINK_20')">₹20</button>
+                        <button class="pay-tier-btn" onclick="window.promptDonation(30, 'YOUR_LINK_30')">₹30</button>
+                        <button class="pay-tier-btn" onclick="window.promptDonation(50, 'YOUR_LINK_50')">₹50</button>
+                        <button class="pay-tier-btn" onclick="window.toggleCustomSlider(this)">Custom</button>
+                    </div>
+                    <!-- Custom Slider Block -->
+                    <div class="custom-slider-wrapper" style="display: none; margin-top: 15px; width: 100%; max-width: 280px; text-align: center;">
+                        <input type="range" min="20" max="200" value="50" class="apple-slider" oninput="window.handleSliderChange(this)">
+                        <div class="slider-cheer-text" style="margin: 8px 0; font-size: 14px; color: var(--accent); font-weight: 600;">Awesome! 🍕</div>
+                        <button class="pay-tier-btn final-custom-btn" onclick="window.promptDonation(50, 'YOUR_PAYU_DYNAMIC_LINK?amount=50')" style="width: 100%; margin-top: 5px;">Donate ₹50</button>
                     </div>
                 </div>
             </div>
             <div id="reportOptions" style="display:none;">
-                <div class="report-options">
-                    <div class="report-option-row" onclick="document.getElementById('optIncorrect').click()">
-                        <input type="radio" name="reportMode" id="optIncorrect" value="incorrect" checked>
-                        <label for="optIncorrect">Incorrect questions only, with correct answer</label>
-                    </div>
-                    <div class="report-option-row" onclick="document.getElementById('optSkipped').click()">
-                        <input type="radio" name="reportMode" id="optSkipped" value="skipped">
-                        <label for="optSkipped">Skipped questions only, with correct answer</label>
-                    </div>
-                    <div class="report-option-row" onclick="document.getElementById('optAll').click()">
-                        <input type="radio" name="reportMode" id="optAll" value="all">
-                        <label for="optAll">All questions, with your answer & correct answer</label>
-                    </div>
-                </div>
-                <button id="downloadReportBtn" class="action-btn" style="margin-top:6px; background:linear-gradient(135deg,#1d1d1f,#3a3a3c); color:#fff;" onclick="window.generateComprehensiveReport()">Generate & Download Report</button>
+                <button id="downloadReportBtn" class="action-btn" onclick="window.generateComprehensiveReport()">Generate Report</button>
             </div>
         </div>
 
@@ -597,89 +443,53 @@
         </div>
     </div>
 
-    <div class="footer-links">
-        <a href="terms.html">Terms & Conditions</a> <span class="footer-separator">|</span>
-        <a href="privacy.html">Privacy Policy</a> <span class="footer-separator">|</span>
-        <a href="refund.html">Refund Policy</a> <span class="footer-separator">|</span>
-        <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- SCROLL BANNER -->
+<div class="scroll-support-banner" id="scrollSupportBanner">
+    <button class="close-banner" onclick="window.dismissSupportBanner()">✕</button>
+    <h3>Support the Project! 🙏</h3>
+    <p>If this calculator helped you in any way, please consider supporting my work with a small donation <3.</p>
+    <div class="tier-grid">
+        <button class="pay-tier-btn" onclick="window.promptDonation(20, 'YOUR_LINK_20')">₹20</button>
+        <button class="pay-tier-btn" onclick="window.promptDonation(30, 'YOUR_LINK_30')">₹30</button>
+        <button class="pay-tier-btn" onclick="window.promptDonation(50, 'YOUR_LINK_50')">₹50</button>
+        <button class="pay-tier-btn" onclick="window.toggleCustomSlider(this)">Custom</button>
     </div>
+    <!-- Custom Slider Block -->
+    <div class="custom-slider-wrapper" style="display: none; margin-top: 15px; width: 100%; max-width: 280px; margin-left: auto; margin-right: auto; text-align: center;">
+        <input type="range" min="20" max="200" value="50" class="apple-slider" oninput="window.handleSliderChange(this)">
+        <div class="slider-cheer-text" style="margin: 8px 0; font-size: 14px; color: var(--accent); font-weight: 600;">Awesome! 🍕</div>
+        <button class="pay-tier-btn final-custom-btn" onclick="window.promptDonation(50, 'YOUR_PAYU_DYNAMIC_LINK?amount=50')" style="width: 100%; margin-top: 5px;">Donate ₹50</button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-links">
+    <a href="terms.html">Terms & Conditions</a> <span class="footer-separator">|</span>
+    <a href="privacy.html">Privacy Policy</a> <span class="footer-separator">|</span>
+    <a href="refund.html">Refund Policy</a> <span class="footer-separator">|</span>
+    <a href="contact.html">Contact Us</a>
 </div>
 
 <div id="comprehensiveReport"></div>
 
-<div class="scroll-support-banner" id="scrollSupportBanner">
-    <button class="close-banner" onclick="window.dismissSupportBanner()">✕</button>
-    <h3>Support the Project! 🙏</h3>
-    <p>If this calculator helped you in any way, please consider supporting my work with a small donation <3. Your one time contribution keeps the servers running and instantly unlocks forever - your <strong>Comprehensive Score Report</strong> and the <strong>Global Leaderboard</strong>!</p>
-    <div class="tier-grid">
-        <a href="YOUR_RAZORPAY_LINK_10" class="pay-tier-btn" target="_blank">₹20</a>
-        <a href="YOUR_RAZORPAY_LINK_20" class="pay-tier-btn" target="_blank">₹30</a>
-        <a href="YOUR_RAZORPAY_LINK_50" class="pay-tier-btn" target="_blank">₹50</a>
-        <a href="YOUR_RAZORPAY_LINK_100" class="pay-tier-btn" target="_blank">₹100</a>
+<!-- APPLE DIALOG CONFIRMATION MODAL -->
+<div class="modal-backcloth" id="paymentModal">
+    <div class="apple-modal">
+        <div class="modal-title">Confirm Your Contribution</div>
+        <div class="modal-desc" id="modalDescription">You are about to donate ₹0 to support this project. Please make sure you wait for the gateway to automatically redirect you back after complete execution.</div>
+        <div class="modal-btn-stack">
+            <button class="modal-primary-btn" id="modalConfirmBtn">Proceed to Payment</button>
+            <button class="modal-secondary-btn" onclick="window.closePaymentModal()">Cancel</button>
+        </div>
+        
+        <div style="margin-top: 16px; border-top: 1px solid var(--glass-border); padding-top: 12px;">
+            <a href="#" style="font-size: 12px; color: var(--accent); text-decoration: none;" onclick="window.openMissingPaymentPrompt(); return false;">Already paid but got stuck? Verify transaction manually</a>
+        </div>
     </div>
 </div>
 
-<!-- Firebase Compat Libraries (Safe for Obfuscation) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-<!-- Your Obfuscated Script -->
 <script src="main.js"></script>
-
-<!-- Theme + Share Widget Behavior -->
-<script>
-    (function () {
-        // ----- Dark mode -----
-        var body = document.body;
-        var themeBtn = document.getElementById('themeToggle');
-
-        function applyTheme(isDark) {
-            body.classList.toggle('dark-mode', isDark);
-            if (themeBtn) themeBtn.textContent = isDark ? '☀️' : '🌙';
-        }
-
-        var savedTheme = null;
-        try { savedTheme = localStorage.getItem('reneet-theme'); } catch (e) {}
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
-
-        window.toggleDarkMode = function () {
-            var isDark = !body.classList.contains('dark-mode');
-            applyTheme(isDark);
-            try { localStorage.setItem('reneet-theme', isDark ? 'dark' : 'light'); } catch (e) {}
-        };
-
-        // ----- Share widget dynamic caption -----
-        var shareWidget = document.getElementById('shareWidget');
-        var shareCaption = document.getElementById('shareCaption');
-
-        window.toggleShareWidget = function () {
-            shareWidget.classList.toggle('open');
-            if (shareWidget.classList.contains('open')) {
-                shareCaption.textContent = "Share with your friends";
-            } else {
-                shareCaption.textContent = "Share";
-            }
-        };
-
-        shareWidget.addEventListener('mouseenter', function() {
-            shareCaption.textContent = "Share with your friends";
-        });
-        
-        shareWidget.addEventListener('mouseleave', function() {
-            if (!shareWidget.classList.contains('open')) {
-                shareCaption.textContent = "Share";
-            }
-        });
-
-        document.addEventListener('click', function (e) {
-            if (shareWidget && !shareWidget.contains(e.target)) {
-                shareWidget.classList.remove('open');
-                shareCaption.textContent = "Share";
-            }
-        });
-    })();
-</script>
-
 </body>
 </html>
