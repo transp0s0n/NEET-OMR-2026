@@ -335,6 +335,68 @@
         body.dark-mode .card { background: var(--glass-bg); box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06); }
         body.dark-mode .upload-area { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.15); }
         body.dark-mode .apple-modal { background: rgba(30,30,34,0.9); }
+
+        /* ===== MOBILE + DARK MODE FIXES ===== */
+
+        /* Stack subject cards vertically on mobile */
+        @media (max-width: 700px) {
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+            .overall-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .metadata-bar {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Fix subject card contrast in dark mode */
+        body.dark-mode .subject-card.phy,
+        body.dark-mode .subject-card[data-subject="physics"],
+        body.dark-mode .subject-grid .subject-card:nth-child(1) {
+            background: linear-gradient(180deg, var(--phy-soft), rgba(255,255,255,0.04) 40%);
+        }
+        body.dark-mode .subject-card.chem,
+        body.dark-mode .subject-card[data-subject="chemistry"],
+        body.dark-mode .subject-grid .subject-card:nth-child(2) {
+            background: linear-gradient(180deg, var(--chem-soft), rgba(255,255,255,0.04) 40%);
+        }
+        body.dark-mode .subject-card.bio,
+        body.dark-mode .subject-card[data-subject="biology"],
+        body.dark-mode .subject-grid .subject-card:nth-child(3) {
+            background: linear-gradient(180deg, var(--bio-soft), rgba(255,255,255,0.04) 40%);
+        }
+        body.dark-mode .subject-card h3 {
+            border-bottom-color: rgba(255,255,255,0.1);
+        }
+
+        /* Fix stat chips, paywall overlay, q-list & leaderboard list in dark mode */
+        body.dark-mode .stat-chip {
+            background: rgba(255,255,255,0.06);
+        }
+        body.dark-mode .q-list,
+        body.dark-mode .leaderboard-list {
+            background: rgba(255,255,255,0.04);
+        }
+        body.dark-mode .q-item,
+        body.dark-mode .lb-top-row {
+            border-bottom-color: rgba(255,255,255,0.08);
+        }
+        body.dark-mode .paywall-overlay {
+            background: rgba(28,28,30,0.8);
+        }
+        body.dark-mode .paywall-overlay h3,
+        body.dark-mode .paywall-overlay p {
+            color: var(--text-main);
+        }
+        body.dark-mode .filter-bar select {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-main);
+        }
+        body.dark-mode .booklet-badge {
+            background: rgba(77,163,255,0.15);
+        }
     </style>
 </head>
 <body>
