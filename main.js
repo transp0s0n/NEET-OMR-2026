@@ -10,31 +10,34 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+// Global References
+let globalCSVText = "";
+let extractedAppNumber = "";
+let extractedFullName = "";
+let extractedSetCode = "";
+let paymentListenerUnsubscribe = null;
+
 window.addEventListener('load', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    if (urlParams.get('payment_sig') === 'rzp_success_9a8b7c6d5e4f3g2h1') {
-        localStorage.setItem('_x8f_p', '1');
-        window.history.replaceState({}, document.title, window.location.pathname);
-        alert("Payment successful! Thank you so much for your support. All premium features are now unlocked.");
-    }
-
     if (localStorage.getItem('_x8f_p') === '1') {
-        document.getElementById('reportPaywall')?.classList.add('hidden');
-        document.getElementById('reportPreview')?.classList.add('unlocked');
-        document.getElementById('reportOptions').style.display = 'block';
-
-        document.getElementById('leaderboardPaywall')?.classList.add('hidden');
-        document.getElementById('leaderboardContainer')?.classList.add('unlocked');
-
-        const banner = document.getElementById('scrollSupportBanner');
-        if (banner) banner.style.display = 'none';
-        window.supportBannerDismissed = true;
-
-        const reminder = document.getElementById('dynamicDataReminder');
-        if (reminder) reminder.style.display = 'block';
+        unlockPremiumUI();
     }
 });
+
+function unlockPremiumUI() {
+    document.getElementById('reportPaywall')?.classList.add('hidden');
+    document.getElementById('reportPreview')?.classList.add('unlocked');
+    document.getElementById('reportOptions').style.display = 'block';
+
+    document.getElementById('leaderboardPaywall')?.classList.add('hidden');
+    document.getElementById('leaderboardContainer')?.classList.add('unlocked');
+
+    const banner = document.getElementById('scrollSupportBanner');
+    if (banner) banner.style.display = 'none';
+    window.supportBannerDismissed = true;
+
+    const reminder = document.getElementById('dynamicDataReminder');
+    if (reminder) reminder.style.display = 'block';
+}
 
 const officialKeysMaster = { "50": {}, "60": {}, "70": {}, "80": {} };
 const rawKeys = {
@@ -51,11 +54,6 @@ Object.keys(rawKeys).forEach(set => {
         officialKeysMaster[set][qNum] = ans;
     });
 });
-
-let globalCSVText = "";
-let extractedAppNumber = "";
-let extractedFullName = "";
-let extractedSetCode = "";
 
 function maskName(name) {
     if (!name) return "Student-****";
@@ -147,6 +145,11 @@ function processMetrics(csvText) {
         return;
     }
 
+    // SERVER SIDE VERIFICATION INIT: Start listening to this user's payment document in Firestore
+    if (localStorage.getItem('_x8f_p') !== '1' && extractedAppNumber && !extractedAppNumber.startsWith("GUEST")) {
+        setupServerSidePaymentListener(extractedAppNumber);
+    }
+
     const responseMap = {};
     for (let i = 0; i < rows.length; i++) {
         if (!rows[i].trim()) continue;
@@ -197,6 +200,31 @@ function processMetrics(csvText) {
     renderDashboard(structuralMap, grandTotal, totalCorrect, totalIncorrect, totalSkipped, totalAttempted);
 }
 
+// REALTIME LISTENER FOR FIREBASE SERVER SIDE WEBHOOK
+function setupServerSidePaymentListener(appNum) {
+    if (paymentListenerUnsubscribe) {
+        paymentListenerUnsubscribe();
+    }
+    // Listens to a document in 'payments' collection where the Document ID is the Student's App Number
+    paymentListenerUnsubscribe = db.collection("payments").doc(appNum).onSnapshot((doc) => {
+        if (doc.exists && doc.data().isPremium === true) {
+            if (localStorage.getItem('_x8f_p') !== '1') {
+                localStorage.setItem('_x8f_p', '1');
+                unlockPremiumUI();
+                
+                // Automatically close the modal and alert if they are currently buying
+                const modal = document.getElementById('paymentModal');
+                if (modal.classList.contains('visible')) {
+                    modal.classList.remove('visible');
+                    alert("Payment Successfully Confirmed! All Premium features unlocked 🎉");
+                }
+            }
+        }
+    }, (error) => {
+        console.error("Payment listener error: ", error);
+    });
+}
+
 function renderDashboard(map, total, totalCorrect, totalIncorrect, totalSkipped, totalAttempted) {
     document.getElementById('grandTotal').innerHTML = `${total}<span>/720</span>`;
     const accuracyPct = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
@@ -241,8 +269,7 @@ function renderDashboard(map, total, totalCorrect, totalIncorrect, totalSkipped,
     executeCloudSync(total, map);
 }
 
-// ===== LEADERBOARD: fetch once, sort/render locally =====
-
+// ===== LEADERBOARD =====
 window._leaderboardRaw = [];
 
 async function executeCloudSync(score, map) {
@@ -277,9 +304,6 @@ async function executeCloudSync(score, map) {
     } catch (err) { console.error(err); }
 }
 
-// Re-sorts and re-draws the leaderboard from already-fetched data.
-// Called on initial load and whenever the sort/order dropdowns change —
-// no extra database read needed.
 window.renderLeaderboard = function() {
     const data = window._leaderboardRaw || [];
     const sortBySelect = document.getElementById('lbSortBy');
@@ -326,6 +350,7 @@ window.generateComprehensiveReport = function() {
     if (!window._lastReportData) { alert('Please calculate your score first.'); return; }
     const { total, map } = window._lastReportData;
     const reportDiv = document.getElementById('comprehensiveReport');
+    
     const mode = (document.querySelector('input[name="reportMode"]:checked') || {}).value || 'incorrect';
     const modeLabel = { incorrect: 'Incorrect Questions Only', skipped: 'Skipped Questions Only', all: 'All Questions' }[mode];
 
@@ -362,9 +387,18 @@ window.generateComprehensiveReport = function() {
     });
 
     reportDiv.innerHTML = html;
+    
+    // Switch to printing mode (CSS will hide the dashboard & show only the report Div)
     document.body.classList.add('printing-report');
-    window.print();
-    setTimeout(() => document.body.classList.remove('printing-report'), 500);
+    
+    // Safely remove the class after the print dialog finishes/closes
+    window.addEventListener('afterprint', () => {
+        document.body.classList.remove('printing-report');
+        reportDiv.innerHTML = ''; // Clear DOM memory
+    }, { once: true });
+
+    // Fallback trigger for some Safari/iOS edge cases
+    setTimeout(() => { window.print(); }, 150);
 };
 
 window.toggleSidebar = function() { document.getElementById('sidebar').classList.toggle('open'); }
@@ -419,9 +453,8 @@ window.handlePrintReportCardClick = function(fromMenu = false) {
             const banner = document.getElementById('scrollSupportBanner');
             if (banner) {
                 banner.classList.add('visible');
-                banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                alert("Please consider making a small donation to support this project and unlock printing capabilities!");
+                alert("Please calculate your score first!");
             }
         }
     }
@@ -454,8 +487,9 @@ window.applyReviewFilter = function() {
 window.switchUnlockTab = function(which) {
     document.getElementById('unlockTabBtn-report').classList.toggle('active', which === 'report');
     document.getElementById('unlockTabBtn-leaderboard').classList.toggle('active', which === 'leaderboard');
-    document.getElementById('unlockPanel-report').classList.toggle('active', which === 'report');
-    document.getElementById('unlockPanel-leaderboard').classList.toggle('active', which === 'leaderboard');
+    
+    document.getElementById('unlockPanel-report').style.display = (which === 'report') ? 'block' : 'none';
+    document.getElementById('unlockPanel-leaderboard').style.display = (which === 'leaderboard') ? 'block' : 'none';
 
     if (which === 'leaderboard') {
         window.showSection('leaderboardSection', false);
@@ -509,22 +543,30 @@ window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
     if (pageHeight <= 0) return;
-    if (scrollPos / pageHeight >= 0.5) {
+    
+    // Show sliding banner when user scrolls 40% down the page
+    if (scrollPos / pageHeight >= 0.4) {
         window.supportBannerShown = true;
         document.getElementById('scrollSupportBanner').classList.add('visible');
     }
 }, { passive: true });
 
-let targetDonationUrl = "";
+// BLANK SPACE FOR YOUR PAYMENT GATEWAY URL
+let targetDonationUrl = ""; 
 
-window.promptDonation = function(amount, checkoutUrl) {
+window.promptDonation = function(amount) {
+    // -------------------------------------------------------------
+    // PUT YOUR ACTUAL PAYMENT GATEWAY GENERATION LINK OR PAGE HERE
+    // You can pass the app number (extractedAppNumber) via URL params 
+    // so your webhook knows which user paid!
+    // -------------------------------------------------------------
+    targetDonationUrl = `https://your-payment-gateway-link.com/pay?amount=${amount}&uid=${extractedAppNumber}`;
+
     const modal = document.getElementById('paymentModal');
     const desc = document.getElementById('modalDescription');
     const confirmBtn = document.getElementById('modalConfirmBtn');
 
-    targetDonationUrl = checkoutUrl;
-
-    desc.innerHTML = `You are about to donate <strong>₹${amount}</strong> to support project development.<br><br>🚨 <strong>CRITICAL:</strong> Once payment succeeds, please wait 5-10 seconds for the bank gateway to automatically redirect you back so features unlock instantly.`;
+    desc.innerHTML = `You are about to donate <strong>₹${amount}</strong> to support project development.<br><br>🚨 <strong>CRITICAL:</strong> Please wait a few seconds after the payment succeeds. Your features will automatically unlock here via the cloud!`;
 
     confirmBtn.onclick = function() {
         window.open(targetDonationUrl, '_blank');
@@ -536,30 +578,6 @@ window.promptDonation = function(amount, checkoutUrl) {
 
 window.closePaymentModal = function() {
     document.getElementById('paymentModal').classList.remove('visible');
-};
-
-// Manual "stuck payment" recovery prompt.
-// NOTE: this only checks that the input looks long enough to plausibly be a
-// real transaction ID (most gateway txn IDs are 6+ alphanumeric characters).
-// It does NOT verify anything against Razorpay/PayU or your Firestore records —
-// for real protection this needs a server-side check (e.g. a Cloud Function
-// that confirms the txn ID against the payment gateway's API or a webhook-
-// written Firestore doc) before you rely on it to gate paid content.
-window.openMissingPaymentPrompt = function() {
-    window.closePaymentModal();
-    const orderRef = prompt("Please enter your Payment Transaction ID / Order Reference Code:");
-    if (orderRef === null) return; // user cancelled
-
-    const trimmed = orderRef.trim();
-    const MIN_TXN_LENGTH = 6;
-
-    if (trimmed.length >= MIN_TXN_LENGTH) {
-        alert("Sorry for the inconvenience — your leaderboard access has been unlocked.");
-        localStorage.setItem('_x8f_p', '1');
-        window.location.reload();
-    } else {
-        alert("That doesn't look like a valid transaction ID. Please double-check your payment confirmation and try again.");
-    }
 };
 
 window.toggleCustomSlider = function(btn) {
@@ -581,24 +599,16 @@ window.handleSliderChange = function(slider) {
     const finalBtn = wrapper.querySelector('.final-custom-btn');
 
     let comment = "";
-    if (val === 69) {
-        comment = "You sure? 😏";
-    } else if (val === 200) {
-        comment = "Too generous! 😭💖";
-    } else if (val < 40) {
-        comment = "Aye Aye Captain ☕";
-    } else if (val <= 68) {
-        comment = "Lala lalalala🍕";
-    } else if (val < 100) {
-        comment = "Paisa hi paisa Hogaaa 🚀";
-    } else if (val < 150) {
-        comment = "Shukriya bade saabzii🎉";
-    } else {
-        comment = "Din ba gaya mera 😊";
-    }
+    if (val === 69) comment = "You sure? 😏";
+    else if (val === 200) comment = "Too generous! 😭💖";
+    else if (val < 40) comment = "Aye Aye Captain ☕";
+    else if (val <= 68) comment = "Lala lalalala🍕";
+    else if (val < 100) comment = "Paisa hi paisa Hogaaa 🚀";
+    else if (val < 150) comment = "Shukriya bade saabzii🎉";
+    else comment = "Din ba gaya mera 😊";
 
     cheer.innerText = comment;
     finalBtn.innerText = `Donate ₹${val}`;
 
-    finalBtn.onclick = () => window.promptDonation(val, `YOUR_PAYU_DYNAMIC_LINK?amount=${val}`);
+    finalBtn.onclick = () => window.promptDonation(val);
 };
