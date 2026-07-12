@@ -1,1 +1,604 @@
-const _0xc82ce=_0x363d;(function(_0x4f6009,_0x15c0aa){const _0xa9e257=_0x363d,_0x2b2150=_0x4f6009();while(!![]){try{const _0x3e992f=-parseInt(_0xa9e257(0x28f))/0x1+parseInt(_0xa9e257(0x19e))/0x2+-parseInt(_0xa9e257(0x1f7))/0x3+-parseInt(_0xa9e257(0x21e))/0x4+parseInt(_0xa9e257(0x235))/0x5+-parseInt(_0xa9e257(0x210))/0x6*(-parseInt(_0xa9e257(0x214))/0x7)+parseInt(_0xa9e257(0x1f5))/0x8;if(_0x3e992f===_0x15c0aa)break;else _0x2b2150['push'](_0x2b2150['shift']());}catch(_0x3a44ce){_0x2b2150['push'](_0x2b2150['shift']());}}}(_0x1dc5,0x23599));const firebaseConfig={'apiKey':_0xc82ce(0x201),'authDomain':_0xc82ce(0x298),'projectId':_0xc82ce(0x20e),'storageBucket':'neet-2026-omr.firebasestorage.app','messagingSenderId':_0xc82ce(0x1ac),'appId':_0xc82ce(0x21b)};firebase['initializeApp'](firebaseConfig);const db=firebase['firestore']();window[_0xc82ce(0x233)](_0xc82ce(0x1ee),function(){const _0x3fd2a6=_0xc82ce,_0x36779e=new URLSearchParams(window['location'][_0x3fd2a6(0x243)]);_0x36779e[_0x3fd2a6(0x253)]('payment_sig')===_0x3fd2a6(0x1d6)&&(localStorage[_0x3fd2a6(0x292)]('_x8f_p','1'),window[_0x3fd2a6(0x203)][_0x3fd2a6(0x290)]({},document['title'],window[_0x3fd2a6(0x25a)][_0x3fd2a6(0x224)]),alert(_0x3fd2a6(0x1fd)));if(localStorage[_0x3fd2a6(0x1ec)](_0x3fd2a6(0x1fc))==='1'){document[_0x3fd2a6(0x27c)](_0x3fd2a6(0x1e4))?.[_0x3fd2a6(0x283)][_0x3fd2a6(0x228)]('hidden'),document['getElementById']('reportPreview')?.[_0x3fd2a6(0x283)][_0x3fd2a6(0x228)](_0x3fd2a6(0x1c6)),document[_0x3fd2a6(0x27c)]('reportOptions')[_0x3fd2a6(0x1fa)][_0x3fd2a6(0x219)]=_0x3fd2a6(0x1b7),document[_0x3fd2a6(0x27c)](_0x3fd2a6(0x223))?.[_0x3fd2a6(0x283)]['add'](_0x3fd2a6(0x217)),document[_0x3fd2a6(0x27c)](_0x3fd2a6(0x1b5))?.[_0x3fd2a6(0x283)]['add']('unlocked');const _0x570c68=document['getElementById'](_0x3fd2a6(0x1e5));if(_0x570c68)_0x570c68[_0x3fd2a6(0x1fa)][_0x3fd2a6(0x219)]=_0x3fd2a6(0x1f2);window[_0x3fd2a6(0x1c1)]=!![];const _0x4fee58=document[_0x3fd2a6(0x27c)](_0x3fd2a6(0x266));if(_0x4fee58)_0x4fee58[_0x3fd2a6(0x1fa)][_0x3fd2a6(0x219)]='block';}});const officialKeysMaster={'50':{},'60':{},'70':{},'80':{}},rawKeys={'50':_0xc82ce(0x270),'60':_0xc82ce(0x1cc),'70':_0xc82ce(0x27e),'80':_0xc82ce(0x232)};function _0x1dc5(){const _0x42386c=['\x20/\x20720</h2>\x0a\x20\x20\x20\x20\x20\x20</div>','</span><div\x20class=\x22q-item-details\x22><span\x20style=\x22color:var(--text-muted)\x22>Skipped\x20(0)</span><br><small\x20style=\x22color:var(--text-muted)\x22>Your\x20Ans:\x20—\x20|\x20Key:\x20','</td><td>','trim','getItem','.q-tabs\x20.tab-btn','load','elements','score','Booklet\x20Set:\x20','none','nextElementSibling','parentElement','795200ihvEnc','set','717147wdhEcn','comprehensiveReport','disabled','style','skipped','_x8f_p','Payment\x20successful!\x20Thank\x20you\x20so\x20much\x20for\x20your\x20support.\x20All\x20premium\x20features\x20are\x20now\x20unlocked.','</tbody></table>','GUEST','BOOKLET','AIzaSyDa5BLDx7qpepLpUkieA2Fg6M_QBiL_c9o','toggleCustomSlider','history','phy','scroll','userRankDisplay','Upload\x20a\x20valid\x20.csv\x20file.','uploadText','That\x20doesn\x27t\x20look\x20like\x20a\x20valid\x20transaction\x20ID.\x20Please\x20double-check\x20your\x20payment\x20confirmation\x20and\x20try\x20again.','Incorrect','remove','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<h2>Total\x20Marks:\x20','Lala\x20lalalala🍕','neet-2026-omr','executeCalculation','637956ZTBHCb','subjectGrid','\x20out\x20of\x20','Incorrect\x20Questions\x20Only','14owKPcP','</span><span\x20class=\x22stat-label\x22>Positive\x20Marks</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-chip\x20negative-chip\x22><span\x20class=\x22stat-value\x22>-','toggleSidebar','hidden','</span><div\x20class=\x22q-item-details\x22><span\x20class=\x22wrong-text\x22>','display','<div\x20class=\x22report-subject\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>','1:720446130844:web:c0a0048354ab506ee2bb59','incorrect','Paisa\x20hi\x20paisa\x20Hogaaa\x20🚀','679732rKYeEH','size','Skipped\x20Questions\x20Only','files','_lastReportData','leaderboardPaywall','pathname','paymentModal','All\x20Questions','collection','add','calcBtn','report','</span><span\x20class=\x22stat-label\x22>Total\x20Correct</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-chip\x20incorrect-chip\x22><span\x20class=\x22stat-value\x22>','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>Code:\x20','shareWidget','hamburgerBtn','event','endsWith','<span>/720</span>','4|Bonus|2|1|1,2|2|2|1|4|2|1|4|2|4|2|3|2|2|4|2|1|4|4|4|3|1|1|1|1|3|1|4|2|3|3|4|4|2|2|2|3|3|2|3|2|1|2|4|1|4|4|4|4|2|2|2|3|4|4|3|3|3|4|4|4|2|1|4|2|1|4|4|2|4|4|3|1|3|3|2|1|4|3|3|2|3|4|4|2|4|2|1|2|1|1|4|1|4|3|4|2|4|1|2|3|2|2|4|2|1|3|1|4|3|1|1|1|3|4|1|4|3|4|3|4|3|4|2|1|3|4|3|2|2|4|1|4|4|4|3|4|4|2|3|3|4|1|4|4|3|1|3|2|4|1|1|1|2|3|3|2|4|4|3|4|1|2|4|2|1|2|2|1|2|4|3|2|1|4|1','addEventListener','start','1046465IgcPQH','length','howToBtn','innerHTML','N/A','csvFile','You\x20sure?\x20😏','Chemistry','printing-report','</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-row\x22><span>Skipped</span><span>','Din\x20ba\x20gaya\x20mera\x20😊','<p\x20style=\x27text-align:center;\x20color:var(--text-muted);\x20padding:\x2020px;\x27>No\x20scores\x20yet.\x20Be\x20the\x20first!</p>','YOUR_PAYU_DYNAMIC_LINK?amount=','name','search','Invalid\x20CSV\x20format!\x20Please\x20go\x20to\x20\x27How\x20to\x20Extract\x20OMR\x27\x20and\x20use\x20the\x20script\x20provided\x20to\x20generate\x20the\x20correct\x20file.','applyReviewFilter','supportBannerShown','</span><div\x20class=\x22q-item-details\x22><span\x20class=\x22bonus-text\x22>Bonus\x20(+4)</span><br><small\x20style=\x22color:var(--text-muted)\x22>Dropped\x20by\x20NTA</small></div></div>','correct','drop','FieldValue','contains','-item','dataTransfer','Donate\x20₹','PAPERCODE','Too\x20generous!\x20😭💖','doc','switchTab','get','showSection','dropZone','scrollTo','Physics','data','color','location','</td></tr>','openMissingPaymentPrompt','toLowerCase','open','sidebar','onclick','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22leaderboard-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22lb-top-row\x22><span>','\x20/\x20','result','join','status','dynamicDataReminder','\x20correct)','auto','<p>No\x20questions\x20match\x20this\x20report\x20type\x20in\x20this\x20section.\x20🎉</p>','reviewRows','<table\x20class=\x22report-table\x22><thead><tr><th>Question</th><th>Status</th><th>Your\x20Answer</th><th>Correct\x20Answer</th></tr></thead><tbody>','.final-custom-btn','documentElement','<tr><td>Q','map','4|4|4|3|1|3|1|1|4|4|1|1|3|2|2|2|3|1|3|3|4|2|3|3|4|Bonus|2|2|2|1|3|2|2|3|3|1|1|2,3|3|4|1|3|3|3|1|3|3|1|1|3|3|4|3|3|3|2|1|1|4|2|1|1|1|3|4|1|4|4|1|1|1|4|1|1|2|4|1|1|2|2|2|1|1|1|1|4|3|3|4|4|3|1|1|4|4|1|2|2|2|2|1|2|1|3|1|2|3|1|4|1|1|4|1|2|2|4|4|4|1|4|4|2|2|2|3|4|2|3|1|3|3|3|3|1|3|1|1|2|2|1|2|3|4|2|3|3|1|2|2|1|1|1|1|2|4|3|4|4|3|4|3|3|1|2|2|4|2|1|4|1|3|1|3|4|1|1|3|2|4|1','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22report-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<h1>Re-NEET\x202026\x20—\x20Comprehensive\x20Score\x20Report</h1>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p><strong>Candidate:</strong>\x20','<div\x20class=\x22q-item\x20correct-item\x22><span>Q','center','</small></div></div>','preventDefault','toggle','target','uploadCard','visible','Biology','</span><span>Chem:\x20','getElementById','\x20/\x20720</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22lb-sub-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>Phy:\x20','4|1|4|2|4|2|2|3|2|4|2|1|1|3|4|4|4|2|1|2|4|3,4|1|3|4|2|4|4|3|3|1|1|1|4|2|4|3|2|2|Bonus|3|4|4|3|3|1|1|1|4|2|1|1|1|4|4|4|2|3|1|2|2|4|2|4|2|4|3|2|2|2|1|2|4|2|2|2|3|1|3|2|4|2|2|2|2|2|1|3|3|4|4|1|3|2|1|2|2|2|2|2|3|3|1|4|2|4|3|2|4|3|1|3|3|3|1|2|3|3|4|2|4|1|3|1|1|4|1|2|1|2|3|2|4|4|4|2|4|3|2|3|2|1|1|4|1|2|4|2|1|4|3|4|2|4|3|3|2|2|2|2|4|2|2|1|1|4|1|2|1|1|4|3|2|2|3|3|3|3|4|3','innerText','handlePrintReportCardClick','accuracyMetric','dragenter','classList','closest','</div>','Multiple\x20Marked','leaderboardSection','Your\x20rank\x20','reviewFilter','padStart','\x20&nbsp;|&nbsp;\x20<strong>Application\x20No:</strong>\x20','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p><strong>Report\x20Type:</strong>\x20','<div\x20class=\x22q-item\x20incorrect-item\x22><span>Q','CSV\x20Ready!\x20Click\x20Calculate\x20below.','90202PlPeMb','replaceState','push','setItem','APPLICATION','leaderboard','test','active','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','neet-2026-omr.firebaseapp.com','</strong>\x20to\x20support\x20project\x20development.<br><br>🚨\x20<strong>CRITICAL:</strong>\x20Once\x20payment\x20succeeds,\x20please\x20wait\x205-10\x20seconds\x20for\x20the\x20bank\x20gateway\x20to\x20automatically\x20redirect\x20you\x20back\x20so\x20features\x20unlock\x20instantly.','</span><span\x20class=\x22stat-label\x22>Negative\x20Penalty</span></div>\x0a\x20\x20\x20\x20','smooth','overallStatsGrid','.q-item','245264VxBVGf','filter','scrollIntoView','forEach','instructionsSection','input[name=\x22reportMode\x22]:checked','body','</td><td\x20style=\x22text-transform:capitalize\x22>','innerHeight','error','min','</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','Error:\x20Booklet\x20code\x20\x22','promptDonation','720446130844','\x20|\x20Key:\x20','serverTimestamp','scrollHeight','dragover','NAME','unlockTabBtn-report','SET','bio','leaderboardContainer','readAsText','block','.slider-cheer-text','random','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-chip\x20correct-chip\x22><span\x20class=\x22stat-value\x22>','split','themeToggle','\x20attempted\x20out\x20of\x20180,\x20','print','premiumTabsCard','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22subject-card\x20','supportBannerDismissed','includes','</span><span\x20style=\x22color:var(--accent)\x22>','\x22\x20is\x20not\x20registered\x20in\x20our\x20database.','resultsSection','unlocked','value','toUpperCase','modalDescription','opacity','Accuracy:\x20','3|2|2|4|1|1|2|3|1|3|3|4|4|3|1|3|4|1|3|4|1|2|1|2|1|4|2|2|3|2|3|1|1|4|1|1,4|1|1|1|3|3|1|Bonus|4|4|2|4|2|3|3|4|1|3|4|1|3|3|3|3|3|3|3|1|2|1|1|2|3|3|2|3|3|1|2|2|4|3|3|3|2|1|4|4|1|2|1|3|2|3|1|1|1|3|4|4|3|3|3|3|4|4|2|3|2|2|2|2|4|1|1|3|4|2|1|2|4|2|3|1|4|1|4|3|2|3|4|4|3|2|1|1|1|3|4|3|3|3|1|3|1|3|2|2|3|3|4|2|1|4|3|4|4|3|2|1|1|3|1|3|4|1|4|3|2|2|3|4|3|1|3|3|4|4|1|2|1|1|3|4|4','change','handleSliderChange','</span><div\x20class=\x22q-item-details\x22><span\x20class=\x22correct-text\x22>Correct\x20(+4)</span><br><small\x20style=\x22color:var(--text-muted)\x22>Your\x20Ans:\x20','Sorry\x20for\x20the\x20inconvenience\x20—\x20your\x20leaderboard\x20access\x20has\x20been\x20unlocked.','tab-bio','chem','</span>\x20','net','</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>Correct:\x20','rzp_success_9a8b7c6d5e4f3g2h1','Please\x20consider\x20making\x20a\x20small\x20donation\x20to\x20support\x20this\x20project\x20and\x20unlock\x20printing\x20capabilities!','keys','replace','var(--success)','hide-top-ui','</span><span\x20class=\x22stat-label\x22>Total\x20Skipped</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-chip\x20positive-chip\x22><span\x20class=\x22stat-value\x22>+','flex','dragleave','marked','querySelector','grandTotal','tab-phy','Shukriya\x20bade\x20saabzii🎉','reportPaywall','scrollSupportBanner','querySelectorAll','switchUnlockTab'];_0x1dc5=function(){return _0x42386c;};return _0x1dc5();}Object[_0xc82ce(0x1d8)](rawKeys)[_0xc82ce(0x1a1)](_0x6c67f7=>{const _0x165cc9=_0xc82ce,_0x47be72=rawKeys[_0x6c67f7][_0x165cc9(0x1bb)]('|');_0x47be72['forEach']((_0x5a505a,_0x698843)=>{const _0x12239c=_0x165cc9;let _0x33c6aa=String(_0x698843+0x1)[_0x12239c(0x28a)](0x3,'0');officialKeysMaster[_0x6c67f7][_0x33c6aa]=_0x5a505a;});});let globalCSVText='',extractedAppNumber='',extractedFullName='',extractedSetCode='';function maskName(_0x580531){const _0x5725fc=_0xc82ce;if(!_0x580531)return'Student-****';return _0x580531['split']('\x20')[_0x5725fc(0x26f)](_0x975fc8=>_0x975fc8[_0x5725fc(0x236)]<=0x1?_0x975fc8['toUpperCase']():_0x975fc8[0x0]['toUpperCase']()+'****')['join']('\x20');}const dropZone=document[_0xc82ce(0x27c)](_0xc82ce(0x255)),fileInput=document[_0xc82ce(0x27c)](_0xc82ce(0x23a)),calcBtn=document[_0xc82ce(0x27c)](_0xc82ce(0x229)),uploadText=document['getElementById'](_0xc82ce(0x208));[_0xc82ce(0x282),_0xc82ce(0x1b0)][_0xc82ce(0x1a1)](_0x47d318=>dropZone[_0xc82ce(0x233)](_0x47d318,_0x7dd66b=>{const _0x59068b=_0xc82ce;_0x7dd66b[_0x59068b(0x275)](),dropZone['classList'][_0x59068b(0x228)](_0x59068b(0x1b0));})),[_0xc82ce(0x1de),_0xc82ce(0x249)][_0xc82ce(0x1a1)](_0xad2577=>dropZone[_0xc82ce(0x233)](_0xad2577,_0x308e7=>{const _0x2e5990=_0xc82ce;_0x308e7[_0x2e5990(0x275)](),dropZone[_0x2e5990(0x283)][_0x2e5990(0x20b)](_0x2e5990(0x1b0));})),dropZone['addEventListener'](_0xc82ce(0x249),_0x35fcde=>{const _0x1338d8=_0xc82ce;_0x35fcde['preventDefault']();if(_0x35fcde[_0x1338d8(0x24d)][_0x1338d8(0x221)]['length'])handleFileLoad(_0x35fcde[_0x1338d8(0x24d)][_0x1338d8(0x221)][0x0]);}),fileInput['addEventListener'](_0xc82ce(0x1cd),_0x56d9c1=>{const _0x425a71=_0xc82ce;if(_0x56d9c1[_0x425a71(0x277)][_0x425a71(0x221)][_0x425a71(0x236)])handleFileLoad(_0x56d9c1[_0x425a71(0x277)][_0x425a71(0x221)][0x0]);});function handleFileLoad(_0x5c781b){const _0x534f36=_0xc82ce;if(!_0x5c781b[_0x534f36(0x242)][_0x534f36(0x25d)]()[_0x534f36(0x230)]('.csv')){alert(_0x534f36(0x207));return;}const _0x3a546d=new FileReader();_0x3a546d['onload']=_0x4792ac=>{const _0x16989e=_0x534f36,_0xb81cfd=_0x4792ac[_0x16989e(0x277)][_0x16989e(0x263)],_0x54d3b2=_0xb81cfd[_0x16989e(0x1c8)](),_0x2423a3=_0x54d3b2[_0x16989e(0x1c2)](_0x16989e(0x293))||_0x54d3b2[_0x16989e(0x1c2)](_0x16989e(0x1b1))||_0x54d3b2['includes'](_0x16989e(0x1b3)),_0x3e6008=/\n\d+\s*,\s*[1-4\-]?/[_0x16989e(0x295)](_0xb81cfd);if(!_0x2423a3&&!_0x3e6008){alert(_0x16989e(0x244)),fileInput['value']='';return;}globalCSVText=_0xb81cfd,calcBtn[_0x16989e(0x1f9)]=![],calcBtn[_0x16989e(0x283)][_0x16989e(0x228)](_0x16989e(0x296)),dropZone[_0x16989e(0x283)][_0x16989e(0x228)]('uploaded'),uploadText[_0x16989e(0x27f)]=_0x16989e(0x28e),uploadText[_0x16989e(0x1fa)][_0x16989e(0x259)]=_0x16989e(0x1da);const _0x997b29=document['getElementById'](_0x16989e(0x237));if(_0x997b29)_0x997b29[_0x16989e(0x1fa)][_0x16989e(0x219)]=_0x16989e(0x1f2);},_0x3a546d[_0x534f36(0x1b6)](_0x5c781b);}window[_0xc82ce(0x20f)]=function(){const _0x53dbd4=_0xc82ce;if(!globalCSVText)return;processMetrics(globalCSVText),window[_0x53dbd4(0x254)]('resultsSection',![]);};function processMetrics(_0x136c7c){const _0x4dd9d5=_0xc82ce,_0x15b162={'Physics':{'correct':0x0,'incorrect':0x0,'skipped':0x0,'net':0x0,'elements':[],'reviewRows':[],'id':_0x4dd9d5(0x1e2)},'Chemistry':{'correct':0x0,'incorrect':0x0,'skipped':0x0,'net':0x0,'elements':[],'reviewRows':[],'id':'tab-chem'},'Biology':{'correct':0x0,'incorrect':0x0,'skipped':0x0,'net':0x0,'elements':[],'reviewRows':[],'id':_0x4dd9d5(0x1d1)}};let _0x1a296f=0x0,_0x260c90=0x0,_0x40853c=0x0,_0x5e7998=0x0;const _0x160902=_0x136c7c[_0x4dd9d5(0x1bb)]('\x0a');for(let _0xc9e98b=0x0;_0xc9e98b<Math[_0x4dd9d5(0x1a8)](0xf,_0x160902[_0x4dd9d5(0x236)]);_0xc9e98b++){const _0x38d113=_0x160902[_0xc9e98b][_0x4dd9d5(0x1c8)]();if(_0x38d113[_0x4dd9d5(0x1c2)](_0x4dd9d5(0x293))||_0x38d113[_0x4dd9d5(0x1c2)]('ROLL'))extractedAppNumber=_0x160902[_0xc9e98b][_0x4dd9d5(0x1bb)](',')[0x1]?.['trim']();if(_0x38d113['includes'](_0x4dd9d5(0x1b1)))extractedFullName=_0x160902[_0xc9e98b][_0x4dd9d5(0x1bb)](',')[0x1]?.['trim']();(_0x38d113[_0x4dd9d5(0x1c2)](_0x4dd9d5(0x1b3))||_0x38d113[_0x4dd9d5(0x1c2)](_0x4dd9d5(0x200))||_0x38d113[_0x4dd9d5(0x1c2)](_0x4dd9d5(0x24f)))&&(extractedSetCode=_0x160902[_0xc9e98b][_0x4dd9d5(0x1bb)](',')[0x1]?.[_0x4dd9d5(0x1eb)]()[_0x4dd9d5(0x1c8)]());}if(!extractedAppNumber)extractedAppNumber=_0x4dd9d5(0x1ff)+Math['floor'](Math[_0x4dd9d5(0x1b9)]()*0x1869f);if(!extractedFullName)extractedFullName='Anonymous\x20Student';if(!extractedSetCode)extractedSetCode='50';const _0x3ca969=officialKeysMaster[extractedSetCode];if(!_0x3ca969){alert(_0x4dd9d5(0x1aa)+extractedSetCode+_0x4dd9d5(0x1c4));return;}const _0x5af929={};for(let _0x568747=0x0;_0x568747<_0x160902[_0x4dd9d5(0x236)];_0x568747++){if(!_0x160902[_0x568747][_0x4dd9d5(0x1eb)]())continue;const _0x37ea43=_0x160902[_0x568747][_0x4dd9d5(0x1bb)](',');if(_0x37ea43[_0x4dd9d5(0x236)]<0x2)continue;const _0x378a53=parseInt(_0x37ea43[0x0]['trim'](),0xa);if(isNaN(_0x378a53)||_0x378a53<0x1||_0x378a53>0xb4)continue;_0x5af929[String(_0x378a53)[_0x4dd9d5(0x28a)](0x3,'0')]=_0x37ea43[0x1]?_0x37ea43[0x1][_0x4dd9d5(0x1eb)]():'';}for(let _0x3955e8=0x1;_0x3955e8<=0xb4;_0x3955e8++){const _0x255731=String(_0x3955e8)[_0x4dd9d5(0x28a)](0x3,'0'),_0x3457d5=_0x3ca969[_0x255731];if(!_0x3457d5)continue;const _0x2d5d6a=_0x3955e8<=0x2d?_0x4dd9d5(0x257):_0x3955e8<=0x5a?'Chemistry':'Biology',_0x47c3d3=_0x5af929['hasOwnProperty'](_0x255731)?_0x5af929[_0x255731]:'';if(_0x3457d5==='Bonus'){_0x15b162[_0x2d5d6a][_0x4dd9d5(0x248)]++,_0x15b162[_0x2d5d6a][_0x4dd9d5(0x1d4)]+=0x4,_0x1a296f+=0x4,_0x260c90++,_0x15b162[_0x2d5d6a][_0x4dd9d5(0x1ef)][_0x4dd9d5(0x291)](_0x4dd9d5(0x272)+_0x255731+_0x4dd9d5(0x247)),_0x15b162[_0x2d5d6a][_0x4dd9d5(0x26a)]['push']({'q':_0x255731,'status':'bonus','marked':_0x47c3d3,'key':'Bonus'});continue;}if(_0x47c3d3===''||_0x47c3d3==='-')_0x15b162[_0x2d5d6a][_0x4dd9d5(0x1fb)]++,_0x5e7998++,_0x15b162[_0x2d5d6a][_0x4dd9d5(0x1ef)]['push']('<div\x20class=\x22q-item\x20skipped-item\x22><span>Q'+_0x255731+_0x4dd9d5(0x1e9)+_0x3457d5+_0x4dd9d5(0x274)),_0x15b162[_0x2d5d6a][_0x4dd9d5(0x26a)][_0x4dd9d5(0x291)]({'q':_0x255731,'status':_0x4dd9d5(0x1fb),'marked':'','key':_0x3457d5});else{const _0xdd7261=_0x3457d5[_0x4dd9d5(0x1c2)](',')?_0x3457d5[_0x4dd9d5(0x1bb)](','):[_0x3457d5],_0x3c8774=_0x47c3d3[_0x4dd9d5(0x1d9)](/[^1-4]/g,'')['length']>0x1;if(!_0x3c8774&&_0xdd7261[_0x4dd9d5(0x1c2)](_0x47c3d3))_0x15b162[_0x2d5d6a][_0x4dd9d5(0x248)]++,_0x15b162[_0x2d5d6a]['net']+=0x4,_0x1a296f+=0x4,_0x260c90++,_0x15b162[_0x2d5d6a]['elements']['push'](_0x4dd9d5(0x272)+_0x255731+_0x4dd9d5(0x1cf)+_0x47c3d3+'\x20|\x20Key:\x20'+_0x3457d5+'</small></div></div>'),_0x15b162[_0x2d5d6a][_0x4dd9d5(0x26a)][_0x4dd9d5(0x291)]({'q':_0x255731,'status':_0x4dd9d5(0x248),'marked':_0x47c3d3,'key':_0x3457d5});else{let _0x37f02c=_0x3c8774?_0x4dd9d5(0x286):_0x4dd9d5(0x20a);_0x15b162[_0x2d5d6a][_0x4dd9d5(0x21c)]++,_0x15b162[_0x2d5d6a]['net']-=0x1,_0x1a296f-=0x1,_0x40853c++,_0x15b162[_0x2d5d6a][_0x4dd9d5(0x1ef)][_0x4dd9d5(0x291)](_0x4dd9d5(0x28d)+_0x255731+_0x4dd9d5(0x218)+_0x37f02c+'\x20(-1)</span><br><small\x20style=\x22color:var(--text-muted)\x22>Your\x20Ans:\x20'+_0x47c3d3+_0x4dd9d5(0x1ad)+_0x3457d5+_0x4dd9d5(0x274)),_0x15b162[_0x2d5d6a][_0x4dd9d5(0x26a)]['push']({'q':_0x255731,'status':_0x4dd9d5(0x21c),'marked':_0x47c3d3,'key':_0x3457d5});}}}const _0x495cf1=_0x260c90+_0x40853c;renderDashboard(_0x15b162,_0x1a296f,_0x260c90,_0x40853c,_0x5e7998,_0x495cf1);}function renderDashboard(_0x3f3e9c,_0x22eda7,_0x466a17,_0x5512a1,_0x30dc55,_0x1199f6){const _0x241ae5=_0xc82ce;document['getElementById'](_0x241ae5(0x1e1))['innerHTML']=_0x22eda7+_0x241ae5(0x231);const _0x4af8c4=_0x1199f6>0x0?Math['round'](_0x466a17/_0x1199f6*0x64):0x0;document[_0x241ae5(0x27c)](_0x241ae5(0x281))[_0x241ae5(0x27f)]=_0x241ae5(0x1cb)+_0x4af8c4+'%\x20('+_0x1199f6+_0x241ae5(0x1bd)+_0x466a17+_0x241ae5(0x267),document[_0x241ae5(0x27c)]('setMetric')[_0x241ae5(0x27f)]=_0x241ae5(0x1f1)+extractedSetCode;const _0x2f4b74=_0x466a17*0x4,_0x19c17d=_0x5512a1*0x1;document[_0x241ae5(0x27c)](_0x241ae5(0x29c))[_0x241ae5(0x238)]=_0x241ae5(0x1ba)+_0x466a17+_0x241ae5(0x22b)+_0x5512a1+'</span><span\x20class=\x22stat-label\x22>Total\x20Incorrect</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-chip\x20skipped-chip\x22><span\x20class=\x22stat-value\x22>'+_0x30dc55+_0x241ae5(0x1dc)+_0x2f4b74+_0x241ae5(0x215)+_0x19c17d+_0x241ae5(0x29a);const _0x3903a1=document['getElementById'](_0x241ae5(0x211));_0x3903a1[_0x241ae5(0x238)]='';const _0x1735ba={'Physics':_0x241ae5(0x204),'Chemistry':_0x241ae5(0x1d2),'Biology':_0x241ae5(0x1b4)},_0x3a1069={'Physics':'⚛️','Chemistry':'🧪','Biology':'🧬'};Object[_0x241ae5(0x1d8)](_0x3f3e9c)[_0x241ae5(0x1a1)](_0xf43ecb=>{const _0x51a8cc=_0x241ae5,_0x3aed95=_0x3f3e9c[_0xf43ecb],_0x2e1313=_0xf43ecb===_0x51a8cc(0x27a)?0x168:0xb4;_0x3903a1[_0x51a8cc(0x238)]+=_0x51a8cc(0x1c0)+_0x1735ba[_0xf43ecb]+'\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3><span>'+_0x3a1069[_0xf43ecb]+_0x51a8cc(0x1d3)+_0xf43ecb+'</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-row\x22><span>Correct</span><span\x20class=\x22correct-text\x22>'+_0x3aed95[_0x51a8cc(0x248)]+'</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-row\x22><span>Incorrect</span><span\x20class=\x22wrong-text\x22>'+_0x3aed95[_0x51a8cc(0x21c)]+_0x51a8cc(0x23e)+_0x3aed95[_0x51a8cc(0x1fb)]+'</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22stat-row\x22\x20style=\x22font-weight:700;\x20margin-top:10px;\x20padding-top:10px;\x20border-top:1px\x20solid\x20rgba(0,0,0,0.08)\x22><span>Subtotal</span><span>'+_0x3aed95[_0x51a8cc(0x1d4)]+_0x51a8cc(0x262)+_0x2e1313+_0x51a8cc(0x1a9),document['getElementById'](_0x3aed95['id'])[_0x51a8cc(0x238)]=_0x3aed95['elements'][_0x51a8cc(0x236)]?_0x3aed95[_0x51a8cc(0x1ef)][_0x51a8cc(0x264)](''):'<p>No\x20data</p>';}),window[_0x241ae5(0x222)]={'total':_0x22eda7,'map':_0x3f3e9c},document[_0x241ae5(0x27c)](_0x241ae5(0x1bf))[_0x241ae5(0x1fa)][_0x241ae5(0x219)]=_0x241ae5(0x1b7),executeCloudSync(_0x22eda7,_0x3f3e9c);}async function executeCloudSync(_0x2dcd13,_0x2d87f3){const _0x5528a4=_0xc82ce,_0x298449=maskName(extractedFullName);try{await db[_0x5528a4(0x227)](_0x5528a4(0x294))[_0x5528a4(0x251)](extractedAppNumber)[_0x5528a4(0x1f6)]({'name':_0x298449,'score':_0x2dcd13,'phy':_0x2d87f3['Physics'][_0x5528a4(0x1d4)],'chem':_0x2d87f3[_0x5528a4(0x23c)]['net'],'bio':_0x2d87f3[_0x5528a4(0x27a)][_0x5528a4(0x1d4)],'set':extractedSetCode,'timestamp':firebase['firestore'][_0x5528a4(0x24a)][_0x5528a4(0x1ae)]()});}catch(_0x4339d7){console[_0x5528a4(0x1a7)](_0x4339d7);}try{const _0x13910e=await db[_0x5528a4(0x227)](_0x5528a4(0x294))['orderBy']('score','desc')[_0x5528a4(0x253)]();let _0x43d781=0x1,_0x38e152=![],_0xe9ff4a='',_0x175212=_0x13910e[_0x5528a4(0x21f)];_0x13910e['forEach'](_0x2b2a12=>{const _0xc53a59=_0x5528a4;if(_0x2b2a12['id']===extractedAppNumber)_0x38e152=!![];if(!_0x38e152)_0x43d781++;const _0x91743b=_0x2b2a12[_0xc53a59(0x258)]();_0xe9ff4a+=_0xc53a59(0x261)+_0x91743b[_0xc53a59(0x242)]+_0xc53a59(0x1c3)+_0x91743b[_0xc53a59(0x1f0)]+_0xc53a59(0x27d)+(_0x91743b[_0xc53a59(0x204)]||0x0)+_0xc53a59(0x27b)+(_0x91743b['chem']||0x0)+'</span><span>Bio:\x20'+(_0x91743b[_0xc53a59(0x1b4)]||0x0)+_0xc53a59(0x22c)+(_0x91743b['set']||_0xc53a59(0x239))+_0xc53a59(0x297);}),document[_0x5528a4(0x27c)](_0x5528a4(0x206))[_0x5528a4(0x27f)]=_0x5528a4(0x288)+_0x43d781+_0x5528a4(0x212)+_0x175212;if(_0xe9ff4a==='')_0xe9ff4a=_0x5528a4(0x240);document[_0x5528a4(0x27c)](_0x5528a4(0x1b5))[_0x5528a4(0x238)]=_0xe9ff4a;}catch(_0x5a3eeb){}}function _0x363d(_0x1a5aa0,_0x3f9e0e){_0x1a5aa0=_0x1a5aa0-0x19e;const _0x1dc53b=_0x1dc5();let _0x363d16=_0x1dc53b[_0x1a5aa0];return _0x363d16;}window['generateComprehensiveReport']=function(){const _0x4673d3=_0xc82ce;if(!window['_lastReportData']){alert('Please\x20calculate\x20your\x20score\x20first.');return;}const {total:_0x123c59,map:_0x49fb37}=window[_0x4673d3(0x222)],_0x29da58=document[_0x4673d3(0x27c)](_0x4673d3(0x1f8)),_0x5c59de=(document[_0x4673d3(0x1e0)](_0x4673d3(0x1a3))||{})[_0x4673d3(0x1c7)]||'incorrect',_0x4b6e15={'incorrect':_0x4673d3(0x213),'skipped':_0x4673d3(0x220),'all':_0x4673d3(0x226)}[_0x5c59de];let _0x377eab=_0x4673d3(0x271)+extractedFullName+_0x4673d3(0x28b)+extractedAppNumber+'\x20&nbsp;|&nbsp;\x20<strong>Booklet\x20Set:</strong>\x20'+extractedSetCode+_0x4673d3(0x28c)+_0x4b6e15+_0x4673d3(0x20c)+_0x123c59+_0x4673d3(0x1e8);Object[_0x4673d3(0x1d8)](_0x49fb37)[_0x4673d3(0x1a1)](_0x5869c1=>{const _0x1d7014=_0x4673d3,_0x275063=_0x49fb37[_0x5869c1],_0x4bf07a=_0x5869c1===_0x1d7014(0x27a)?0x168:0xb4;_0x377eab+=_0x1d7014(0x21a)+_0x5869c1+'\x20—\x20Score:\x20'+_0x275063[_0x1d7014(0x1d4)]+_0x1d7014(0x262)+_0x4bf07a+_0x1d7014(0x1d5)+_0x275063['correct']+'\x20&nbsp;\x20Incorrect:\x20'+_0x275063[_0x1d7014(0x21c)]+'\x20&nbsp;\x20Skipped:\x20'+_0x275063['skipped']+'</p>';let _0x5c995d;if(_0x5c59de===_0x1d7014(0x21c))_0x5c995d=_0x275063['reviewRows'][_0x1d7014(0x19f)](_0x154a50=>_0x154a50[_0x1d7014(0x265)]==='incorrect');else{if(_0x5c59de===_0x1d7014(0x1fb))_0x5c995d=_0x275063[_0x1d7014(0x26a)][_0x1d7014(0x19f)](_0x5d644f=>_0x5d644f[_0x1d7014(0x265)]===_0x1d7014(0x1fb));else _0x5c995d=_0x275063['reviewRows'];}_0x5c995d[_0x1d7014(0x236)]?(_0x377eab+=_0x1d7014(0x26b),_0x5c995d[_0x1d7014(0x1a1)](_0x2d216b=>{const _0x912b60=_0x1d7014;_0x377eab+=_0x912b60(0x26e)+_0x2d216b['q']+_0x912b60(0x1a5)+_0x2d216b[_0x912b60(0x265)]+_0x912b60(0x1ea)+(_0x2d216b[_0x912b60(0x1df)]||'—')+_0x912b60(0x1ea)+_0x2d216b['key']+_0x912b60(0x25b);}),_0x377eab+=_0x1d7014(0x1fe)):_0x377eab+=_0x1d7014(0x269),_0x377eab+=_0x1d7014(0x285);}),_0x29da58[_0x4673d3(0x238)]=_0x377eab,document[_0x4673d3(0x1a4)][_0x4673d3(0x283)]['add'](_0x4673d3(0x23d)),window[_0x4673d3(0x1be)](),setTimeout(()=>document[_0x4673d3(0x1a4)][_0x4673d3(0x283)][_0x4673d3(0x20b)](_0x4673d3(0x23d)),0x1f4);},window['toggleSidebar']=function(){const _0x3a440b=_0xc82ce;document['getElementById'](_0x3a440b(0x25f))[_0x3a440b(0x283)][_0x3a440b(0x276)](_0x3a440b(0x25e));},window[_0xc82ce(0x254)]=function(_0x5796d3,_0x4a0945=![]){const _0x1c29b1=_0xc82ce;document[_0x1c29b1(0x27c)](_0x1c29b1(0x278))[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]=_0x1c29b1(0x1f2),document['getElementById'](_0x1c29b1(0x1a2))[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]=_0x1c29b1(0x1f2),document[_0x1c29b1(0x27c)]('resultsSection')[_0x1c29b1(0x1fa)]['display']=_0x1c29b1(0x1f2),document[_0x1c29b1(0x27c)](_0x1c29b1(0x287))[_0x1c29b1(0x1fa)]['display']='none',document[_0x1c29b1(0x27c)]('premiumTabsCard')[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]=_0x1c29b1(0x1f2);const _0x2207fe=document[_0x1c29b1(0x27c)]('pageHeaderGroup'),_0x3b135f=_0x5796d3===_0x1c29b1(0x287);document[_0x1c29b1(0x1a4)]['classList'][_0x1c29b1(0x276)]('hide-top-ui',_0x3b135f);if(_0x5796d3===_0x1c29b1(0x278)){if(_0x2207fe)_0x2207fe[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]=_0x1c29b1(0x1b7);}else{if(_0x2207fe)_0x2207fe['style'][_0x1c29b1(0x219)]=_0x1c29b1(0x1f2);}if(_0x5796d3==='resultsSection'&&window['_lastReportData'])document[_0x1c29b1(0x27c)](_0x1c29b1(0x1c5))[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]=_0x1c29b1(0x1b7),document['getElementById'](_0x1c29b1(0x1bf))[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]='block';else{if(_0x5796d3===_0x1c29b1(0x1c5)&&!window[_0x1c29b1(0x222)]){document['getElementById'](_0x1c29b1(0x278))[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]=_0x1c29b1(0x1b7);if(_0x2207fe)_0x2207fe[_0x1c29b1(0x1fa)]['display']=_0x1c29b1(0x1b7);}else{const _0x1bff52=document['getElementById'](_0x5796d3);if(_0x1bff52)_0x1bff52[_0x1c29b1(0x1fa)][_0x1c29b1(0x219)]='block';}}if(_0x4a0945)window[_0x1c29b1(0x216)]();},window[_0xc82ce(0x280)]=function(_0x1daa95=![]){const _0x114716=_0xc82ce;if(_0x1daa95)window[_0x114716(0x216)]();if(localStorage[_0x114716(0x1ec)](_0x114716(0x1fc))==='1'){window[_0x114716(0x254)](_0x114716(0x1c5),![]),window[_0x114716(0x1e7)](_0x114716(0x22a));const _0x33e9c6=document['getElementById'](_0x114716(0x1bf));if(_0x33e9c6)_0x33e9c6[_0x114716(0x1a0)]({'behavior':_0x114716(0x29b),'block':_0x114716(0x234)});}else{if(window[_0x114716(0x222)]){window[_0x114716(0x254)](_0x114716(0x1c5),![]),window[_0x114716(0x1e7)](_0x114716(0x22a));const _0x2d9937=document[_0x114716(0x27c)](_0x114716(0x1bf));if(_0x2d9937)_0x2d9937['scrollIntoView']({'behavior':'smooth','block':'start'});}else{const _0x1da721=document['getElementById']('scrollSupportBanner');_0x1da721?(_0x1da721[_0x114716(0x283)][_0x114716(0x228)](_0x114716(0x279)),_0x1da721[_0x114716(0x1a0)]({'behavior':'smooth','block':_0x114716(0x273)})):alert(_0x114716(0x1d7));}}},window[_0xc82ce(0x252)]=function(_0x45d6bf,_0xa351d){const _0xfb2cf1=_0xc82ce;document[_0xfb2cf1(0x1e6)]('.q-list')[_0xfb2cf1(0x1a1)](_0xbab047=>_0xbab047[_0xfb2cf1(0x283)][_0xfb2cf1(0x20b)](_0xfb2cf1(0x296))),document[_0xfb2cf1(0x1e6)](_0xfb2cf1(0x1ed))[_0xfb2cf1(0x1a1)](_0x5cca41=>_0x5cca41['classList']['remove'](_0xfb2cf1(0x296))),document[_0xfb2cf1(0x27c)](_0x45d6bf)[_0xfb2cf1(0x283)][_0xfb2cf1(0x228)](_0xfb2cf1(0x296));if(_0xa351d&&_0xa351d[_0xfb2cf1(0x277)])_0xa351d[_0xfb2cf1(0x277)][_0xfb2cf1(0x283)]['add']('active');else window[_0xfb2cf1(0x22f)]&&window[_0xfb2cf1(0x22f)][_0xfb2cf1(0x277)]&&window[_0xfb2cf1(0x22f)][_0xfb2cf1(0x277)][_0xfb2cf1(0x283)][_0xfb2cf1(0x228)]('active');window[_0xfb2cf1(0x245)]();},window[_0xc82ce(0x245)]=function(){const _0x2a0eaa=_0xc82ce,_0x58e50d=document[_0x2a0eaa(0x27c)](_0x2a0eaa(0x289))[_0x2a0eaa(0x1c7)],_0x3b89c3=document[_0x2a0eaa(0x1e6)](_0x2a0eaa(0x29d));_0x3b89c3[_0x2a0eaa(0x1a1)](_0xbe8d1=>{const _0x570f4b=_0x2a0eaa;if(_0x58e50d==='all')_0xbe8d1[_0x570f4b(0x1fa)][_0x570f4b(0x219)]='flex';else _0xbe8d1[_0x570f4b(0x283)][_0x570f4b(0x24b)](_0x58e50d+_0x570f4b(0x24c))?_0xbe8d1['style'][_0x570f4b(0x219)]=_0x570f4b(0x1dd):_0xbe8d1['style']['display']=_0x570f4b(0x1f2);});},window[_0xc82ce(0x1e7)]=function(_0x5b43f1){const _0x3b1ba8=_0xc82ce;document[_0x3b1ba8(0x27c)](_0x3b1ba8(0x1b2))['classList'][_0x3b1ba8(0x276)]('active',_0x5b43f1===_0x3b1ba8(0x22a)),document['getElementById']('unlockTabBtn-leaderboard')[_0x3b1ba8(0x283)][_0x3b1ba8(0x276)](_0x3b1ba8(0x296),_0x5b43f1==='leaderboard'),document[_0x3b1ba8(0x27c)]('unlockPanel-report')[_0x3b1ba8(0x283)][_0x3b1ba8(0x276)]('active',_0x5b43f1===_0x3b1ba8(0x22a)),document[_0x3b1ba8(0x27c)]('unlockPanel-leaderboard')[_0x3b1ba8(0x283)]['toggle'](_0x3b1ba8(0x296),_0x5b43f1===_0x3b1ba8(0x294)),_0x5b43f1==='leaderboard'&&(window[_0x3b1ba8(0x254)](_0x3b1ba8(0x287),![]),window[_0x3b1ba8(0x256)]({'top':document[_0x3b1ba8(0x27c)](_0x3b1ba8(0x287))['offsetTop']-0x14,'behavior':'smooth'}));},window['scrollToLeaderboardUnlock']=function(){const _0x291cf2=_0xc82ce;window['switchUnlockTab'](_0x291cf2(0x294));const _0x254e26=document[_0x291cf2(0x27c)]('premiumTabsCard');if(_0x254e26)_0x254e26[_0x291cf2(0x1a0)]({'behavior':_0x291cf2(0x29b),'block':_0x291cf2(0x234)});},window[_0xc82ce(0x246)]=![],window['supportBannerDismissed']=![],window['dismissSupportBanner']=function(){const _0x3c965d=_0xc82ce;window['supportBannerDismissed']=!![],document['getElementById']('scrollSupportBanner')[_0x3c965d(0x283)][_0x3c965d(0x20b)](_0x3c965d(0x279));};let scrollTimeout;window[_0xc82ce(0x233)](_0xc82ce(0x205),()=>{const _0x309024=_0xc82ce,_0x4cf640=[document[_0x309024(0x27c)](_0x309024(0x22d)),document[_0x309024(0x27c)](_0x309024(0x22e)),document[_0x309024(0x27c)](_0x309024(0x1bc))];_0x4cf640[_0x309024(0x1a1)](_0x5d0064=>{const _0x192f55=_0x309024;_0x5d0064&&!document[_0x192f55(0x1a4)][_0x192f55(0x283)][_0x192f55(0x24b)]('hide-top-ui')&&(_0x5d0064['style'][_0x192f55(0x1ca)]='0',_0x5d0064[_0x192f55(0x1fa)]['pointerEvents']=_0x192f55(0x1f2));}),clearTimeout(scrollTimeout),scrollTimeout=setTimeout(()=>{const _0x3f6daf=_0x309024,_0xe7e844=window['scrollY'],_0xda65f8=document[_0x3f6daf(0x26d)]['scrollHeight']-window[_0x3f6daf(0x1a6)];(_0xda65f8<=0x0||_0xe7e844/_0xda65f8<=0.1||_0xe7e844<0x32)&&_0x4cf640[_0x3f6daf(0x1a1)](_0x23b330=>{const _0x138769=_0x3f6daf;_0x23b330&&!document[_0x138769(0x1a4)][_0x138769(0x283)][_0x138769(0x24b)](_0x138769(0x1db))&&(_0x23b330['style'][_0x138769(0x1ca)]='1',_0x23b330[_0x138769(0x1fa)]['pointerEvents']=_0x138769(0x268));});},0x96);if(window[_0x309024(0x246)]||window['supportBannerDismissed']||localStorage[_0x309024(0x1ec)](_0x309024(0x1fc))==='1')return;const _0x3aa248=window['scrollY'],_0x34f2c6=document[_0x309024(0x26d)][_0x309024(0x1af)]-window[_0x309024(0x1a6)];if(_0x34f2c6<=0x0)return;_0x3aa248/_0x34f2c6>=0.5&&(window[_0x309024(0x246)]=!![],document[_0x309024(0x27c)](_0x309024(0x1e5))[_0x309024(0x283)][_0x309024(0x228)]('visible'));},{'passive':!![]});let targetDonationUrl='';window[_0xc82ce(0x1ab)]=function(_0x10fe0d,_0x29eff0){const _0x5a475a=_0xc82ce,_0x3dd944=document[_0x5a475a(0x27c)](_0x5a475a(0x225)),_0x5367f1=document['getElementById'](_0x5a475a(0x1c9)),_0x2bea19=document[_0x5a475a(0x27c)]('modalConfirmBtn');targetDonationUrl=_0x29eff0,_0x5367f1['innerHTML']='You\x20are\x20about\x20to\x20donate\x20<strong>₹'+_0x10fe0d+_0x5a475a(0x299),_0x2bea19[_0x5a475a(0x260)]=function(){const _0x459afc=_0x5a475a;window[_0x459afc(0x25e)](targetDonationUrl,'_blank'),_0x3dd944[_0x459afc(0x283)][_0x459afc(0x20b)]('visible');},_0x3dd944[_0x5a475a(0x283)][_0x5a475a(0x228)](_0x5a475a(0x279));},window['closePaymentModal']=function(){const _0x3dd5a8=_0xc82ce;document['getElementById'](_0x3dd5a8(0x225))[_0x3dd5a8(0x283)][_0x3dd5a8(0x20b)](_0x3dd5a8(0x279));},window[_0xc82ce(0x25c)]=function(){const _0x3d5da3=_0xc82ce;window['closePaymentModal']();const _0x151fd2=prompt('Please\x20enter\x20your\x20Payment\x20Transaction\x20ID\x20/\x20Order\x20Reference\x20Code:');if(_0x151fd2===null)return;const _0xcc3dca=_0x151fd2[_0x3d5da3(0x1eb)](),_0x51b31c=0x6;_0xcc3dca[_0x3d5da3(0x236)]>=_0x51b31c?(alert(_0x3d5da3(0x1d0)),localStorage['setItem'](_0x3d5da3(0x1fc),'1'),window['location']['reload']()):alert(_0x3d5da3(0x209));},window[_0xc82ce(0x202)]=function(_0x21ed3f){const _0x3803a3=_0xc82ce,_0x261ff9=_0x21ed3f[_0x3803a3(0x1f4)][_0x3803a3(0x1f3)];if(_0x261ff9[_0x3803a3(0x283)][_0x3803a3(0x24b)]('custom-slider-wrapper')){_0x261ff9[_0x3803a3(0x1fa)][_0x3803a3(0x219)]=_0x261ff9[_0x3803a3(0x1fa)][_0x3803a3(0x219)]===_0x3803a3(0x1b7)?_0x3803a3(0x1f2):'block';if(_0x261ff9['style'][_0x3803a3(0x219)]===_0x3803a3(0x1b7)){const _0x13ae05=_0x261ff9[_0x3803a3(0x1e0)]('.apple-slider');_0x13ae05[_0x3803a3(0x1c7)]=0x32,window[_0x3803a3(0x1ce)](_0x13ae05);}}},window['handleSliderChange']=function(_0x1e4c72){const _0x1d619d=_0xc82ce,_0x7f0549=parseInt(_0x1e4c72[_0x1d619d(0x1c7)]),_0x3cfe4d=_0x1e4c72[_0x1d619d(0x284)]('.custom-slider-wrapper'),_0x3c09da=_0x3cfe4d[_0x1d619d(0x1e0)](_0x1d619d(0x1b8)),_0x690d63=_0x3cfe4d[_0x1d619d(0x1e0)](_0x1d619d(0x26c));let _0x23a340='';if(_0x7f0549===0x45)_0x23a340=_0x1d619d(0x23b);else{if(_0x7f0549===0xc8)_0x23a340=_0x1d619d(0x250);else{if(_0x7f0549<0x28)_0x23a340='Aye\x20Aye\x20Captain\x20☕';else{if(_0x7f0549<=0x44)_0x23a340=_0x1d619d(0x20d);else{if(_0x7f0549<0x64)_0x23a340=_0x1d619d(0x21d);else _0x7f0549<0x96?_0x23a340=_0x1d619d(0x1e3):_0x23a340=_0x1d619d(0x23f);}}}}_0x3c09da[_0x1d619d(0x27f)]=_0x23a340,_0x690d63['innerText']=_0x1d619d(0x24e)+_0x7f0549,_0x690d63[_0x1d619d(0x260)]=()=>window['promptDonation'](_0x7f0549,_0x1d619d(0x241)+_0x7f0549);};
+const firebaseConfig = {
+    apiKey: "AIzaSyDa5BLDx7qpepLpUkieA2Fg6M_QBiL_c9o",
+    authDomain: "neet-2026-omr.firebaseapp.com",
+    projectId: "neet-2026-omr",
+    storageBucket: "neet-2026-omr.firebasestorage.app",
+    messagingSenderId: "720446130844",
+    appId: "1:720446130844:web:c0a0048354ab506ee2bb59"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get('payment_sig') === 'rzp_success_9a8b7c6d5e4f3g2h1') {
+        localStorage.setItem('_x8f_p', '1');
+        window.history.replaceState({}, document.title, window.location.pathname);
+        alert("Payment successful! Thank you so much for your support. All premium features are now unlocked.");
+    }
+
+    if (localStorage.getItem('_x8f_p') === '1') {
+        document.getElementById('reportPaywall')?.classList.add('hidden');
+        document.getElementById('reportPreview')?.classList.add('unlocked');
+        document.getElementById('reportOptions').style.display = 'block';
+
+        document.getElementById('leaderboardPaywall')?.classList.add('hidden');
+        document.getElementById('leaderboardContainer')?.classList.add('unlocked');
+
+        const banner = document.getElementById('scrollSupportBanner');
+        if (banner) banner.style.display = 'none';
+        window.supportBannerDismissed = true;
+
+        const reminder = document.getElementById('dynamicDataReminder');
+        if (reminder) reminder.style.display = 'block';
+    }
+});
+
+const officialKeysMaster = { "50": {}, "60": {}, "70": {}, "80": {} };
+const rawKeys = {
+    "50": "4|4|4|3|1|3|1|1|4|4|1|1|3|2|2|2|3|1|3|3|4|2|3|3|4|Bonus|2|2|2|1|3|2|2|3|3|1|1|2,3|3|4|1|3|3|3|1|3|3|1|1|3|3|4|3|3|3|2|1|1|4|2|1|1|1|3|4|1|4|4|1|1|1|4|1|1|2|4|1|1|2|2|2|1|1|1|1|4|3|3|4|4|3|1|1|4|4|1|2|2|2|2|1|2|1|3|1|2|3|1|4|1|1|4|1|2|2|4|4|4|1|4|4|2|2|2|3|4|2|3|1|3|3|3|3|1|3|1|1|2|2|1|2|3|4|2|3|3|1|2|2|1|1|1|1|2|4|3|4|4|3|4|3|3|1|2|2|4|2|1|4|1|3|1|3|4|1|1|3|2|4|1",
+    "60": "3|2|2|4|1|1|2|3|1|3|3|4|4|3|1|3|4|1|3|4|1|2|1|2|1|4|2|2|3|2|3|1|1|4|1|1,4|1|1|1|3|3|1|Bonus|4|4|2|4|2|3|3|4|1|3|4|1|3|3|3|3|3|3|3|1|2|1|1|2|3|3|2|3|3|1|2|2|4|3|3|3|2|1|4|4|1|2|1|3|2|3|1|1|1|3|4|4|3|3|3|3|4|4|2|3|2|2|2|2|4|1|1|3|4|2|1|2|4|2|3|1|4|1|4|3|2|3|4|4|3|2|1|1|1|3|4|3|3|3|1|3|1|3|2|2|3|3|4|2|1|4|3|4|4|3|2|1|1|3|1|3|4|1|4|3|2|2|3|4|3|1|3|3|4|4|1|2|1|1|3|4|4",
+    "70": "4|1|4|2|4|2|2|3|2|4|2|1|1|3|4|4|4|2|1|2|4|3,4|1|3|4|2|4|4|3|3|1|1|1|4|2|4|3|2|2|Bonus|3|4|4|3|3|1|1|1|4|2|1|1|1|4|4|4|2|3|1|2|2|4|2|4|2|4|3|2|2|2|1|2|4|2|2|2|3|1|3|2|4|2|2|2|2|2|1|3|3|4|4|1|3|2|1|2|2|2|2|2|3|3|1|4|2|4|3|2|4|3|1|3|3|3|1|2|3|3|4|2|4|1|3|1|1|4|1|2|1|2|3|2|4|4|4|2|4|3|2|3|2|1|1|4|1|2|4|2|1|4|3|4|2|4|3|3|2|2|2|2|4|2|2|1|1|4|1|2|1|1|4|3|2|2|3|3|3|3|4|3",
+    "80": "4|Bonus|2|1|1,2|2|2|1|4|2|1|4|2|4|2|3|2|2|4|2|1|4|4|4|3|1|1|1|1|3|1|4|2|3|3|4|4|2|2|2|3|3|2|3|2|1|2|4|1|4|4|4|4|2|2|2|3|4|4|3|3|3|4|4|4|2|1|4|2|1|4|4|2|4|4|3|1|3|3|2|1|4|3|3|2|3|4|4|2|4|2|1|2|1|1|4|1|4|3|4|2|4|1|2|3|2|2|4|2|1|3|1|4|3|1|1|1|3|4|1|4|3|4|3|4|3|4|2|1|3|4|3|2|2|4|1|4|4|4|3|4|4|2|3|3|4|1|4|4|3|1|3|2|4|1|1|1|2|3|3|2|4|4|3|4|1|2|4|2|1|2|2|1|2|4|3|2|1|4|1"
+};
+
+Object.keys(rawKeys).forEach(set => {
+    const arr = rawKeys[set].split("|");
+    arr.forEach((ans, idx) => {
+        let qNum = String(idx + 1).padStart(3, '0');
+        officialKeysMaster[set][qNum] = ans;
+    });
+});
+
+let globalCSVText = "";
+let extractedAppNumber = "";
+let extractedFullName = "";
+let extractedSetCode = "";
+
+function maskName(name) {
+    if (!name) return "Student-****";
+    return name.split(' ').map(w => w.length <= 1 ? w.toUpperCase() : w[0].toUpperCase() + '****').join(' ');
+}
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('csvFile');
+const calcBtn = document.getElementById('calcBtn');
+const uploadText = document.getElementById('uploadText');
+
+['dragenter', 'dragover'].forEach(n => dropZone.addEventListener(n, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }));
+['dragleave', 'drop'].forEach(n => dropZone.addEventListener(n, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
+
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if(e.dataTransfer.files.length) handleFileLoad(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => {
+    if(e.target.files.length) handleFileLoad(e.target.files[0]);
+});
+
+function handleFileLoad(file) {
+    if (!file.name.toLowerCase().endsWith('.csv')) {
+        alert('Upload a valid .csv file.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const text = e.target.result;
+
+        const upperText = text.toUpperCase();
+        const hasHeaders = upperText.includes("APPLICATION") || upperText.includes("NAME") || upperText.includes("SET");
+        const hasQData = /\n\d+\s*,\s*[1-4\-]?/.test(text);
+
+        if (!hasHeaders && !hasQData) {
+            alert("Invalid CSV format! Please go to 'How to Extract OMR' and use the script provided to generate the correct file.");
+            fileInput.value = '';
+            return;
+        }
+
+        globalCSVText = text;
+        calcBtn.disabled = false;
+        calcBtn.classList.add('active');
+        dropZone.classList.add('uploaded');
+        uploadText.innerText = "CSV Ready! Click Calculate below.";
+        uploadText.style.color = "var(--success)";
+
+        const howToBtn = document.getElementById('howToBtn');
+        if (howToBtn) howToBtn.style.display = 'none';
+    };
+    reader.readAsText(file);
+}
+
+window.executeCalculation = function() {
+    if (!globalCSVText) return;
+    processMetrics(globalCSVText);
+    window.showSection('resultsSection', false);
+};
+
+function processMetrics(csvText) {
+    const structuralMap = {
+        "Physics":   { correct: 0, incorrect: 0, skipped: 0, net: 0, elements: [], reviewRows: [], id: "tab-phy" },
+        "Chemistry": { correct: 0, incorrect: 0, skipped: 0, net: 0, elements: [], reviewRows: [], id: "tab-chem" },
+        "Biology":   { correct: 0, incorrect: 0, skipped: 0, net: 0, elements: [], reviewRows: [], id: "tab-bio" }
+    };
+
+    let grandTotal = 0;
+    let totalCorrect = 0, totalIncorrect = 0, totalSkipped = 0;
+    const rows = csvText.split('\n');
+
+    for (let i = 0; i < Math.min(15, rows.length); i++) {
+        const rowUpper = rows[i].toUpperCase();
+        if (rowUpper.includes("APPLICATION") || rowUpper.includes("ROLL")) extractedAppNumber = rows[i].split(',')[1]?.trim();
+        if (rowUpper.includes("NAME")) extractedFullName = rows[i].split(',')[1]?.trim();
+        if (rowUpper.includes("SET") || rowUpper.includes("BOOKLET") || rowUpper.includes("PAPERCODE")) {
+            extractedSetCode = rows[i].split(',')[1]?.trim().toUpperCase();
+        }
+    }
+
+    if (!extractedAppNumber) extractedAppNumber = "GUEST" + Math.floor(Math.random() * 99999);
+    if (!extractedFullName) extractedFullName = "Anonymous Student";
+    if (!extractedSetCode) extractedSetCode = "50";
+
+    const targetAnswerKey = officialKeysMaster[extractedSetCode];
+    if (!targetAnswerKey) {
+        alert(`Error: Booklet code "${extractedSetCode}" is not registered in our database.`);
+        return;
+    }
+
+    const responseMap = {};
+    for (let i = 0; i < rows.length; i++) {
+        if (!rows[i].trim()) continue;
+        const fragments = rows[i].split(',');
+        if (fragments.length < 2) continue;
+        const num = parseInt(fragments[0].trim(), 10);
+        if (isNaN(num) || num < 1 || num > 180) continue;
+        responseMap[String(num).padStart(3, '0')] = fragments[1] ? fragments[1].trim() : "";
+    }
+
+    for (let num = 1; num <= 180; num++) {
+        const targetQ = String(num).padStart(3, '0');
+        const key = targetAnswerKey[targetQ];
+        if (!key) continue;
+
+        const sector = (num <= 45) ? "Physics" : (num <= 90) ? "Chemistry" : "Biology";
+        const ans = responseMap.hasOwnProperty(targetQ) ? responseMap[targetQ] : "";
+
+        if (key === "Bonus") {
+            structuralMap[sector].correct++; structuralMap[sector].net += 4; grandTotal += 4; totalCorrect++;
+            structuralMap[sector].elements.push(`<div class="q-item correct-item"><span>Q${targetQ}</span><div class="q-item-details"><span class="bonus-text">Bonus (+4)</span><br><small style="color:var(--text-muted)">Dropped by NTA</small></div></div>`);
+            structuralMap[sector].reviewRows.push({ q: targetQ, status: 'bonus', marked: ans, key: 'Bonus' });
+            continue;
+        }
+
+        if (ans === "" || ans === "-") {
+            structuralMap[sector].skipped++; totalSkipped++;
+            structuralMap[sector].elements.push(`<div class="q-item skipped-item"><span>Q${targetQ}</span><div class="q-item-details"><span style="color:var(--text-muted)">Skipped (0)</span><br><small style="color:var(--text-muted)">Your Ans: — | Key: ${key}</small></div></div>`);
+            structuralMap[sector].reviewRows.push({ q: targetQ, status: 'skipped', marked: '', key: key });
+        } else {
+            const validOptions = key.includes(",") ? key.split(",") : [key];
+            const isMultipleMarked = ans.replace(/[^1-4]/g, '').length > 1;
+
+            if (!isMultipleMarked && validOptions.includes(ans)) {
+                structuralMap[sector].correct++; structuralMap[sector].net += 4; grandTotal += 4; totalCorrect++;
+                structuralMap[sector].elements.push(`<div class="q-item correct-item"><span>Q${targetQ}</span><div class="q-item-details"><span class="correct-text">Correct (+4)</span><br><small style="color:var(--text-muted)">Your Ans: ${ans} | Key: ${key}</small></div></div>`);
+                structuralMap[sector].reviewRows.push({ q: targetQ, status: 'correct', marked: ans, key: key });
+            } else {
+                let reason = isMultipleMarked ? "Multiple Marked" : "Incorrect";
+                structuralMap[sector].incorrect++; structuralMap[sector].net -= 1; grandTotal -= 1; totalIncorrect++;
+                structuralMap[sector].elements.push(`<div class="q-item incorrect-item"><span>Q${targetQ}</span><div class="q-item-details"><span class="wrong-text">${reason} (-1)</span><br><small style="color:var(--text-muted)">Your Ans: ${ans} | Key: ${key}</small></div></div>`);
+                structuralMap[sector].reviewRows.push({ q: targetQ, status: 'incorrect', marked: ans, key: key });
+            }
+        }
+    }
+
+    const totalAttempted = totalCorrect + totalIncorrect;
+    renderDashboard(structuralMap, grandTotal, totalCorrect, totalIncorrect, totalSkipped, totalAttempted);
+}
+
+function renderDashboard(map, total, totalCorrect, totalIncorrect, totalSkipped, totalAttempted) {
+    document.getElementById('grandTotal').innerHTML = `${total}<span>/720</span>`;
+    const accuracyPct = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
+
+    document.getElementById('accuracyMetric').innerText = `Accuracy: ${accuracyPct}% (${totalAttempted} attempted out of 180, ${totalCorrect} correct)`;
+    document.getElementById('setMetric').innerText = `Booklet Set: ${extractedSetCode}`;
+
+    const positiveMarks = totalCorrect * 4;
+    const negativeMarks = totalIncorrect * 1;
+
+    document.getElementById('overallStatsGrid').innerHTML = `
+        <div class="stat-chip correct-chip"><span class="stat-value">${totalCorrect}</span><span class="stat-label">Total Correct</span></div>
+        <div class="stat-chip incorrect-chip"><span class="stat-value">${totalIncorrect}</span><span class="stat-label">Total Incorrect</span></div>
+        <div class="stat-chip skipped-chip"><span class="stat-value">${totalSkipped}</span><span class="stat-label">Total Skipped</span></div>
+        <div class="stat-chip positive-chip"><span class="stat-value">+${positiveMarks}</span><span class="stat-label">Positive Marks</span></div>
+        <div class="stat-chip negative-chip"><span class="stat-value">-${negativeMarks}</span><span class="stat-label">Negative Penalty</span></div>
+    `;
+
+    const grid = document.getElementById('subjectGrid');
+    grid.innerHTML = "";
+    const subjectClass = { Physics: 'phy', Chemistry: 'chem', Biology: 'bio' };
+    const subjectEmoji = { Physics: '⚛️', Chemistry: '🧪', Biology: '🧬' };
+
+    Object.keys(map).forEach(k => {
+        const d = map[k];
+        const maxScore = (k === "Biology") ? 360 : 180;
+        grid.innerHTML += `
+            <div class="subject-card ${subjectClass[k]}">
+                <h3><span>${subjectEmoji[k]}</span> ${k}</h3>
+                <div class="stat-row"><span>Correct</span><span class="correct-text">${d.correct}</span></div>
+                <div class="stat-row"><span>Incorrect</span><span class="wrong-text">${d.incorrect}</span></div>
+                <div class="stat-row"><span>Skipped</span><span>${d.skipped}</span></div>
+                <div class="stat-row" style="font-weight:700; margin-top:10px; padding-top:10px; border-top:1px solid rgba(0,0,0,0.08)"><span>Subtotal</span><span>${d.net} / ${maxScore}</span></div>
+            </div>
+        `;
+        document.getElementById(d.id).innerHTML = d.elements.length ? d.elements.join('') : '<p>No data</p>';
+    });
+
+    window._lastReportData = { total, map };
+    document.getElementById('premiumTabsCard').style.display = 'block';
+
+    executeCloudSync(total, map);
+}
+
+// ===== LEADERBOARD: fetch once, sort/render locally =====
+
+window._leaderboardRaw = [];
+
+async function executeCloudSync(score, map) {
+    const safeName = maskName(extractedFullName);
+
+    try {
+        await db.collection("leaderboard").doc(extractedAppNumber).set({
+            name: safeName,
+            score: score,
+            phy: map["Physics"].net, chem: map["Chemistry"].net, bio: map["Biology"].net,
+            set: extractedSetCode,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    } catch(e) { console.error(e); }
+
+    try {
+        const snaps = await db.collection("leaderboard").get();
+        window._leaderboardRaw = [];
+        snaps.forEach((docRef) => {
+            const data = docRef.data();
+            window._leaderboardRaw.push({
+                id: docRef.id,
+                name: data.name || "Anonymous",
+                score: data.score || 0,
+                phy: data.phy || 0,
+                chem: data.chem || 0,
+                bio: data.bio || 0,
+                set: data.set || 'N/A'
+            });
+        });
+        window.renderLeaderboard();
+    } catch (err) { console.error(err); }
+}
+
+// Re-sorts and re-draws the leaderboard from already-fetched data.
+// Called on initial load and whenever the sort/order dropdowns change —
+// no extra database read needed.
+window.renderLeaderboard = function() {
+    const data = window._leaderboardRaw || [];
+    const sortBySelect = document.getElementById('lbSortBy');
+    const orderSelect = document.getElementById('lbOrder');
+    const sortBy = sortBySelect ? sortBySelect.value : 'score';
+    const order = orderSelect ? orderSelect.value : 'desc';
+
+    const sorted = [...data].sort((a, b) => {
+        const diff = (b[sortBy] || 0) - (a[sortBy] || 0);
+        return order === 'asc' ? -diff : diff;
+    });
+
+    let rank = 0;
+    let userRank = null;
+    let htmlStr = "";
+
+    sorted.forEach((entry) => {
+        rank++;
+        if (entry.id === extractedAppNumber) userRank = rank;
+        htmlStr += `
+            <div class="leaderboard-row">
+                <div class="lb-top-row">
+                    <span><span class="lb-rank">#${rank}</span>${entry.name}</span>
+                    <span style="color:var(--accent)">${entry.score} / 720</span>
+                </div>
+                <div class="lb-sub-row">
+                    <span>Phy: ${entry.phy}</span><span>Chem: ${entry.chem}</span><span>Bio: ${entry.bio}</span>
+                    <span>Code: ${entry.set}</span>
+                </div>
+            </div>
+        `;
+    });
+
+    if (htmlStr === "") htmlStr = "<p style='text-align:center; color:var(--text-muted); padding: 20px;'>No scores yet. Be the first!</p>";
+    document.getElementById('leaderboardContainer').innerHTML = htmlStr;
+
+    const rankDisplay = document.getElementById('userRankDisplay');
+    if (rankDisplay) {
+        rankDisplay.innerText = userRank ? `Your rank: ${userRank} out of ${sorted.length}` : `Your rank: Not found`;
+    }
+};
+
+window.generateComprehensiveReport = function() {
+    if (!window._lastReportData) { alert('Please calculate your score first.'); return; }
+    const { total, map } = window._lastReportData;
+    const reportDiv = document.getElementById('comprehensiveReport');
+    const mode = (document.querySelector('input[name="reportMode"]:checked') || {}).value || 'incorrect';
+    const modeLabel = { incorrect: 'Incorrect Questions Only', skipped: 'Skipped Questions Only', all: 'All Questions' }[mode];
+
+    let html = `
+      <div class="report-header">
+        <h1>Re-NEET 2026 — Comprehensive Score Report</h1>
+        <p><strong>Candidate:</strong> ${extractedFullName} &nbsp;|&nbsp; <strong>Application No:</strong> ${extractedAppNumber} &nbsp;|&nbsp; <strong>Booklet Set:</strong> ${extractedSetCode}</p>
+        <p><strong>Report Type:</strong> ${modeLabel}</p>
+        <h2>Total Marks: ${total} / 720</h2>
+      </div>`;
+
+    Object.keys(map).forEach(subject => {
+        const d = map[subject];
+        const maxScore = (subject === "Biology") ? 360 : 180;
+        html += `<div class="report-subject">
+            <h3>${subject} — Score: ${d.net} / ${maxScore}</h3>
+            <p>Correct: ${d.correct} &nbsp; Incorrect: ${d.incorrect} &nbsp; Skipped: ${d.skipped}</p>`;
+
+        let rows;
+        if (mode === 'incorrect') rows = d.reviewRows.filter(r => r.status === 'incorrect');
+        else if (mode === 'skipped') rows = d.reviewRows.filter(r => r.status === 'skipped');
+        else rows = d.reviewRows;
+
+        if (rows.length) {
+            html += `<table class="report-table"><thead><tr><th>Question</th><th>Status</th><th>Your Answer</th><th>Correct Answer</th></tr></thead><tbody>`;
+            rows.forEach(r => {
+                html += `<tr><td>Q${r.q}</td><td style="text-transform:capitalize">${r.status}</td><td>${r.marked || '—'}</td><td>${r.key}</td></tr>`;
+            });
+            html += `</tbody></table>`;
+        } else {
+            html += `<p>No questions match this report type in this section. 🎉</p>`;
+        }
+        html += `</div>`;
+    });
+
+    reportDiv.innerHTML = html;
+    document.body.classList.add('printing-report');
+    window.print();
+    setTimeout(() => document.body.classList.remove('printing-report'), 500);
+};
+
+window.toggleSidebar = function() { document.getElementById('sidebar').classList.toggle('open'); }
+
+window.showSection = function(sectionId, fromMenu = false) {
+    document.getElementById('uploadCard').style.display = 'none';
+    document.getElementById('instructionsSection').style.display = 'none';
+    document.getElementById('resultsSection').style.display = 'none';
+    document.getElementById('leaderboardSection').style.display = 'none';
+    document.getElementById('premiumTabsCard').style.display = 'none';
+
+    const mainTitles = document.getElementById('pageHeaderGroup');
+    const isLeaderboard = (sectionId === 'leaderboardSection');
+
+    document.body.classList.toggle('hide-top-ui', isLeaderboard);
+
+    if (sectionId === 'uploadCard') {
+        if (mainTitles) mainTitles.style.display = 'block';
+    } else {
+        if (mainTitles) mainTitles.style.display = 'none';
+    }
+
+    if (sectionId === 'resultsSection' && window._lastReportData) {
+        document.getElementById('resultsSection').style.display = 'block';
+        document.getElementById('premiumTabsCard').style.display = 'block';
+    } else if (sectionId === 'resultsSection' && !window._lastReportData) {
+        document.getElementById('uploadCard').style.display = 'block';
+        if (mainTitles) mainTitles.style.display = 'block';
+    } else {
+        const target = document.getElementById(sectionId);
+        if(target) target.style.display = 'block';
+    }
+
+    if (fromMenu) window.toggleSidebar();
+}
+
+window.handlePrintReportCardClick = function(fromMenu = false) {
+    if (fromMenu) window.toggleSidebar();
+
+    if (localStorage.getItem('_x8f_p') === '1') {
+        window.showSection('resultsSection', false);
+        window.switchUnlockTab('report');
+        const target = document.getElementById('premiumTabsCard');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        if (window._lastReportData) {
+            window.showSection('resultsSection', false);
+            window.switchUnlockTab('report');
+            const target = document.getElementById('premiumTabsCard');
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            const banner = document.getElementById('scrollSupportBanner');
+            if (banner) {
+                banner.classList.add('visible');
+                banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                alert("Please consider making a small donation to support this project and unlock printing capabilities!");
+            }
+        }
+    }
+}
+
+window.switchTab = function(id, event) {
+    document.querySelectorAll('.q-list').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.q-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    if (event && event.target) {
+        event.target.classList.add('active');
+    } else if (window.event && window.event.target) {
+        window.event.target.classList.add('active');
+    }
+
+    window.applyReviewFilter();
+}
+
+window.applyReviewFilter = function() {
+    const filterVal = document.getElementById('reviewFilter').value;
+    const items = document.querySelectorAll('.q-item');
+    items.forEach(item => {
+        if (filterVal === 'all') { item.style.display = 'flex'; }
+        else if (item.classList.contains(filterVal + '-item')) { item.style.display = 'flex'; }
+        else { item.style.display = 'none'; }
+    });
+}
+
+window.switchUnlockTab = function(which) {
+    document.getElementById('unlockTabBtn-report').classList.toggle('active', which === 'report');
+    document.getElementById('unlockTabBtn-leaderboard').classList.toggle('active', which === 'leaderboard');
+    document.getElementById('unlockPanel-report').classList.toggle('active', which === 'report');
+    document.getElementById('unlockPanel-leaderboard').classList.toggle('active', which === 'leaderboard');
+
+    if (which === 'leaderboard') {
+        window.showSection('leaderboardSection', false);
+        window.scrollTo({ top: document.getElementById('leaderboardSection').offsetTop - 20, behavior: 'smooth' });
+    }
+}
+
+window.scrollToLeaderboardUnlock = function() {
+    window.switchUnlockTab('leaderboard');
+    const target = document.getElementById('premiumTabsCard');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.supportBannerShown = false;
+window.supportBannerDismissed = false;
+
+window.dismissSupportBanner = function() {
+    window.supportBannerDismissed = true;
+    document.getElementById('scrollSupportBanner').classList.remove('visible');
+};
+
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    const topElements = [document.getElementById('shareWidget'), document.getElementById('hamburgerBtn'), document.getElementById('themeToggle')];
+
+    topElements.forEach(el => {
+        if (el && !document.body.classList.contains('hide-top-ui')) {
+            el.style.opacity = '0';
+            el.style.pointerEvents = 'none';
+        }
+    });
+
+    clearTimeout(scrollTimeout);
+
+    scrollTimeout = setTimeout(() => {
+        const currentScroll = window.scrollY;
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        if (totalHeight <= 0 || (currentScroll / totalHeight) <= 0.10 || currentScroll < 50) {
+            topElements.forEach(el => {
+                if (el && !document.body.classList.contains('hide-top-ui')) {
+                    el.style.opacity = '1';
+                    el.style.pointerEvents = 'auto';
+                }
+            });
+        }
+    }, 150);
+
+    if (window.supportBannerShown || window.supportBannerDismissed || localStorage.getItem('_x8f_p') === '1') return;
+
+    const scrollPos = window.scrollY;
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (pageHeight <= 0) return;
+    if (scrollPos / pageHeight >= 0.5) {
+        window.supportBannerShown = true;
+        document.getElementById('scrollSupportBanner').classList.add('visible');
+    }
+}, { passive: true });
+
+let targetDonationUrl = "";
+
+window.promptDonation = function(amount, checkoutUrl) {
+    const modal = document.getElementById('paymentModal');
+    const desc = document.getElementById('modalDescription');
+    const confirmBtn = document.getElementById('modalConfirmBtn');
+
+    targetDonationUrl = checkoutUrl;
+
+    desc.innerHTML = `You are about to donate <strong>₹${amount}</strong> to support project development.<br><br>🚨 <strong>CRITICAL:</strong> Once payment succeeds, please wait 5-10 seconds for the bank gateway to automatically redirect you back so features unlock instantly.`;
+
+    confirmBtn.onclick = function() {
+        window.open(targetDonationUrl, '_blank');
+        modal.classList.remove('visible');
+    };
+
+    modal.classList.add('visible');
+};
+
+window.closePaymentModal = function() {
+    document.getElementById('paymentModal').classList.remove('visible');
+};
+
+// Manual "stuck payment" recovery prompt.
+// NOTE: this only checks that the input looks long enough to plausibly be a
+// real transaction ID (most gateway txn IDs are 6+ alphanumeric characters).
+// It does NOT verify anything against Razorpay/PayU or your Firestore records —
+// for real protection this needs a server-side check (e.g. a Cloud Function
+// that confirms the txn ID against the payment gateway's API or a webhook-
+// written Firestore doc) before you rely on it to gate paid content.
+window.openMissingPaymentPrompt = function() {
+    window.closePaymentModal();
+    const orderRef = prompt("Please enter your Payment Transaction ID / Order Reference Code:");
+    if (orderRef === null) return; // user cancelled
+
+    const trimmed = orderRef.trim();
+    const MIN_TXN_LENGTH = 6;
+
+    if (trimmed.length >= MIN_TXN_LENGTH) {
+        alert("Sorry for the inconvenience — your leaderboard access has been unlocked.");
+        localStorage.setItem('_x8f_p', '1');
+        window.location.reload();
+    } else {
+        alert("That doesn't look like a valid transaction ID. Please double-check your payment confirmation and try again.");
+    }
+};
+
+window.toggleCustomSlider = function(btn) {
+    const container = btn.parentElement.nextElementSibling;
+    if (container.classList.contains('custom-slider-wrapper')) {
+        container.style.display = container.style.display === 'block' ? 'none' : 'block';
+        if (container.style.display === 'block') {
+            const slider = container.querySelector('.apple-slider');
+            slider.value = 50;
+            window.handleSliderChange(slider);
+        }
+    }
+};
+
+window.handleSliderChange = function(slider) {
+    const val = parseInt(slider.value);
+    const wrapper = slider.closest('.custom-slider-wrapper');
+    const cheer = wrapper.querySelector('.slider-cheer-text');
+    const finalBtn = wrapper.querySelector('.final-custom-btn');
+
+    let comment = "";
+    if (val === 69) {
+        comment = "You sure? 😏";
+    } else if (val === 200) {
+        comment = "Too generous! 😭💖";
+    } else if (val < 40) {
+        comment = "Aye Aye Captain ☕";
+    } else if (val <= 68) {
+        comment = "Lala lalalala🍕";
+    } else if (val < 100) {
+        comment = "Paisa hi paisa Hogaaa 🚀";
+    } else if (val < 150) {
+        comment = "Shukriya bade saabzii🎉";
+    } else {
+        comment = "Din ba gaya mera 😊";
+    }
+
+    cheer.innerText = comment;
+    finalBtn.innerText = `Donate ₹${val}`;
+
+    finalBtn.onclick = () => window.promptDonation(val, `YOUR_PAYU_DYNAMIC_LINK?amount=${val}`);
+};
