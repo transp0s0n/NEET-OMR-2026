@@ -16,10 +16,20 @@ let extractedAppNumber = "";
 let extractedFullName = "";
 let extractedSetCode = "";
 
+// AUTO-RESTORE PERSISTENT DATA ON LOAD
+window.addEventListener('load', function() {
+    const savedCSV = localStorage.getItem('savedOMR_CSV');
+    if (savedCSV) {
+        globalCSVText = savedCSV;
+        processMetrics(savedCSV);
+        window.showSection('resultsSection', false);
+    }
+});
+
 const officialKeysMaster = { "50": {}, "60": {}, "70": {}, "80": {} };
 const rawKeys = {
-    "50": "4|4|4|3|1|3|1|1|4|4|1|1|3|2|2|2|3|1|3|3|4|2|3|3|4|Bonus|2|2|2|1|3|2|2|3|3|1|1|2,3|3|4|1|3|3|3|1|3|3|1|1|3|3|4|3|3|3|2|1|1|4|2|1|1|1|3|4|1|4|4|1|1|1|4|1|1|2|4|1|1|2|2|2|1|1|1|1|4|3|3|4|4|3|1|1|4|4|1|2|2|2|2|1|2|1|3|1|2|3|1|4|1|1|4|1|2|2|4|4|4|1|4|4|2|2|2|3|4|2|3|1|3|3|3|3|1|3|1|1|2|2|1|2|3|4|2|3|3|1|2|2|1|1|1|1|2|4|3|4|4|3|4|3|3|1|2|2|4|2|1|4|1|3|1|3|4|1|1|3|2|4|1",
-    "60": "3|2|2|4|1|1|2|3|1|3|3|4|4|3|1|3|4|1|3|4|1|2|1|2|1|4|2|2|3|2|3|1|1|4|1|1,4|1|1|1|3|3|1|Bonus|4|4|2|4|2|3|3|4|1|3|4|1|3|3|3|3|3|3|3|1|2|1|1|2|3|3|2|3|3|1|2|2|4|3|3|3|2|1|4|4|1|2|1|3|2|3|1|1|1|3|4|4|3|3|3|3|4|4|2|3|2|2|2|2|4|1|1|3|4|2|1|2|4|2|3|1|4|1|4|3|2|3|4|4|3|2|1|1|1|3|4|3|3|3|1|3|1|3|2|2|3|3|4|2|1|4|3|4|4|3|2|1|1|3|1|3|4|1|4|3|2|2|3|4|3|1|3|3|4|4|1|2|1|1|3|4|4",
+    "50": "4|4|4|3|1|3|1|1|4|4|1|1|3|2|2|2|3|1|3|3|4|2|3|3|4|Bonus|2|2|2|1|3|2|2|3|3|1|1|2, 3|3|4|1|3|3|3|1|3|3|1|1|3|3|4|3|3|3|2|1|1|4|2|1|1|1|3|4|1|4|4|1|1|1|4|1|1|2|4|1|1|2|2|2|1|1|1|1|4|3|3|4|4|3|1|1|4|4|1|2|2|2|2|1|2|1|3|1|2|3|1|4|1|1|4|1|2|2|4|4|4|1|4|4|2|2|2|3|4|2|3|1|3|3|3|3|1|3|1|1|2|2|1|2|3|4|2|3|3|1|2|2|1|1|1|1|2|4|3|4|4|3|4|3|3|1|2|2|4|2|1|4|1|3|1|3|4|1|1|3|2|4|1",
+    "60": "3|2|2|4|1|1|2|3|1|3|3|4|4|3|1|3|4|1|3|4|1|2|1|2|1|4|2|2|3|2|3|1|1|4|1|1,4|1|1|1|3|3|1|Bonus|4|4|2|4|2|3|3|4|1|3|4|1|3|3|3|3|3|3|3|1|2|1|1|2|3|3|2|3|3|1|2|2|4|3|3|3|2|1|4|4|1|2|1|3|2|3|1|1|1|3|4|4|3|3|3|3|4|4|2|3|2|2|2|2|4|1|1|3|4|2|1|2|4|2|3|1|4|1|4|3|2|3|4|4|3|2|1|1|1|3|4|3|3|3|2|2|2|3|1|2|3|3|4|2|1|4|3|4|4|3|2|1|1|3|1|3|4|1|4|3|2|2|3|4|3|1|3|3|4|4|1|2|1|1|3|4|4",
     "70": "4|1|4|2|4|2|2|3|2|4|2|1|1|3|4|4|4|2|1|2|4|3,4|1|3|4|2|4|4|3|3|1|1|1|4|2|4|3|2|2|Bonus|3|4|4|3|3|1|1|1|4|2|1|1|1|4|4|4|2|3|1|2|2|4|2|4|2|4|3|2|2|2|1|2|4|2|2|2|3|1|3|2|4|2|2|2|2|2|1|3|3|4|4|1|3|2|1|2|2|2|2|2|3|3|1|4|2|4|3|2|4|3|1|3|3|3|1|2|3|3|4|2|4|1|3|1|1|4|1|2|1|2|3|2|4|4|4|2|4|3|2|3|2|1|1|4|1|2|4|2|1|4|3|4|2|4|3|3|2|2|2|2|4|2|2|1|1|4|1|2|1|1|4|3|2|2|3|3|3|3|4|3",
     "80": "4|Bonus|2|1|1,2|2|2|1|4|2|1|4|2|4|2|3|2|2|4|2|1|4|4|4|3|1|1|1|1|3|1|4|2|3|3|4|4|2|2|2|3|3|2|3|2|1|2|4|1|4|4|4|4|2|2|2|3|4|4|3|3|3|4|4|4|2|1|4|2|1|4|4|2|4|4|3|1|3|3|2|1|4|3|3|2|3|4|4|2|4|2|1|2|1|1|4|1|4|3|4|2|4|1|2|3|2|2|4|2|1|3|1|4|3|1|1|1|3|4|1|4|3|4|3|4|3|4|2|1|3|4|3|2|2|4|1|4|4|4|3|4|4|2|3|3|4|1|4|4|3|1|3|2|4|1|1|1|2|3|3|2|4|4|3|4|1|2|4|2|1|2|2|1|2|4|3|2|1|4|1"
 };
@@ -36,6 +46,24 @@ function maskName(name) {
     if (!name) return "Student-****";
     return name.split(' ').map(w => w.length <= 1 ? w.toUpperCase() : w[0].toUpperCase() + '****').join(' ');
 }
+
+// CLEAR SAVED LOCAL STORAGE DATA
+window.clearSavedData = function() {
+    if(confirm("Are you sure you want to clear your saved OMR data and calculate again?")) {
+        localStorage.removeItem('savedOMR_CSV');
+        globalCSVText = "";
+        window._lastReportData = null;
+        document.getElementById('csvFile').value = '';
+        
+        // Reset Upload UI
+        document.getElementById('uploadText').innerText = "Choose Response CSV File";
+        document.getElementById('uploadText').style.color = "";
+        document.getElementById('calcBtn').disabled = true;
+        document.getElementById('calcBtn').classList.remove('active');
+        document.getElementById('dropZone').classList.remove('uploaded');
+        window.showSection('uploadCard', false);
+    }
+};
 
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('csvFile');
@@ -74,6 +102,10 @@ function handleFileLoad(file) {
         }
 
         globalCSVText = text;
+        
+        // Persist data locally so users don't have to upload on refresh
+        localStorage.setItem('savedOMR_CSV', text);
+
         calcBtn.disabled = false;
         calcBtn.classList.add('active');
         dropZone.classList.add('uploaded');
