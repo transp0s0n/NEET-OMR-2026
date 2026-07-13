@@ -15,29 +15,6 @@ let globalCSVText = "";
 let extractedAppNumber = "";
 let extractedFullName = "";
 let extractedSetCode = "";
-let paymentListenerUnsubscribe = null;
-
-window.addEventListener('load', function() {
-    if (localStorage.getItem('_x8f_p') === '1') {
-        unlockPremiumUI();
-    }
-});
-
-function unlockPremiumUI() {
-    document.getElementById('reportPaywall')?.classList.add('hidden');
-    document.getElementById('reportPreview')?.classList.add('unlocked');
-    document.getElementById('reportOptions').style.display = 'block';
-
-    document.getElementById('leaderboardPaywall')?.classList.add('hidden');
-    document.getElementById('leaderboardContainer')?.classList.add('unlocked');
-
-    const banner = document.getElementById('scrollSupportBanner');
-    if (banner) banner.style.display = 'none';
-    window.supportBannerDismissed = true;
-
-    const reminder = document.getElementById('dynamicDataReminder');
-    if (reminder) reminder.style.display = 'block';
-}
 
 const officialKeysMaster = { "50": {}, "60": {}, "70": {}, "80": {} };
 const rawKeys = {
@@ -145,11 +122,6 @@ function processMetrics(csvText) {
         return;
     }
 
-    // SERVER SIDE VERIFICATION INIT: Start listening to this user's payment document in Firestore
-    if (localStorage.getItem('_x8f_p') !== '1' && extractedAppNumber && !extractedAppNumber.startsWith("GUEST")) {
-        setupServerSidePaymentListener(extractedAppNumber);
-    }
-
     const responseMap = {};
     for (let i = 0; i < rows.length; i++) {
         if (!rows[i].trim()) continue;
@@ -198,31 +170,6 @@ function processMetrics(csvText) {
 
     const totalAttempted = totalCorrect + totalIncorrect;
     renderDashboard(structuralMap, grandTotal, totalCorrect, totalIncorrect, totalSkipped, totalAttempted);
-}
-
-// REALTIME LISTENER FOR FIREBASE SERVER SIDE WEBHOOK
-function setupServerSidePaymentListener(appNum) {
-    if (paymentListenerUnsubscribe) {
-        paymentListenerUnsubscribe();
-    }
-    // Listens to a document in 'payments' collection where the Document ID is the Student's App Number
-    paymentListenerUnsubscribe = db.collection("payments").doc(appNum).onSnapshot((doc) => {
-        if (doc.exists && doc.data().isPremium === true) {
-            if (localStorage.getItem('_x8f_p') !== '1') {
-                localStorage.setItem('_x8f_p', '1');
-                unlockPremiumUI();
-                
-                // Automatically close the modal and alert if they are currently buying
-                const modal = document.getElementById('paymentModal');
-                if (modal.classList.contains('visible')) {
-                    modal.classList.remove('visible');
-                    alert("Payment Successfully Confirmed! All Premium features unlocked 🎉");
-                }
-            }
-        }
-    }, (error) => {
-        console.error("Payment listener error: ", error);
-    });
 }
 
 function renderDashboard(map, total, totalCorrect, totalIncorrect, totalSkipped, totalAttempted) {
@@ -352,13 +299,13 @@ window.generateComprehensiveReport = function() {
     const reportDiv = document.getElementById('comprehensiveReport');
     
     const mode = (document.querySelector('input[name="reportMode"]:checked') || {}).value || 'incorrect';
-    const modeLabel = { incorrect: 'Incorrect Questions Only', skipped: 'Skipped Questions Only', all: 'All Questions' }[mode];
+    const modeLabel = { incorrect: 'Incorrect Questions Only', skipped: 'Skipped Questions Only', all: 'All Questions' };
 
     let html = `
       <div class="report-header">
         <h1>Re-NEET 2026 — Comprehensive Score Report</h1>
         <p><strong>Candidate:</strong> ${extractedFullName} &nbsp;|&nbsp; <strong>Application No:</strong> ${extractedAppNumber} &nbsp;|&nbsp; <strong>Booklet Set:</strong> ${extractedSetCode}</p>
-        <p><strong>Report Type:</strong> ${modeLabel}</p>
+        <p><strong>Report Type:</strong> ${modeLabel[mode]}</p>
         <h2>Total Marks: ${total} / 720</h2>
       </div>`;
 
@@ -438,25 +385,13 @@ window.showSection = function(sectionId, fromMenu = false) {
 window.handlePrintReportCardClick = function(fromMenu = false) {
     if (fromMenu) window.toggleSidebar();
 
-    if (localStorage.getItem('_x8f_p') === '1') {
+    if (window._lastReportData) {
         window.showSection('resultsSection', false);
         window.switchUnlockTab('report');
         const target = document.getElementById('premiumTabsCard');
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-        if (window._lastReportData) {
-            window.showSection('resultsSection', false);
-            window.switchUnlockTab('report');
-            const target = document.getElementById('premiumTabsCard');
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            const banner = document.getElementById('scrollSupportBanner');
-            if (banner) {
-                banner.classList.add('visible');
-            } else {
-                alert("Please calculate your score first!");
-            }
-        }
+        alert("Please calculate your score first!");
     }
 }
 
@@ -503,14 +438,6 @@ window.scrollToLeaderboardUnlock = function() {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-window.supportBannerShown = false;
-window.supportBannerDismissed = false;
-
-window.dismissSupportBanner = function() {
-    window.supportBannerDismissed = true;
-    document.getElementById('scrollSupportBanner').classList.remove('visible');
-};
-
 let scrollTimeout;
 window.addEventListener('scroll', () => {
     const topElements = [document.getElementById('shareWidget'), document.getElementById('hamburgerBtn'), document.getElementById('themeToggle')];
@@ -537,78 +464,4 @@ window.addEventListener('scroll', () => {
             });
         }
     }, 150);
-
-    if (window.supportBannerShown || window.supportBannerDismissed || localStorage.getItem('_x8f_p') === '1') return;
-
-    const scrollPos = window.scrollY;
-    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (pageHeight <= 0) return;
-    
-    // Show sliding banner when user scrolls 40% down the page
-    if (scrollPos / pageHeight >= 0.4) {
-        window.supportBannerShown = true;
-        document.getElementById('scrollSupportBanner').classList.add('visible');
-    }
 }, { passive: true });
-
-// BLANK SPACE FOR YOUR PAYMENT GATEWAY URL
-let targetDonationUrl = ""; 
-
-window.promptDonation = function(amount) {
-    // -------------------------------------------------------------
-    // PUT YOUR ACTUAL PAYMENT GATEWAY GENERATION LINK OR PAGE HERE
-    // You can pass the app number (extractedAppNumber) via URL params 
-    // so your webhook knows which user paid!
-    // -------------------------------------------------------------
-    targetDonationUrl = `https://your-payment-gateway-link.com/pay?amount=${amount}&uid=${extractedAppNumber}`;
-
-    const modal = document.getElementById('paymentModal');
-    const desc = document.getElementById('modalDescription');
-    const confirmBtn = document.getElementById('modalConfirmBtn');
-
-    desc.innerHTML = `You are about to donate <strong>₹${amount}</strong> to support project development.<br><br>🚨 <strong>CRITICAL:</strong> Please wait a few seconds after the payment succeeds. Your features will automatically unlock here via the cloud!`;
-
-    confirmBtn.onclick = function() {
-        window.open(targetDonationUrl, '_blank');
-        modal.classList.remove('visible');
-    };
-
-    modal.classList.add('visible');
-};
-
-window.closePaymentModal = function() {
-    document.getElementById('paymentModal').classList.remove('visible');
-};
-
-window.toggleCustomSlider = function(btn) {
-    const container = btn.parentElement.nextElementSibling;
-    if (container.classList.contains('custom-slider-wrapper')) {
-        container.style.display = container.style.display === 'block' ? 'none' : 'block';
-        if (container.style.display === 'block') {
-            const slider = container.querySelector('.apple-slider');
-            slider.value = 50;
-            window.handleSliderChange(slider);
-        }
-    }
-};
-
-window.handleSliderChange = function(slider) {
-    const val = parseInt(slider.value);
-    const wrapper = slider.closest('.custom-slider-wrapper');
-    const cheer = wrapper.querySelector('.slider-cheer-text');
-    const finalBtn = wrapper.querySelector('.final-custom-btn');
-
-    let comment = "";
-    if (val === 69) comment = "You sure? 😏";
-    else if (val === 200) comment = "Too generous! 😭💖";
-    else if (val < 40) comment = "Aye Aye Captain ☕";
-    else if (val <= 68) comment = "Lala lalalala🍕";
-    else if (val < 100) comment = "Paisa hi paisa Hogaaa 🚀";
-    else if (val < 150) comment = "Shukriya bade saabzii🎉";
-    else comment = "Din ba gaya mera 😊";
-
-    cheer.innerText = comment;
-    finalBtn.innerText = `Donate ₹${val}`;
-
-    finalBtn.onclick = () => window.promptDonation(val);
-};
