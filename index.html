@@ -291,7 +291,7 @@
         }
         .back-results-btn:hover { background: rgba(0, 113, 227, 0.15); transform: translateY(-1px); }
 
-        /* COMPREHENSIVE REPORT PRINTING CSS (FIXED) */
+        /* COMPREHENSIVE REPORT PRINTING CSS */
         #comprehensiveReport { display: none; }
         
         body.printing-report {
@@ -320,6 +320,18 @@
 
         body.dark-mode .card { background: var(--glass-bg); box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06); }
         body.dark-mode .upload-area { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.15); }
+
+        /* ===== MOBILE INSTRUCTIONS CSS ===== */
+        .mobile-tutorial { padding-left: 20px; color: var(--text-main); margin-top: 15px; }
+        .mobile-tutorial li { margin-bottom: 24px; line-height: 1.5; font-size: 15px; }
+        .tutorial-images { 
+            display: flex; gap: 12px; margin-top: 12px; overflow-x: auto; 
+            padding-bottom: 8px; scroll-snap-type: x mandatory;
+        }
+        .tutorial-images img { 
+            max-height: 300px; border-radius: 12px; border: 1px solid var(--glass-border); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); scroll-snap-align: start; flex-shrink: 0;
+        }
 
         /* ===== MOBILE + DARK MODE FIXES ===== */
         @media (max-width: 700px) {
@@ -399,13 +411,48 @@
             
             <p>2. Go to the Official NTA "View Recorded Responses" webpage.<br>3. Click the bookmark you just saved. It will ask for your name and download your CSV!</p>
 
-            <h3 style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; margin-top: 30px;">Method 2: Mobile Extraction</h3>
-            <p style="color: var(--accent); font-weight: 600;">Building... stay tuned! The mobile extraction method will be available in about an hour.</p>
+            <h3 style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; margin-top: 40px;">Method 2: Mobile Browser (Android / iOS)</h3>
+            <p>Follow these steps to extract your OMR on a mobile phone using the Bookmarklet trick.</p>
+            
+            <ol class="mobile-tutorial">
+                <li>
+                    <strong>Copy the Script:</strong> First, tap the button below to copy the extraction script to your clipboard.<br>
+                    <div class="code-box" id="consoleCode" style="display:none;">javascript:(function(){alert('Scraping OMR Data...');let appNo='Unknown',name='Student',setCode='50';let tds=document.querySelectorAll('td');for(let i=0;i<tds.length;i++){let txt=tds[i].innerText.trim();if(txt==='Application Number :'||txt.includes('Application Number')){if(tds[i+1])appNo=tds[i+1].innerText.trim();}else if(txt==="Candidate's Name :"||txt.includes("Candidate's Name")){if(tds[i+1])name=tds[i+1].innerText.trim();}else if(txt==='Booklet Code (Set Code)'||txt.includes('Booklet Code')||txt.includes('Set Code')){if(tds[i+1]){let val=tds[i+1].innerText.trim();if(val&&val.length<=4)setCode=val;}}}if(appNo==='Unknown')appNo=prompt('Enter Application No:')||'Unknown';if(name==='Student')name=prompt('Enter Name:')||'Student';if(setCode==='50')setCode=prompt('Enter Booklet Set (e.g., 50, 80):')||'80';let csvData=`Application No, ${appNo}\nName, ${name}\nSet, ${setCode}\n`;let targetTable=document.getElementById('ctl00_LoginContent_grOMR');if(!targetTable){alert('Error: Main OMR grid container ("ctl00_LoginContent_grOMR") not found on this page.');return;}let rows=targetTable.querySelectorAll('tr');let qCount=0;let qIdx=1;let ansIdx=2;rows.forEach(tr=>{if(tr.closest('table')!==targetTable)return;let cells=tr.querySelectorAll('td');if(cells.length>=3){let rawQ=cells[qIdx].innerText.trim();let rawAns=cells[ansIdx].innerText.trim();let qNum=parseInt(rawQ,10);if(!isNaN(qNum)&&qNum>0&&qNum<=200){let recordedAns=rawAns.replace(/[^1-4\-]/g,'');if(recordedAns==='-'||recordedAns===''){recordedAns='';}else{recordedAns=recordedAns.charAt(0);}csvData+=`${qNum},${recordedAns}\n`;qCount++;}}});if(qCount===0){alert('Extraction failed: Could not compile valid structural rows.');return;}let blob=new Blob([csvData],{type:'text/csv;charset=utf-8;'});let link=document.createElement('a');let url=URL.createObjectURL(blob);link.setAttribute('href',url);link.setAttribute('download',`ReNEET_OMR_${appNo}.csv`);link.style.visibility='hidden';document.body.appendChild(link);link.click();document.body.removeChild(link);if(confirm(`Success! Parsed ${qCount} questions from Booklet Set ${setCode}.\n\nClick OK to open the calculator window.`)){window.location.href='https://transp0s0n.github.io/NEET-OMR-2026/';}})();</div>
+                    <button class="copy-btn action-btn" style="margin-top: 10px; padding: 10px; font-size: 15px; width: auto;" onclick="navigator.clipboard.writeText(document.getElementById('consoleCode').innerText); alert('Code Copied to Clipboard!');">📋 Copy Extraction Code</button>
+                </li>
+                <li>
+                    <strong>Bookmark this page:</strong> Tap your browser menu (the three dots ⋮) and bookmark this current calculator page by pressing the star icon. Once bookmarked, tap 'Edit' on the snackbar at the bottom of the screen.<br>
+                    <div class="tutorial-images">
+                        <img src="instructions/info1.jpg" alt="Bookmark page menu">
+                        <img src="instructions/info2.jpg" alt="Edit bookmark prompt">
+                    </div>
+                </li>
+                <li>
+                    <strong>Paste the Code:</strong> Change the bookmark name to "OMR Extractor". Delete the existing URL completely, and <strong>paste the code</strong> you copied in Step 1 into the URL field. Hit the back arrow to save it.<br>
+                    <div class="tutorial-images">
+                        <img src="instructions/info3.jpg" alt="Paste code in URL field">
+                    </div>
+                </li>
+                <li>
+                    <strong>Go to NTA Site:</strong> Open the official NTA website and log in to the page where your OMR responses are visible.<br>
+                    <div class="tutorial-images">
+                        <img src="instructions/info4.jpg" alt="Official NTA Website layout">
+                    </div>
+                </li>
+                <li>
+                    <strong>Run the Extractor:</strong> Tap the URL address bar at the top of the NTA site, type "OMR Extractor", and tap the bookmark with the star icon to run the script. Your CSV file will download automatically!<br>
+                    <div class="tutorial-images">
+                        <img src="instructions/info5.jpg" alt="Run Bookmarklet from URL bar">
+                    </div>
+                </li>
+            </ol>
         </div>
     </div>
 
     <!-- RESULTS SECTION -->
     <div id="resultsSection">
+        <button class="back-results-btn" onclick="window.clearSavedData()" style="margin-bottom: 12px; background: rgba(224,53,43,0.1); color: var(--danger); border-color: rgba(224,53,43,0.2);">🗑 Clear Data & Upload New OMR</button>
+        
         <div class="card score-hero">
             <div class="booklet-badge" id="setMetric">Booklet Set: —</div>
             <h2>Calculated Final Score</h2>
@@ -476,7 +523,7 @@
         </div>
     </div>
 
-    <!-- PREMIUM UNLOCK TABS (NOW FULLY UNLOCKED BY DEFAULT) -->
+    <!-- PREMIUM UNLOCK TABS -->
     <div class="card unlock-tabs-card" id="premiumTabsCard" style="display: none;">
         <div class="q-tabs">
             <button class="tab-btn active" id="unlockTabBtn-report" onclick="window.switchUnlockTab('report')">📄 Download Comprehensive Report</button>
