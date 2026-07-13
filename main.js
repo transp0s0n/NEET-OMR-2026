@@ -54,6 +54,7 @@ window.clearSavedData = function() {
         globalCSVText = "";
         window._lastReportData = null;
         document.getElementById('csvFile').value = '';
+        document.getElementById('csvPasteArea').value = '';
         
         // Reset Upload UI
         document.getElementById('uploadText').innerText = "Choose Response CSV File";
@@ -62,6 +63,24 @@ window.clearSavedData = function() {
         document.getElementById('calcBtn').classList.remove('active');
         document.getElementById('dropZone').classList.remove('uploaded');
         window.showSection('uploadCard', false);
+    }
+};
+
+// Handle Pasted Text for Mobile Users
+window.handlePastedText = function() {
+    const val = document.getElementById('csvPasteArea').value.trim();
+    if(val.length > 50 && (val.includes("Application No") || val.includes(","))) {
+        globalCSVText = val;
+        localStorage.setItem('savedOMR_CSV', val);
+        document.getElementById('calcBtn').disabled = false;
+        document.getElementById('calcBtn').classList.add('active');
+        document.getElementById('csvPasteArea').style.borderColor = "var(--success)";
+        document.getElementById('csvPasteArea').style.background = "rgba(52, 199, 89, 0.08)";
+    } else {
+        document.getElementById('calcBtn').disabled = true;
+        document.getElementById('calcBtn').classList.remove('active');
+        document.getElementById('csvPasteArea').style.borderColor = "var(--glass-border)";
+        document.getElementById('csvPasteArea').style.background = "rgba(216,216,222,0.4)";
     }
 };
 
@@ -90,7 +109,6 @@ function handleFileLoad(file) {
     const reader = new FileReader();
     reader.onload = (e) => {
         const text = e.target.result;
-
         const upperText = text.toUpperCase();
         const hasHeaders = upperText.includes("APPLICATION") || upperText.includes("NAME") || upperText.includes("SET");
         const hasQData = /\n\d+\s*,\s*[1-4\-]?/.test(text);
@@ -102,8 +120,6 @@ function handleFileLoad(file) {
         }
 
         globalCSVText = text;
-        
-        // Persist data locally so users don't have to upload on refresh
         localStorage.setItem('savedOMR_CSV', text);
 
         calcBtn.disabled = false;
@@ -111,6 +127,10 @@ function handleFileLoad(file) {
         dropZone.classList.add('uploaded');
         uploadText.innerText = "CSV Ready! Click Calculate below.";
         uploadText.style.color = "var(--success)";
+        
+        // Populate paste area for consistency
+        document.getElementById('csvPasteArea').value = text;
+        window.handlePastedText();
 
         const howToBtn = document.getElementById('howToBtn');
         if (howToBtn) howToBtn.style.display = 'none';
@@ -367,16 +387,12 @@ window.generateComprehensiveReport = function() {
 
     reportDiv.innerHTML = html;
     
-    // Switch to printing mode (CSS will hide the dashboard & show only the report Div)
     document.body.classList.add('printing-report');
-    
-    // Safely remove the class after the print dialog finishes/closes
     window.addEventListener('afterprint', () => {
         document.body.classList.remove('printing-report');
-        reportDiv.innerHTML = ''; // Clear DOM memory
+        reportDiv.innerHTML = '';
     }, { once: true });
 
-    // Fallback trigger for some Safari/iOS edge cases
     setTimeout(() => { window.print(); }, 150);
 };
 
@@ -437,7 +453,6 @@ window.switchTab = function(id, event) {
     } else if (window.event && window.event.target) {
         window.event.target.classList.add('active');
     }
-
     window.applyReviewFilter();
 }
 
@@ -497,3 +512,52 @@ window.addEventListener('scroll', () => {
         }
     }, 150);
 }, { passive: true });
+
+// UI, Theme, and Widget Logic
+(function () {
+    var body = document.body;
+    var themeBtn = document.getElementById('themeToggle');
+
+    function applyTheme(isDark) {
+        body.classList.toggle('dark-mode', isDark);
+        if (themeBtn) themeBtn.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    var savedTheme = null;
+    try { savedTheme = localStorage.getItem('reneet-theme'); } catch (e) {}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+    window.toggleDarkMode = function () {
+        var isDark = !body.classList.contains('dark-mode');
+        applyTheme(isDark);
+        try { localStorage.setItem('reneet-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+    };
+
+    var shareWidget = document.getElementById('shareWidget');
+    var shareCaption = document.getElementById('shareCaption');
+
+    window.toggleShareWidget = function () {
+        if (!shareWidget) return;
+        shareWidget.classList.toggle('open');
+        if (shareWidget.classList.contains('open')) {
+            shareCaption.textContent = "Share with your friends";
+        } else {
+            shareCaption.textContent = "Share";
+        }
+    };
+
+    if (shareWidget) {
+        shareWidget.addEventListener('mouseenter', function() { if(shareCaption) shareCaption.textContent = "Share with your friends"; });
+        shareWidget.addEventListener('mouseleave', function() {
+            if (shareWidget && shareCaption && !shareWidget.classList.contains('open')) { shareCaption.textContent = "Share"; }
+        });
+    }
+
+    document.addEventListener('click', function (e) {
+        if (shareWidget && !shareWidget.contains(e.target) && e.target.id !== 'shareFab') {
+            shareWidget.classList.remove('open');
+            if (shareCaption) shareCaption.textContent = "Share";
+        }
+    });
+})();
